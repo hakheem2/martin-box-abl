@@ -1,11 +1,14 @@
 {% load humanize %}
 <article class="product-card">
    <div class="card-image-wrapper">
-      <img src="{{ home.main_image.url }}" alt="{{ home.name }}" loading="lazy">
+      <a href="{{ home.get_absolute_url }}" style="width: fit-content; height: fit-content;">
+         <img src="{{ home.main_image.url }}" alt="{{ home.name }} modular home" loading="lazy" >
 
-      {% if home.badge %}
-         <span class="card-badge">{{ home.badge }}</span>
-      {% endif %}
+         {% if home.badge %}
+            <span class="card-badge">{{ home.badge }}</span>
+         {% endif %}
+      </a>
+      
    </div>
 
    <div class="card-content">
@@ -20,7 +23,7 @@
          </span>
       </div>
 
-      <h3 class="heading-md card-title">{{ home.name }}</h3>
+      <a href="{{ home.get_absolute_url }}" class="heading-md"><h3 class="heading-md card-title"> {{ home.name }}</h3></a>
 
       <div class="spec-grid grid">
          <div class="spec-item">

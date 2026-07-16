@@ -1,0 +1,45 @@
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+      const forms = document.querySelectorAll("#contact-form");
+
+      forms.forEach(form => {
+         form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const button = form.querySelector(".contact-btn");
+            const text = button.querySelector(".btn-text");
+            const check = button.querySelector(".btn-check");
+
+            button.disabled = true;
+            text.textContent = "Sending...";
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+               method: "POST",
+               body: formData,
+               headers: {
+                  "X-Requested-With": "XMLHttpRequest"
+               }
+            })
+            .then(response => response.json())
+            .then(data => {
+               if (data.success) {
+                  text.textContent = "Contact Sent ✓";
+                  check.style.display = "inline";
+                  button.disabled = true;
+                  form.reset();
+               } else {
+                  text.textContent = "Try Again";
+                  button.disabled = false;
+               }
+            })
+            .catch(error => {
+               console.error(error);
+               text.textContent = "Error";
+               button.disabled = false;
+            });
+         });
+      });
+   });
+</script>

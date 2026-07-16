@@ -70,7 +70,7 @@ html {
 }
 
 body {
-   background: var(--bg-dark);
+   background: var(--bg-main);
    color: var(--text);
    font-family: var(--font-primary);
    line-height: 1.6;
@@ -451,7 +451,7 @@ body.menu-open {
 
 .footer-wrapper {
    display: grid;
-   grid-template-columns: 1.5fr 1fr 1fr 1fr;
+   grid-template-columns: 1.5fr 1fr 1fr;
    gap: 3rem;
 }
 
@@ -465,6 +465,12 @@ body.menu-open {
    margin-top: 1rem;
    color: rgba(255, 255, 255, .7);
    max-width: 350px;
+}
+
+.footer-brand img{
+   width: 250px;
+   max-width: 260px;
+   height: auto;
 }
 
 .footer h3 {
@@ -506,10 +512,25 @@ body.menu-open {
    color: rgba(255, 255, 255, .6);
 }
 
+.payment-cards .card {
+   background-color: transparent;
+   padding: 0 !important;
+}
+
+.payment-cards .card img {
+   width: 60px !important;
+   height: 30px !important;
+   border-radius: 5px;
+}
 
 @media (max-width: 991px) {
    .footer-wrapper {
       grid-template-columns: repeat(2, 1fr);
+   }
+
+   .payment-cards .card img {
+      width: 100px !important;
+      height: 50px !important;
    }
 }
 

@@ -88,16 +88,50 @@
    <!-- =========================
    SCHEMA MARKUP
    ========================= -->
-
+   <script type="application/ld+json">
+   {
+      "@context":"https://schema.org",
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+         {
+            "@type":"ListItem",
+            "position":1,
+            "name":"Home",
+            "item":"https://martinboxabl.com/"
+         },
+         {
+            "@type":"ListItem",
+            "position":2,
+            "name":"Homes",
+            "item":"https://martinboxabl.com/homes/"
+         }
+      ]
+   }
+   </script>
+   
    {% block schema_markup %}
    <script type="application/ld+json">
    {
-   "@context":"https://schema.org",
-   "@type":"Organization",
-   "name":"{{ SITE.name }}",
-   "url":"https://martinboxabl.com",
-   "email":"{{ SITE.email }}",
-   "telephone":"{{ SITE.number }}"
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Martin Boxabl",
+      "url": "{{ request.scheme }}://{{ request.get_host }}",
+      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/logo.png' %}",
+      "email": "martin@martinboxabl.com",
+      "sameAs": [
+         "{{site.facebook_link}}",
+         "{{site.instagram_link}}",
+         "{{site.tiktok_link}}"
+      ]
+   }
+   </script>
+
+   <script type="application/ld+json">
+   {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Martin Boxabl",
+      "url": "{{ request.scheme }}://{{ request.get_host }}"
    }
    </script>
    {% endblock %}

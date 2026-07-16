@@ -5,19 +5,11 @@ from django.template.loader import render_to_string
 from django.http import JsonResponse
 
 
-def home_list(request):
-    homes = Home.objects.filter(active=True).select_related("category")
-    categories = Category.objects.filter(active=True)
-
-    context = {
-        "homes": homes,
-        "categories": categories,
-    }
-    return render(request, "shop/shop-page.html", context)
-
-
-def ajax_home_filter(request):
-    homes = Home.objects.filter(active=True).select_related("category")
+def get_filtered_homes(request, base_queryset=None):
+    if base_queryset is None:
+        homes = Home.objects.filter(active=True).select_related("category")
+    else:
+        homes = base_queryset
 
     category = request.GET.get("category")
     bedrooms = request.GET.get("bedrooms")
@@ -48,12 +40,57 @@ def ajax_home_filter(request):
     else:
         homes = homes.order_by("-featured", "name")
 
+    return homes
+
+
+
+def home_list(request):
+    homes = get_filtered_homes(request)
+    categories = Category.objects.filter(active=True)
+
+    return render(request, "shop/shop-page.html", {"homes": homes, "categories": categories})
+
+
+def ajax_home_filter(request):
+    homes = get_filtered_homes(request)
+
     html = render_to_string("shop/partials/home-list.html", {"homes": homes}, request=request)
 
     return JsonResponse({
         "html": html,
         "count": homes.count()
     })
+
+
+
+
+def category_list(request):
+    categories = Category.objects.filter(active=True)
+    return render(request, "shop/category-list.html", {"categories": categories})
+
+
+
+
+def category_detail(request, category_slug):
+    category = get_object_or_404(Category, slug=category_slug, active=True)
+
+    # keep filters working inside this category
+    request.GET = request.GET.copy()
+    request.GET["category"] = category.slug
+
+    homes = get_filtered_homes(
+        request,
+        Home.objects.filter(category=category, active=True).select_related("category")
+    )
+
+    context = {
+        "category": category,
+        "homes": homes,
+        "categories": Category.objects.filter(active=True),
+    }
+
+    return render(request, "shop/category-detail.html", context)
+
 
 
 def home_detail(request, category_slug, slug):
@@ -81,6 +118,7 @@ import resend
 resend.api_key = settings.RESEND_API_KEY
 
 
+
 def checkout(request, slug):
    home = get_object_or_404(Home, slug=slug, active=True)
 
@@ -104,7 +142,7 @@ def checkout(request, slug):
       try:
          response = resend.Emails.send({
                "from": settings.DEFAULT_FROM_EMAIL,
-               "to": [settings.ORDER_NOTIFICATION_EMAIL],
+               "to": [settings.CONTACT_EMAIL],
                "subject": f"New Home Order Request - {home.name}",
                "html": html,
          })

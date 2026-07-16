@@ -198,7 +198,7 @@ https://martinboxabl.com{{ home.get_absolute_url }}
 
       <div class="grid product-grid">
          {% for home in related_homes %}
-            {% include "shop/includes/product-card.html" with home=home %}
+            {% include "shop/partials/product-grid.html" with home=home %}
          {% endfor %}
       </div>
 

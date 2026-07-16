@@ -1,66 +1,49 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-Portable Homes For Sale | Martin Boxabl
-{% endblock %}
+{% block title %}{{ category.name }} | Modular Homes | Martin Boxabl{% endblock %}
 
-{% block meta_description %}
-Explore modern portable homes, modular houses, and affordable box homes available for sale with Martin Boxabl. Discover stylish, efficient, and customizable housing solutions.
-{% endblock %}
+{% block meta_description %}Explore {{ category.name }} from Martin Boxabl. Browse modern modular homes designed for comfortable, efficient, and flexible living.{% endblock %}
 
-{% block meta_keywords %}
-portable homes for sale, modular homes, box homes, prefab houses, tiny homes, affordable homes, modern housing, Martin Boxabl
-{% endblock %}
+{% block meta_keywords %}{{ category.name }}, modular homes, portable homes, prefab houses, box homes, modern housing, Martin Boxabl{% endblock %}
 
-{% block og_title %}
-Portable Homes For Sale | Martin Boxabl
-{% endblock %}
+{% block og_title %}{{ category.name }} | Martin Boxabl{% endblock %}
 
-{% block og_description %}
-Browse our collection of modern modular and portable homes designed for affordable, flexible, and efficient living.
-{% endblock %}
+{% block og_description %}Browse {{ category.name }} available through Martin Boxabl and discover modern modular housing solutions.{% endblock %}
 
 {% block og_image %}
-{% static 'images/og/shop.jpg' %}
+{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/og/shop.jpg' %}{% endif %}
 {% endblock %}
 
-{% block og_url %}
-https://martinboxabl.com/homes/
-{% endblock %}
+{% block og_url %}https://martinboxabl.com{{ request.path }}{% endblock %}
 
-{% block twitter_title %}
-Portable Homes For Sale | Martin Boxabl
-{% endblock %}
+{% block twitter_title %}{{ category.name }} | Martin Boxabl{% endblock %}
 
-{% block twitter_description %}
-Discover premium portable homes and modular housing solutions available through Martin Boxabl.
-{% endblock %}
+{% block twitter_description %}Discover {{ category.name }} modular homes available through Martin Boxabl.{% endblock %}
 
 {% block twitter_image %}
-{% static 'images/og/shop.jpg' %}
+{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/og/shop.jpg' %}{% endif %}
 {% endblock %}
 
-{% block canonical_url %}
-https://martinboxabl.com/homes/
-{% endblock %}
+{% block canonical_url %}https://martinboxabl.com{{ request.path }}{% endblock %}
 
 {% block schema_markup %}
 <script type="application/ld+json">
 {
    "@context":"https://schema.org",
    "@type":"CollectionPage",
-   "name":"Portable Homes For Sale | Martin Boxabl",
-   "description":"Explore modern portable homes, modular houses, and affordable box homes available from Martin Boxabl.",
-   "url":"https://martinboxabl.com/homes/",
+   "name":"{{ category.name }} | Martin Boxabl",
+   "description":"Explore {{ category.name }} modular homes available from Martin Boxabl.",
+   "url":"https://martinboxabl.com{{ request.path }}",
    "publisher":{
       "@type":"Organization",
-      "name":"{{ SITE.name }}",
+      "name":"Martin Boxabl",
       "url":"https://martinboxabl.com"
    }
 }
 </script>
 {% endblock %}
+
 
 {% block extra_css %}
    <link rel="stylesheet" href="{% static 'css/shop-page.css' %}">
@@ -76,27 +59,24 @@ SHOP HERO
    <div class="page-hero-overlay"></div>
    <div class="container">
       <div class="page-hero-content">
-
-         <span class="section-tag">Available Homes</span>
-
-         <h1 class="display-heading">Discover Your Perfect Modular Home</h1>
-
-         <p>Explore our carefully selected collection of premium modular homes designed for modern living. Whether you're looking for a compact retreat or a spacious family residence, {{ SITE.name|default:"Martin Boxabl" }} helps you find the perfect solution at competitive prices.</p>
-
+         <span class="section-tag">{{ category.name }}</span>
+         <h1 class="display-heading">Explore {{ category.name }}</h1>
+         <p>{{ category.description|default:"Discover modern modular homes designed for comfortable, efficient, and flexible living." }}</p>
          <div class="hero-actions">
             <a href="#homes-grid" class="btn btn-primary">Browse Homes</a>
             <a href="{% url 'contact' %}" class="btn btn-outline">Request Consultation</a>
          </div>
-
          <nav class="breadcrumb">
             <a href="{% url 'home' %}">Home</a>
             <span>/</span>
-            <span>Available Homes</span>
+            <a href="{% url 'shop' %}">Homes</a>
+            <span>/</span>
+            <span>{{ category.name }}</span>
          </nav>
-
       </div>
    </div>
 </section>
+
 
 
 <!-- =========================================
@@ -273,7 +253,7 @@ TESTIMONIALS
                </div>
                <p>Martin made the entire buying process incredibly simple. The home exceeded our expectations and the support was outstanding from start to finish.</p>
                <div class="testimonial-author">
-                  <img src="{% static 'images/testimonials/default-image.jpg' %}" alt="Sarah Johnson">
+                  <img src="{% static 'images/testimonials/client-1.jpg' %}" alt="Sarah Johnson">
                   <div>
                      <h4>Sarah Johnson</h4>
                      <span>California, USA</span>
@@ -296,7 +276,7 @@ TESTIMONIALS
                </div>
                <p>We were looking for a modern home without spending years building. Martin helped us every step of the way.</p>
                <div class="testimonial-author">
-                  <img src="{% static 'images/testimonials/default-image.jpg' %}" alt="Michael Brown">
+                  <img src="{% static 'images/testimonials/client-2.jpg' %}" alt="Michael Brown">
                   <div>
                      <h4>Michael Brown</h4>
                      <span>Texas, USA</span>
@@ -319,7 +299,7 @@ TESTIMONIALS
                </div>
                <p>Excellent communication, competitive pricing, and a beautiful modular home that perfectly matched our family's needs.</p>
                <div class="testimonial-author">
-                  <img src="{% static 'images/testimonials/default-image.jpg' %}" alt="Emily Wilson">
+                  <img src="{% static 'images/testimonials/client-3.jpg' %}" alt="Emily Wilson">
                   <div>
                      <h4>Emily Wilson</h4>
                      <span>Florida, USA</span>

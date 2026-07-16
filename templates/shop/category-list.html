@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home Categories | Martin Boxabl{% endblock %}
+
+{% block meta_description %}Explore all modular home categories from Martin Boxabl. Discover modern portable homes, prefab houses, and flexible housing solutions.{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/category-page.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================================
+CATEGORY HERO
+========================================= -->
+<section class="section category-hero">
+   <div class="category-hero-overlay"></div>
+   <div class="container">
+      <div class="category-hero-content">
+         <span class="section-tag">Explore Homes</span>
+         <h1>Find The Perfect Modular Home</h1>
+         <p>Browse our collection of modern modular homes designed for comfort, efficiency, and flexible living.</p>
+         <div class="hero-actions">
+            <a href="{% url 'shop' %}" class="btn btn-primary">View All Homes</a>
+            <a href="{% url 'contact' %}" class="btn btn-light btn-outline-success">Request Consultation</a>
+         </div>
+         <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span>Categories</span>
+         </nav>
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+CATEGORY GRID
+========================================= -->
+<section class="section category-section">
+<div class="container">
+   <div class="section-header text-center">
+      <span class="section-tag">Home Categories</span>
+      <h2 class="heading-lg">Choose Your Home Style</h2>
+      <p>Explore different layouts and designs created for modern lifestyles.</p>
+   </div>
+
+   <div class="category-grid">
+      {% for category in categories %}
+      <a href="{{ category.get_absolute_url }}" class="category-link">
+         <article class="category-card">
+            <div class="category-image">
+               {% if category.image %}
+               <img src="{{ category.image.url }}" alt="{{ category.name }}">
+               {% else %}
+               <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ category.name }}">
+               {% endif %}
+            </div>
+            <div class="category-content">
+               <h3>{{ category.name }}</h3>
+               <p>{{ category.description|default:"Explore modern modular homes designed for efficient and comfortable living."|truncatewords:18 }}</p>
+               <span class="category-btn">
+                  Explore Homes
+                  <i class="bi bi-arrow-right"></i>
+               </span>
+            </div>
+         </article>
+      </a>
+      {% empty %}
+      <div class="empty-category">
+         <h3>No categories available</h3>
+         <p>Please check back later.</p>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+</section>
+
+<!-- =========================================
+CTA SECTION
+========================================= -->
+<section class="category-cta">
+<div class="container">
+   <div class="category-cta-box">
+      <div>
+         <span class="section-tag">Need Help?</span>
+         <h2>Not Sure Which Home Fits You?</h2>
+         <p>Our team can help you choose the right modular home based on your space, lifestyle, and budget.</p>
+      </div>
+      <a href="{% url 'contact' %}" class="btn btn-light btn-outline-success">Contact Martin Boxabl</a>
+   </div>
+</div>
+</section>
+
+{% endblock %}

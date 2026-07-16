@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+
+    'django.contrib.sitemaps',
+
     'core',
     'emails',
     'shop',
@@ -55,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'core.middleware.CustomErrorMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -69,6 +74,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'core.context_processors.global_categories',
             ],
         },
     },
@@ -136,7 +143,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # Resend
 RESEND_API_KEY = config("RESEND_API_KEY")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
-ORDER_NOTIFICATION_EMAIL = config("ORDER_NOTIFICATION_EMAIL")
+CONTACT_EMAIL = config("CONTACT_EMAIL")
 
 
 #Security Settings

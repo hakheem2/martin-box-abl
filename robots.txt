@@ -1,0 +1,8 @@
+User-agent: *
+
+Disallow: /admin/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /accounts/
+
+Sitemap: https://martinboxabl.com/sitemap.xml

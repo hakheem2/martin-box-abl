@@ -142,7 +142,7 @@ OUR STORY
                efficiency, and a modern lifestyle. Our commitment is to help buyers navigate the process with
                transparency, personalized guidance, and dependable service from inquiry to delivery.</p>
 
-            <a href="#contact" class="btn btn-primary">Contact Us Today</a>
+            <a href="{% url "contact" %}" class="btn btn-primary">Contact Us Today</a>
          </div>
 
       </div>
@@ -369,7 +369,7 @@ ABOUT CTA + FAQ SECTION
             <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
                resale opportunities and personalized support.</p>
             <div class="cta-actions">
-               <a href="#homes" class="btn btn-primary">Browse Available Homes</a>
+               <a href="{% url "shop" %}" class="btn btn-primary">Browse Available Homes</a>
                <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
             </div>
          </div>

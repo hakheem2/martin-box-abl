@@ -10,7 +10,7 @@ $(function () {
       $.ajax({
          url: form.data("url"),
          data: {
-            category: $("#category").val(),
+            category: $("#category").val() || $("#category").data("category"),
             bedrooms: $("#bedrooms").val(),
             bathrooms: $("#bathrooms").val(),
             stories: $("#stories").val(),

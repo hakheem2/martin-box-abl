@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>New Contact Message</title>
+    </head>
+    <body style="margin:0; padding:0; background:#f7f5f0; font-family:Arial, sans-serif; color:#1f2937;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="padding:30px 0;">
+            <tr>
+                <td align="center">
+                    <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff; border-radius:10px; overflow:hidden;">
+                        <!-- Header -->
+                        <tr>
+                            <td style="background:#1f6f5f; padding:25px; text-align:center;">
+                                <h1 style="margin:0; color:#ffffff; font-size:24px;">Martin Boxabl</h1>
+                                <p style="margin:8px 0 0; color:#e5e7eb;">New Contact Request</p>
+                            </td>
+                        </tr>
+                        <!-- Content -->
+                        <tr>
+                            <td style="padding:30px;">
+                                <h2 style="margin-top:0; color:#185548;">Contact Details</h2>
+                                <table width="100%" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">
+                                    <tr>
+                                        <td style="font-weight:bold; width:120px;">Name:</td>
+                                        <td>{{ name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-weight:bold;">Email:</td>
+                                        <td><a href="mailto:{{ email }}" style="color:#1f6f5f;">{{ email }}</a></td>
+                                    </tr>
+                                    {% if phone %}
+                                        <tr>
+                                            <td style="font-weight:bold;">Phone:</td>
+                                            <td>{{ phone }}</td>
+                                        </tr>
+                                    {% endif %}
+                                    {% if subject %}
+                                        <tr>
+                                            <td style="font-weight:bold;">Subject:</td>
+                                            <td>{{ subject }}</td>
+                                        </tr>
+                                    {% endif %}
+                                </table>
+                                <hr style="margin:25px 0; border:none; border-top:1px solid #e5e7eb;">
+                                <h3 style="color:#185548;">Message</h3>
+                                <div style="background:#f7f5f0; padding:20px; border-radius:8px; line-height:1.6;">
+                                    {{ message|linebreaks }}
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Footer -->
+                        <tr>
+                            <td style="background:#111827; padding:20px; text-align:center; color:#ffffff; font-size:13px;">
+                                <p style="margin:0;">This message was sent from the Martin Boxabl website.</p>
+                                <p style="margin:8px 0 0; color:#c59b5a;">Building modern modular homes.</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

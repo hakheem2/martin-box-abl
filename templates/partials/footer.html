@@ -1,3 +1,4 @@
+{% load static %}
 <!-- FOOTER SECTION -->
 <footer class="footer">
    <div class="container">
@@ -5,37 +6,85 @@
       <div class="footer-wrapper">
 
          <div class="footer-brand">
-               <a href="{% url 'home' %}" class="footer-logo">{{ SITE.name|default:"Martin Boxabl" }}</a>
+               <a href="{% url 'home' %}" class="footer-logo">
+                  <img src="{% static 'images/logo/logo-footer.png' %}" alt="{{ site.name }} | Martin Boxabl | martinboxabl.com">
+               </a>
                <p>Modern portable homes designed to provide smarter and more flexible living solutions.</p>
+
+            <div class="footer-contact mt-4">
+               <h3>Contact</h3>
+               <ul>
+                  <li><a href="tel:{{ SITE.phone}}">{{ SITE.phone}}</a></li>
+                  <li><a href="mailto:{{ SITE.email}}">{{ SITE.email}}</a></li>
+                  <li>{{ SITE.address }}</li>
+               </ul>
+            </div>
          </div>
 
          <div class="footer-links">
                <h3>Quick Links</h3>
                <ul>
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#homes">Homes</a></li>
-                  <li><a href="#gallery">Gallery</a></li>
-                  <li><a href="#faq">FAQ</a></li>
-                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="{% url 'about' %}">About</a></li>
+                  <li><a href="{% url 'shop' %}">Homes</a></li>
+                  <li><a href="{% url 'gallery' %}">Our Gallery</a></li>
+                  <li><a href="{% url 'contact' %}">Contact</a></li>
                </ul>
-         </div>
 
-         <div class="footer-contact">
-               <h3>Contact</h3>
+               <h3 class="mt-4">Home Categories</h3>
                <ul>
-                  <li><a href="tel:+15593671276">+1 559-367-1276</a></li>
-                  <li><a href="mailto:martin@martinboxabl.com">martin@martinboxabl.com</a></li>
-                  <li>California, United States</li>
+                  {% for category in footer_categories %}
+                  <li>
+                     <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+                  </li>
+                  {% endfor %}
                </ul>
          </div>
 
          <div class="footer-social">
-               <h3>Follow Us</h3>
-               <div class="social-links">
-                  <a href="#" aria-label="Facebook">Facebook</a>
-                  <a href="#" aria-label="Instagram">Instagram</a>
-                  <a href="#" aria-label="TikTok">TikTok</a>
+            <h3>Follow Us</h3>
+            <div class="social-links">
+               <a href="{{ SITE.facebook_link }}" class="text-success me-3" aria-label="Facebook">Facebook</a>
+               <a href="{{ SITE.instagram_link }}" class="text-success me-3" aria-label="Instagram">Instagram</a>
+               <a href="{{ SITE.tiktok_link }}" class="text-success me-3" aria-label="TikTok">TikTok</a>
+            </div>
+
+            <div class="mt-4">
+               <h3 class="heading h4 pb-3 d-flex align-items-center">
+                  <i class="bi bi-shield-check text-success fs-4 pe-2"></i>
+                  Secure Payments
+               </h3>
+               <div class="payment-cards d-flex align-items-center flex-wrap gap-3">
+                  <button class="card bitcoin">
+                     <img src="{% static 'images/logo/bitcoin.jpg' %}" alt="Bitcoin payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card paypal d-none">
+                        <img class="card-image" src="{% static 'images/logo/paypal.jpg' %}" alt="PayPal payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card cashapp">
+                        <img class="card-image" src="{% static 'images/logo/cash-app.jpg' %}" alt="Cash App payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card walmart">
+                        <img class="card-image" src="{% static 'images/logo/walmart.jpg' %}" alt="Walmart payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card applepay">
+                        <img class="card-image" src="{% static 'images/logo/apple-pay.jpg' %}" alt="Apple Pay payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card moneygram">
+                        <img class="card-image" src="{% static 'images/logo/money-gram.jpg' %}" alt="MoneyGram payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card westernunion">
+                        <img class="card-image" src="{% static 'images/logo/western-union.jpg' %}" alt="Western Union payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
+                  <button class="card zelle">
+                        <img class="card-image" src="{% static 'images/logo/zelle.jpg' %}" alt="Zelle payment logo | Martin Boxabl | martinboxabl.com" class="card-img">
+                  </button>
                </div>
+               <p class="text pt-3 text-white" style="font-size: 12px;">
+                  NOTE* All Gift Cards Accepted.
+                  Your payment details are secured. All the information is protected using Secure Sockets Layer (SSL) technology.
+               </p>
+            </div>
+
          </div>
 
       </div>
