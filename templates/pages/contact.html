@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- =========================
+PAGE TITLE
+========================= -->
+
+{% block title %}
+Contact {{ SITE.name|default:"Martin Boxabl" }} | Get In Touch
+{% endblock %}
+
+<!-- =========================
+SEO
+========================= -->
+
+{% block meta_description %}
+Contact {{ SITE.name|default:"Martin Boxabl" }} to learn more about modern modular homes, availability, pricing, or schedule a consultation.
+{% endblock %}
+
+{% block meta_keywords %}
+Contact Martin Boxabl, modular home consultation, portable home reseller, prefab homes, martinboxabl.com
+{% endblock %}
+
+<!-- =========================
+OPEN GRAPH
+========================= -->
+
+{% block og_title %}
+Contact {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+{% block og_description %}
+Get in touch with {{ SITE.name|default:"Martin Boxabl" }} for modular home inquiries and consultations.
+{% endblock %}
+
+{% block og_url %}
+https://martinboxabl.com/contact/
+{% endblock %}
+
+<!-- =========================
+TWITTER
+========================= -->
+
+{% block twitter_title %}
+Contact {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+{% block twitter_description %}
+Contact us to discuss your modular home needs.
+{% endblock %}
+
+<!-- =========================
+CANONICAL
+========================= -->
+
+{% block canonical_url %}
+https://martinboxabl.com/contact/
+{% endblock %}
+
+<!-- =========================
+SCHEMA
+========================= -->
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"ContactPage",
+   "name":"Contact {{ SITE.name|default:'Martin Boxabl' }}",
+   "url":"https://martinboxabl.com/contact/"
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- =========================================
+CONTACT HERO
+========================================= -->
+<section class="page-hero page-hero-contact">
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+      <div class="page-hero-content">
+
+         <span class="section-tag">Get In Touch</span>
+
+         <h1 class="display-heading">Let's Find The Perfect Modular Home Together</h1>
+
+         <p>Whether you're interested in a modern modular home, have questions about availability, or want to discuss
+            pricing, we're here to help. Reach out today and let's start the conversation.</p>
+
+         <div class="hero-actions">
+            <a href="#contact-info" class="btn btn-primary">Contact Us</a>
+            <a href="#map" class="btn btn-outline">Find Our Location</a>
+         </div>
+
+         <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span>Contact</span>
+         </nav>
+
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+CONTACT INFORMATION + FORM
+========================================= -->
+
+<section class="section contact-info" id="contact-info">
+   <div class="container">
+      <div class="row g-5 align-items-start">
+
+         <!-- CONTACT DETAILS -->
+         <div class="col-lg-5">
+            <h2 class="heading-lg">Let's Discuss Your Future Home</h2>
+
+            <p>Have questions about available homes, pricing, or the buying process? Our team is ready to provide the
+               information you need.</p>
+
+            <div class="contact-details">
+               <div class="contact-item">
+                  <div class="contact-icon">
+                     <i class="bi bi-telephone"></i>
+                  </div>
+                  <div>
+                     <h4>Phone</h4>
+                     <a href="tel:{{ SITE.number }}">{{ SITE.number|default:"(123) 456-7890" }}</a>
+                  </div>
+               </div>
+
+               <div class="contact-item">
+                  <div class="contact-icon">
+                     <i class="bi bi-envelope"></i>
+                  </div>
+                  <div>
+                     <h4>Email</h4>
+                     <a href="mailto:{{ SITE.email }}">{{ SITE.email|default:"martin@martinboxabl.com" }}</a>
+                  </div>
+               </div>
+
+               <div class="contact-item">
+                  <div class="contact-icon">
+                     <i class="bi bi-geo-alt"></i>
+                  </div>
+                  <div>
+                     <h4>Address</h4>
+                     <p>{{ SITE.address|default:"123 Main Street, Anytown, USA" }}</p>
+                  </div>
+               </div>
+            </div>
+
+            <div class="contact-social">
+               <a href="{{ SITE.facebook_link }}" target="_blank"><i class="bi bi-facebook"></i></a>
+               <a href="{{ SITE.instagram_link }}" target="_blank"><i class="bi bi-instagram"></i></a>
+               <a href="{{ SITE.tiktok_link }}" target="_blank"><i class="bi bi-tiktok"></i></a>
+            </div>
+         </div>
+
+         <!-- CONTACT FORM -->
+         <div class="col-lg-7">
+            <div class="contact-form-wrapper">
+               <form method="post">
+                  {% csrf_token %}
+                  <div class="row g-3">
+                     <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Your Name">
+                     </div>
+
+                     <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="Email Address">
+                     </div>
+
+                     <div class="col-md-6">
+                        <input type="tel" class="form-control" placeholder="Phone Number">
+                     </div>
+
+                     <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Subject">
+                     </div>
+
+                     <div class="col-12">
+                        <textarea class="form-control" rows="6" placeholder="Your Message"></textarea>
+                     </div>
+
+                     <div class="col-12">
+                        <button class="btn btn-primary" type="submit">Send Message</button>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+MAP SECTION
+========================================= -->
+
+<section class="map-section" id="map">
+   <div class="container-fluid p-0">
+      <div class="map-wrapper">
+         <iframe src="https://www.google.com/maps/embed?pb=" loading="lazy" allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade">
+         </iframe>
+      </div>
+   </div>
+</section>
+{% endblock %}

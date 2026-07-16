@@ -1,0 +1,430 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- =========================
+PAGE TITLE
+========================= -->
+
+{% block title %}
+About {{ SITE.name|default:"Martin Boxabl" }} | Modern Modular Home Reseller
+{% endblock %}
+
+<!-- =========================
+SEO
+========================= -->
+
+{% block meta_description %}
+Learn about {{ SITE.name|default:"Martin Boxabl" }}, our mission to make modern modular homes more accessible through trusted resale opportunities across the United States.
+{% endblock %}
+
+{% block meta_keywords %}
+{{ SITE.name|default:"Martin Boxabl" }}, Martin Boxabl, martinboxabl.com, modular homes, portable homes, prefab homes, Boxabl reseller, modern homes, affordable modular housing
+{% endblock %}
+
+<!-- =========================
+OPEN GRAPH
+========================= -->
+
+{% block og_title %}
+About {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+{% block og_description %}
+Discover the story, mission, and vision behind {{ SITE.name|default:"Martin Boxabl" }} and our commitment to modern modular housing.
+{% endblock %}
+
+{% block og_url %}
+https://martinboxabl.com/about/
+{% endblock %}
+
+<!-- =========================
+TWITTER
+========================= -->
+
+{% block twitter_title %}
+About {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+{% block twitter_description %}
+Learn about {{ SITE.name|default:"Martin Boxabl" }} and our modular home resale mission.
+{% endblock %}
+
+<!-- =========================
+CANONICAL
+========================= -->
+
+{% block canonical_url %}
+https://martinboxabl.com/about/
+{% endblock %}
+
+<!-- =========================
+SCHEMA
+========================= -->
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"AboutPage",
+   "name":"About {{ SITE.name|default:'Martin Boxabl' }}",
+   "url":"https://martinboxabl.com/about/"
+}
+</script>
+{% endblock %}
+
+<!-- =========================
+LINKS
+========================= -->
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+
+
+
+<!-- =========================
+CONTENT
+========================= -->
+
+{% block content %}
+
+<!-- ABOUT HERO -->
+<section class="page-hero page-hero-about">
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+      <div class="page-hero-content">
+
+         <span class="section-tag">About {{ SITE.name|default:"Martin Boxabl" }}</span>
+
+         <h1 class="display-heading">Bringing Modern Modular Homes Within Reach</h1>
+
+         <p>Learn the story behind {{ SITE.name|default:"Martin Boxabl" }}, our mission, and our commitment to making
+            premium modular homes more accessible through trusted resale opportunities.</p>
+
+         <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span>About</span>
+         </nav>
+
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+OUR STORY
+========================================= -->
+
+<section class="section about-story">
+   <div class="container">
+      <div class="row align-items-center g-5 align-items-center">
+
+         <div class="col-lg-6">
+            <div class="about-story-image">
+               <img src="{% static 'images/pages/about-martin.jpg' %}" class="img-fluid rounded-4"
+                  alt="{{ SITE.name|default:'Martin Boxabl' }} - Modern modular home">
+            </div>
+         </div>
+
+         <div class="col-lg-6">
+            <span class="section-tag">Our Story</span>
+
+            <h2 class="heading-lg">Making Modern Modular Homes More Accessible</h2>
+
+            <p>{{ SITE.name|default:"Martin Boxabl" }} was founded with a simple vision: make innovative modular homes
+               more accessible to individuals and families looking for smarter housing solutions.</p>
+
+            <p>Inspired by the latest generation of modular homes introduced by Boxabl, Martin saw an opportunity to
+               connect buyers with modern, high-quality homes through a trusted resale process. Rather than allowing
+               these innovative homes to remain out of reach for many people, the goal became to source available units
+               and make them easier to purchase at competitive prices.</p>
+
+            <p>Every home represents more than just a place to live—it represents flexibility, affordability,
+               efficiency, and a modern lifestyle. Our commitment is to help buyers navigate the process with
+               transparency, personalized guidance, and dependable service from inquiry to delivery.</p>
+
+            <a href="#contact" class="btn btn-primary">Contact Us Today</a>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+
+<!-- =========================================
+MISSION & VISION
+========================================= -->
+
+<section class="section mission-vision">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Our Purpose</span>
+         <h2 class="heading-lg">Driven By Innovation & Trust</h2>
+         <p>Every decision we make is centered around helping more people experience modern, efficient, and affordable
+            modular living.</p>
+      </div>
+
+      <div class="row g-4">
+         <div class="col-lg-6">
+            <div class="mission-card">
+               <div class="mission-icon">
+                  <i class="bi bi-bullseye"></i>
+               </div>
+               <h3>Our Mission</h3>
+               <p>To make premium modular homes more accessible by sourcing quality homes and connecting buyers with
+                  reliable resale opportunities backed by honest guidance and exceptional customer service.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-6">
+            <div class="mission-card">
+               <div class="mission-icon">
+                  <i class="bi bi-eye"></i>
+               </div>
+               <h3>Our Vision</h3>
+               <p>To become one of the most trusted names in modular home resale by helping individuals and families
+                  embrace a smarter, more sustainable, and flexible way of living.</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+WHY CHOOSE MARTIN BOXABL
+========================================= -->
+
+<section class="section why-martin">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Why Choose Us</span>
+         <h2 class="heading-lg">Why Choose {{ SITE.name|default:"Martin Boxabl" }}</h2>
+         <p>We are committed to making modern modular home ownership simple, transparent, and stress-free from your
+            first inquiry to final delivery.</p>
+      </div>
+
+      <div class="row g-4">
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-house-door"></i>
+               </div>
+               <h3>Quality Homes</h3>
+               <p>Carefully selected modular homes built with modern designs, durability, and everyday comfort in mind.
+               </p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-cash-stack"></i>
+               </div>
+               <h3>Competitive Pricing</h3>
+               <p>Helping buyers access premium modular homes through trusted resale opportunities at fair market
+                  prices.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-shield-check"></i>
+               </div>
+               <h3>Trusted Guidance</h3>
+               <p>Honest communication, professional support, and a transparent buying process from start to finish.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-headset"></i>
+               </div>
+               <h3>Personal Support</h3>
+               <p>Every buyer receives personalized assistance to help find the right home and make informed decisions.
+               </p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+STATISTICS SECTION
+========================================= -->
+
+<section class="statistics-section">
+   <div class="statistics-overlay"></div>
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Our Impact</span>
+         <h2 class="heading-lg">Building Confidence Through Modern Housing</h2>
+         <p>Our commitment is to provide trusted guidance and quality modular homes while making the buying experience
+            simple and transparent.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+         <div class="col-lg-3 col-sm-6">
+            <div class="stat-card">
+               <h2 class="counter" data-count="250">0</h2>
+               <p>Homes Sourced</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-sm-6">
+            <div class="stat-card">
+               <h2 class="counter" data-count="100">0</h2>
+               <p>Interested Buyers</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-sm-6">
+            <div class="stat-card">
+               <h2 class="counter" data-count="15">0</h2>
+               <p>States Served</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-sm-6">
+            <div class="stat-card">
+               <h2 class="counter" data-count="100">0</h2>
+               <p>Customer Commitment</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+HOW IT WORKS
+========================================= -->
+
+<section class="section about-process">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Our Process</span>
+         <h2 class="heading-lg">From Inquiry To Your New Home</h2>
+         <p>We simplify the journey of finding and purchasing a modular home with a transparent step-by-step process.
+         </p>
+      </div>
+
+      <div class="process-timeline">
+         <div class="timeline-item">
+            <div class="timeline-number">01</div>
+            <div class="timeline-content">
+               <h3>Browse Available Homes</h3>
+               <p>Explore our collection of modern modular homes and find the design that matches your lifestyle and
+                  budget.</p>
+            </div>
+         </div>
+
+         <div class="timeline-item">
+            <div class="timeline-number">02</div>
+            <div class="timeline-content">
+               <h3>Schedule A Consultation</h3>
+               <p>Contact Martin Boxabl to discuss availability, pricing, specifications, and your preferred home.</p>
+            </div>
+         </div>
+
+         <div class="timeline-item">
+            <div class="timeline-number">03</div>
+            <div class="timeline-content">
+               <h3>Reserve Your Home</h3>
+               <p>Once you've selected a home, we'll guide you through the purchase process and necessary arrangements.
+               </p>
+            </div>
+         </div>
+
+         <div class="timeline-item">
+            <div class="timeline-number">04</div>
+            <div class="timeline-content">
+               <h3>Delivery & Installation</h3>
+               <p>Your modular home is delivered and prepared for installation, bringing your vision to life.</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+ABOUT CTA + FAQ SECTION
+========================================= -->
+
+<section class="cta-faq-section">
+   <div class="container">
+      <div class="cta-faq-wrapper">
+
+         <!-- CTA CONTENT -->
+         <div class="cta-content">
+            <span class="section-tag">Let's Get Started</span>
+            <h2 class="heading-lg">Your Modern Modular Home Is Closer Than You Think</h2>
+            <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
+               resale opportunities and personalized support.</p>
+            <div class="cta-actions">
+               <a href="#homes" class="btn btn-primary">Browse Available Homes</a>
+               <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
+            </div>
+         </div>
+
+         <!-- FAQ CONTENT -->
+         <div class="faq-wrapper">
+            <div class="section-header">
+               <span class="section-tag">FAQ</span>
+               <h2 class="heading-lg">Common Questions</h2>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  What makes modular homes different?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Modular homes are built with modern construction methods designed for efficiency, quality, and
+                     flexibility.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Why choose Martin Boxabl?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>We provide trusted guidance and help buyers access modern modular housing solutions.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Can I view available homes before buying?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes, available homes can be reviewed and discussed before moving forward with a purchase.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  How do I start the process?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Contact us and we will guide you through available options, pricing, and next steps.</p>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+{% endblock %}

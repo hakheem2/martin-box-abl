@@ -1,0 +1,667 @@
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+   padding: 140px 0 80px;
+   background: var(--bg-light);
+}
+
+.hero-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   align-items: center;
+   gap: 4rem;
+}
+
+.hero-content {
+   max-width: 600px;
+}
+
+.hero-tag {
+   display: inline-flex;
+   margin-bottom: 1.2rem;
+   padding: .4rem 1rem;
+   border-radius: 50px;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: .9rem;
+   font-weight: 600;
+}
+
+.hero-text {
+   margin-top: 1.5rem;
+   color: var(--text-muted);
+   font-size: 1.1rem;
+   max-width: 520px;
+}
+
+.hero-actions {
+   display: flex;
+   gap: 1rem;
+   margin-top: 2rem;
+}
+
+.hero-image img {
+   width: 100%;
+   height: 600px;
+   object-fit: cover;
+   border-radius: var(--radius-lg);
+   box-shadow: var(--shadow-card);
+}
+
+.btn-outline {
+   border: 1px solid var(--primary);
+   color: var(--primary);
+   background: transparent;
+}
+
+.btn-outline:hover {
+   background: var(--primary);
+   color: var(--white);
+}
+
+
+/* =========================================
+   HERO RESPONSIVE
+========================================= */
+
+@media (max-width: 991px) {
+   .hero-wrapper {
+      grid-template-columns: 1fr;
+   }
+
+   .hero-content {
+      text-align: center;
+      margin-inline: auto;
+   }
+
+   .hero-actions {
+      justify-content: center;
+   }
+
+   .hero-image img {
+      height: 450px;
+   }
+}
+
+@media (max-width: 576px) {
+   .hero {
+      padding: 120px 0 60px;
+   }
+
+   .hero-actions {
+      flex-direction: column;
+   }
+
+   .hero-actions .btn {
+      width: 100%;
+   }
+
+   .hero-image img {
+      height: 350px;
+   }
+}
+
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+.about-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   align-items: center;
+   gap: 4rem;
+}
+
+.section-tag {
+   display: inline-block;
+   margin-bottom: 1rem;
+   color: var(--primary);
+   font-weight: 600;
+   font-size: .9rem;
+}
+
+.about-content p {
+   margin-top: 1rem;
+   color: var(--text-muted);
+}
+
+.about-content .btn {
+   margin-top: 1.5rem;
+}
+
+.about-image img {
+   width: 100%;
+   height: 500px;
+   object-fit: cover;
+   border-radius: var(--radius-lg);
+   box-shadow: var(--shadow-card);
+}
+
+
+@media (max-width: 991px) {
+
+   .about-wrapper {
+      grid-template-columns: 1fr;
+   }
+
+   .about-content {
+      text-align: center;
+   }
+
+   .about-image img {
+      height: 400px;
+   }
+
+}
+
+
+/* =========================================
+   WHY CHOOSE SECTION
+========================================= */
+.why-homes {
+   background: var(--section-light);
+}
+
+.benefits-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 1.5rem;
+}
+
+.benefit-card {
+   padding: 2rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   transition: .3s ease;
+}
+
+.benefit-card:hover {
+   transform: translateY(-8px);
+   box-shadow: var(--shadow-card);
+}
+
+.benefit-icon {
+   width: 55px;
+   height: 55px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 1.5rem;
+   border-radius: 50%;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: 1.5rem;
+}
+
+.benefit-card h3 {
+   margin-bottom: .8rem;
+   font-size: 1.2rem;
+}
+
+.benefit-card p {
+   color: var(--text-muted);
+}
+
+
+@media (max-width: 991px) {
+
+   .benefits-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+}
+
+
+@media (max-width: 576px) {
+
+   .benefits-grid {
+      grid-template-columns: 1fr;
+   }
+
+}
+
+/* =========================================
+   GALLERY SECTION
+========================================= */
+.gallery {
+   background: var(--section-dark);
+}
+
+.gallery .heading-lg,
+.gallery .section-header p {
+   color: var(--white);
+}
+
+.gallery-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 1.5rem;
+}
+
+.gallery-item {
+   display: block;
+   height: 300px;
+   overflow: hidden;
+   border-radius: var(--radius-md);
+}
+
+.gallery-item img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: .4s ease;
+}
+
+.gallery-item:hover img {
+   transform: scale(1.08);
+}
+
+
+@media (max-width: 991px) {
+   .gallery-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+
+@media (max-width: 576px) {
+   .gallery-grid {
+      grid-template-columns: 1fr;
+   }
+}
+
+
+/* =========================================
+   SUCCESS STORIES SECTION
+========================================= */
+
+.success-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 2rem;
+}
+
+.success-card {
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   overflow: hidden;
+   transition: .3s ease;
+}
+
+.success-card:hover {
+   transform: translateY(-8px);
+   box-shadow: var(--shadow-card);
+}
+
+.success-image {
+   height: 280px;
+}
+
+.success-image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+}
+
+.success-content {
+   padding: 1.5rem;
+}
+
+.success-content h3 {
+   margin-bottom: .8rem;
+}
+
+.success-content p {
+   color: var(--text-muted);
+}
+
+
+@media (max-width: 991px) {
+   .success-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+
+@media (max-width: 576px) {
+   .success-grid {
+      grid-template-columns: 1fr;
+   }
+}
+
+/* =========================================
+   SUCCESS STORIES PARALLAX
+========================================= */
+
+.success-stories {
+   position: relative;
+   background: url("../images/bg/success-bg.jpg") center/cover fixed;
+   color: var(--white);
+}
+
+.success-stories .parallax-overlay {
+   position: absolute;
+   inset: 0;
+   background: rgba(0, 0, 0, .3);
+}
+
+.parallax-content {
+   position: relative;
+   z-index: 1;
+}
+
+.success-stories .section-tag {
+   color: var(--accent);
+}
+
+.success-stories .heading-lg {
+   color: var(--white);
+}
+
+.success-stories .section-header p {
+   color: rgba(255, 255, 255, .8);
+}
+
+.success-card {
+   background: rgba(255, 255, 255, .95);
+}
+
+.success-card h3 {
+   color: var(--text);
+}
+
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact-wrapper {
+   display: grid;
+   grid-template-columns: 1fr .8fr;
+   gap: 4rem;
+   align-items: stretch;
+}
+
+.contact-content p {
+   color: var(--text-muted);
+   margin-top: 1rem;
+}
+
+.contact-details {
+   margin-top: 2rem;
+   display: grid;
+   gap: 1.5rem;
+}
+
+.contact-item h4 {
+   font-size: 1rem;
+   color: var(--primary);
+   margin-bottom: .3rem;
+}
+
+.contact-item a,
+.contact-item p {
+   color: var(--text);
+}
+
+.social-links {
+   display: flex;
+   gap: 1.5rem;
+   margin-top: 2rem;
+}
+
+.social-links a {
+   color: var(--primary);
+   font-weight: 600;
+}
+
+.contact-card {
+   padding: 2rem;
+   padding-top: 3rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-lg);
+   box-shadow: var(--shadow-card);
+}
+
+.contact-card form {
+   display: grid;
+   gap: 1rem;
+   margin-top: 2rem;
+   align-items: center;
+}
+
+.contact-card input,
+.contact-card textarea {
+   width: 100%;
+   padding: 1rem;
+   border: 1px solid var(--border);
+   border-radius: var(--radius-sm);
+   font-family: inherit;
+}
+
+.contact-card textarea {
+   height: 150px;
+   resize: none;
+}
+
+
+@media (max-width: 991px) {
+   .contact-wrapper {
+      grid-template-columns: 1fr;
+   }
+}
+
+/* =========================================
+   CONTACT PARALLAX
+========================================= */
+
+.contact {
+   position: relative;
+   background: url("../images/bg/contact-bg.jpg") center/cover fixed;
+}
+
+.contact .parallax-overlay {
+   position: absolute;
+   inset: 0;
+   background: rgba(247, 245, 240, .80);
+}
+
+.contact-content,
+.contact-card {
+   position: relative;
+   z-index: 1;
+}
+
+.contact-card {
+   background: var(--white);
+}
+
+
+/* =========================================
+   CTA + FAQ SECTION
+========================================= */
+
+.cta-faq-section {
+   position: relative;
+   padding: 100px 0;
+   background: var(--primary);
+}
+
+.cta-faq-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 4rem;
+   align-items: center;
+}
+
+.cta-content {
+   color: var(--white);
+}
+
+.cta-content .section-tag {
+   color: var(--accent);
+}
+
+.cta-content .heading-lg {
+   color: var(--white);
+}
+
+.cta-content p {
+   color: rgba(255, 255, 255, .85);
+   margin-top: 1rem;
+}
+
+.cta-actions {
+   display: flex;
+   gap: 1rem;
+   margin-top: 2rem;
+}
+
+.cta-content .btn-primary {
+   background: var(--white);
+   color: var(--primary);
+}
+
+.cta-content .btn-outline {
+   border-color: var(--white);
+   color: var(--white);
+}
+
+.cta-content .btn-outline:hover {
+   background: var(--white);
+   color: var(--primary);
+}
+
+
+/* FAQ */
+
+.cta-faq-section .section-header {
+   text-align: left;
+   margin-bottom: 2rem;
+}
+
+.cta-faq-section .section-header .heading-lg {
+   color: var(--white);
+}
+
+.faq-item {
+   background: rgba(255, 255, 255, .95);
+   border-radius: var(--radius-md);
+   margin-bottom: 1rem;
+   overflow: hidden;
+}
+
+.faq-question {
+   width: 100%;
+   padding: 1.2rem 1.5rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: transparent;
+   border: 0;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.faq-answer {
+   display: none;
+   padding: 0 1.5rem 1.2rem;
+}
+
+.faq-answer p {
+   color: var(--text-muted);
+}
+
+
+@media(max-width:991px) {
+
+   .cta-faq-wrapper {
+      grid-template-columns: 1fr;
+   }
+
+   .cta-actions {
+      flex-direction: column;
+   }
+
+}
+
+
+/* =========================================
+   PROCESS SECTION
+========================================= */
+
+.process-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 1.5rem;
+}
+
+.process .section-header span {
+   color: var(--accent);
+}
+
+.process .section-header h2,
+.section-header p {
+   color: var(--white);
+}
+
+.process-card {
+   position: relative;
+   padding: 2rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+}
+
+.process-number {
+   display: inline-flex;
+   margin-bottom: 1.2rem;
+   font-size: 2rem;
+   font-weight: 700;
+   color: var(--primary);
+}
+
+.process-card h3 {
+   margin-bottom: .8rem;
+}
+
+.process-card p {
+   color: var(--text-muted);
+}
+
+@media (max-width: 991px) {
+   .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media (max-width: 576px) {
+   .process-grid {
+      grid-template-columns: 1fr;
+   }
+}
+
+
+/* ========================================
+PROCESS PARALLEX
+===========================================*/
+.process {
+   position: relative;
+   background: url("../images/bg/process-bg.jpg") center/cover fixed;
+}
+
+.process .parallax-overlay {
+   position: absolute;
+   inset: 0;
+   background: rgba(0, 0, 0, .60);
+}
+
+.process-content {
+   position: relative;
+   z-index: 1;
+}

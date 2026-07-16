@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Portable Homes For Sale | Martin Boxabl
+{% endblock %}
+
+{% block meta_description %}
+Explore modern portable homes, modular houses, and affordable box homes available for sale with Martin Boxabl. Discover stylish, efficient, and customizable housing solutions.
+{% endblock %}
+
+{% block meta_keywords %}
+portable homes for sale, modular homes, box homes, prefab houses, tiny homes, affordable homes, modern housing, Martin Boxabl
+{% endblock %}
+
+{% block og_title %}
+Portable Homes For Sale | Martin Boxabl
+{% endblock %}
+
+{% block og_description %}
+Browse our collection of modern modular and portable homes designed for affordable, flexible, and efficient living.
+{% endblock %}
+
+{% block og_image %}
+{% static 'images/og/shop.jpg' %}
+{% endblock %}
+
+{% block og_url %}
+https://martinboxabl.com/homes/
+{% endblock %}
+
+{% block twitter_title %}
+Portable Homes For Sale | Martin Boxabl
+{% endblock %}
+
+{% block twitter_description %}
+Discover premium portable homes and modular housing solutions available through Martin Boxabl.
+{% endblock %}
+
+{% block twitter_image %}
+{% static 'images/og/shop.jpg' %}
+{% endblock %}
+
+{% block canonical_url %}
+https://martinboxabl.com/homes/
+{% endblock %}
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"CollectionPage",
+   "name":"Portable Homes For Sale | Martin Boxabl",
+   "description":"Explore modern portable homes, modular houses, and affordable box homes available from Martin Boxabl.",
+   "url":"https://martinboxabl.com/homes/",
+   "publisher":{
+      "@type":"Organization",
+      "name":"{{ SITE.name }}",
+      "url":"https://martinboxabl.com"
+   }
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/shop-page.css' %}">
+{% endblock  %}
+
+{% block content %}
+
+<!-- =========================================
+SHOP HERO
+========================================= -->
+
+<section class="page-hero page-hero-shop">
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+      <div class="page-hero-content">
+
+         <span class="section-tag">Available Homes</span>
+
+         <h1 class="display-heading">Discover Your Perfect Modular Home</h1>
+
+         <p>Explore our carefully selected collection of premium modular homes designed for modern living. Whether you're looking for a compact retreat or a spacious family residence, {{ SITE.name|default:"Martin Boxabl" }} helps you find the perfect solution at competitive prices.</p>
+
+         <div class="hero-actions">
+            <a href="#homes-grid" class="btn btn-primary">Browse Homes</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline">Request Consultation</a>
+         </div>
+
+         <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span>Available Homes</span>
+         </nav>
+
+      </div>
+   </div>
+</section>
+
+
+<!-- =========================================
+SEARCH & FILTER
+========================================= -->
+{% include "shop/partials/shop-filters.html" %}
+
+<!-- =========================================
+AVAILABLE HOMES
+========================================= -->
+
+<section class="section homes-grid-section" id="homes-grid" style='padding-top: 0; margin-top: 0;'>
+   <div class="container">
+
+      <div class="section-header w-100 d-flex justify-content-between align-items-center flex-wrap pt-4 pt-md-0">
+         <span class="section-tag">Our Collection </span> 
+         <span id="resultCount">{{ homes.count }} Homes</span>
+      </div>
+
+      <div class="product-grid-wrapper position-relative">
+         <div class="filter-loader">
+            <div class="spinner-border text-success"></div>
+         </div>
+
+         <div class="grid product-grid" id="productGrid">
+            {% include "shop/partials/home-list.html" %}
+         </div>
+      </div>
+
+      <div class="homes-pagination">
+         <a href="#" class="btn btn-outline">Load More Homes</a>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+WHY CHOOSE MARTIN
+========================================= -->
+
+<section class="section why-martin">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Why Choose Us</span>
+         <h2 class="heading-lg">Why Buy Through {{ SITE.name|default:"Martin Boxabl" }}?</h2>
+         <p>We make finding and purchasing a modern modular home simple, transparent, and stress-free from your first inquiry to final delivery.</p>
+      </div>
+
+      <div class="row g-4">
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-house-check"></i>
+               </div>
+               <h3>Premium Selection</h3>
+               <p>Every home is carefully selected for quality, design, functionality, and long-term value.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-currency-dollar"></i>
+               </div>
+               <h3>Competitive Pricing</h3>
+               <p>Enjoy competitive resale pricing without compromising on quality or modern features.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-truck"></i>
+               </div>
+               <h3>Reliable Delivery</h3>
+               <p>We guide you through delivery logistics and installation planning every step of the way.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-headset"></i>
+               </div>
+               <h3>Dedicated Support</h3>
+               <p>Receive personalized guidance before, during, and after your purchase.</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+BUYING PROCESS
+========================================= -->
+
+<section class="section buying-process">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Simple Process</span>
+         <h2 class="heading-lg">Your Journey To A New Home</h2>
+         <p>Purchasing your modular home is straightforward. We guide you through every stage, ensuring a smooth and transparent experience.</p>
+      </div>
+
+      <div class="process-wrapper">
+         <div class="process-step">
+            <div class="process-number">01</div>
+            <div class="process-icon">
+               <i class="bi bi-search"></i>
+            </div>
+            <h3>Browse Homes</h3>
+            <p>Explore our collection and compare layouts, sizes, and features.</p>
+         </div>
+
+         <div class="process-step">
+            <div class="process-number">02</div>
+            <div class="process-icon">
+               <i class="bi bi-chat-dots"></i>
+            </div>
+            <h3>Contact Us</h3>
+            <p>Discuss pricing, availability, and choose the home that fits your needs.</p>
+         </div>
+
+         <div class="process-step">
+            <div class="process-number">03</div>
+            <div class="process-icon">
+               <i class="bi bi-file-earmark-check"></i>
+            </div>
+            <h3>Finalize Purchase</h3>
+            <p>Complete your order while we coordinate the next steps for delivery.</p>
+         </div>
+
+         <div class="process-step">
+            <div class="process-number">04</div>
+            <div class="process-icon">
+               <i class="bi bi-house-heart"></i>
+            </div>
+            <h3>Delivery & Installation</h3>
+            <p>Receive your new modular home and begin enjoying modern living.</p>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+TESTIMONIALS
+========================================= -->
+
+<section class="section testimonials">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Testimonials</span>
+         <h2 class="heading-lg">What Our Clients Say</h2>
+         <p>Hear from homeowners who trusted {{ SITE.name|default:"Martin Boxabl" }} to help them find the perfect modular home.</p>
+      </div>
+
+      <div class="row g-4">
+         <div class="col-lg-4">
+            <div class="testimonial-card">
+               <div class="quote-icon">
+                  <i class="bi bi-quote"></i>
+               </div>
+               <div class="rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+               </div>
+               <p>Martin made the entire buying process incredibly simple. The home exceeded our expectations and the support was outstanding from start to finish.</p>
+               <div class="testimonial-author">
+                  <img src="{% static 'images/testimonials/client-1.jpg' %}" alt="Sarah Johnson">
+                  <div>
+                     <h4>Sarah Johnson</h4>
+                     <span>California, USA</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-lg-4">
+            <div class="testimonial-card">
+               <div class="quote-icon">
+                  <i class="bi bi-quote"></i>
+               </div>
+               <div class="rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+               </div>
+               <p>We were looking for a modern home without spending years building. Martin helped us every step of the way.</p>
+               <div class="testimonial-author">
+                  <img src="{% static 'images/testimonials/client-2.jpg' %}" alt="Michael Brown">
+                  <div>
+                     <h4>Michael Brown</h4>
+                     <span>Texas, USA</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-lg-4">
+            <div class="testimonial-card">
+               <div class="quote-icon">
+                  <i class="bi bi-quote"></i>
+               </div>
+               <div class="rating">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+               </div>
+               <p>Excellent communication, competitive pricing, and a beautiful modular home that perfectly matched our family's needs.</p>
+               <div class="testimonial-author">
+                  <img src="{% static 'images/testimonials/client-3.jpg' %}" alt="Emily Wilson">
+                  <div>
+                     <h4>Emily Wilson</h4>
+                     <span>Florida, USA</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+ABOUT CTA + FAQ SECTION
+========================================= -->
+
+<section class="cta-faq-section">
+   <div class="container">
+      <div class="cta-faq-wrapper">
+
+         <!-- CTA CONTENT -->
+         <div class="cta-content">
+            <span class="section-tag">Let's Get Started</span>
+            <h2 class="heading-lg">Your Modern Modular Home Is Closer Than You Think</h2>
+            <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
+               resale opportunities and personalized support.</p>
+            <div class="cta-actions">
+               <a href="#homes" class="btn btn-primary">Browse Available Homes</a>
+               <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
+            </div>
+         </div>
+
+         <!-- FAQ CONTENT -->
+         <div class="faq-wrapper">
+            <div class="section-header">
+               <span class="section-tag">FAQ</span>
+               <h2 class="heading-lg">Common Questions</h2>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  What makes modular homes different?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Modular homes are built with modern construction methods designed for efficiency, quality, and
+                     flexibility.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Why choose Martin Boxabl?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>We provide trusted guidance and help buyers access modern modular housing solutions.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Can I view available homes before buying?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes, available homes can be reviewed and discussed before moving forward with a purchase.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  How do I start the process?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Contact us and we will guide you through available options, pricing, and next steps.</p>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/shop-page.js' %}"></script>
+{% endblock  %}

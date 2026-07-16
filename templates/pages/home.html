@@ -1,0 +1,405 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock  %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+   <div class="container">
+      <div class="hero-wrapper">
+
+         <div class="hero-content">
+               <span class="hero-tag">Modern Modular Living</span>
+
+               <h1 class="heading-xl">Smart, Modern Homes Designed For The Future</h1>
+
+               <p class="hero-text">
+                  Martin Boxabl brings innovative modular homes closer to you,
+                  offering efficient, stylish, and affordable housing solutions
+                  built for modern lifestyles.
+               </p>
+
+               <div class="hero-actions">
+                  <a href="#homes" class="btn btn-primary">View Available Homes</a>
+                  <a href="#contact" class="btn btn-outline">Contact Martin</a>
+               </div>
+         </div>
+
+         <div class="hero-image">
+               <img src="{% static 'images/hero/hero-home.jpg' %}" alt="Modern modular home by martinboxabl.com">
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="section about" id="about">
+   <div class="container">
+      <div class="about-wrapper">
+
+         <div class="about-image">
+               <img src="{% static 'images/pages/about-home.jpg' %}" alt="{{ SITE.name|default:'Martin Boxabl' }} modern modular home">
+         </div>
+
+         <div class="about-content">
+               <span class="section-tag">About {{ SITE.name|default:"Martin Boxabl" }}</span>
+
+               <h2 class="heading-lg">
+                  Bringing Modern Portable Homes To More People
+               </h2>
+
+               <p>
+                  {{ SITE.name|default:"Martin Boxabl" }} was created with a vision of making
+                  modern, efficient, and affordable housing solutions more accessible.
+               </p>
+
+               <p>
+                  Through innovative modular home solutions, Martin is working to connect
+                  people with high-quality portable homes designed for comfort, flexibility,
+                  and modern living.
+               </p>
+
+               <p>
+                  By making these homes available for resale at competitive prices, the goal
+                  is to help more individuals and families discover a smarter way to own a
+                  beautiful, functional home.
+               </p>
+
+               <a href="#homes" class="btn btn-primary">Explore Homes</a>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- WHY CHOOSE SECTION -->
+<section class="section why-homes">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">{{ SITE.name|default:"Martin Boxabl" }}</span>
+         <h2 class="heading-lg">Why Choose A Modular Home?</h2>
+         <p>Modern housing solutions designed for flexibility, efficiency, and comfortable living.</p>
+      </div>
+
+      <div class="benefits-grid">
+
+         <div class="benefit-card">
+               <div class="benefit-icon"><i class="bi bi-house"></i></div>
+               <h3>Modern Design</h3>
+               <p>Beautifully designed homes that combine functionality, comfort, and contemporary living.</p>
+         </div>
+
+         <div class="benefit-card">
+               <div class="benefit-icon"><i class="bi bi-lightning"></i></div>
+               <h3>Fast Setup</h3>
+               <p>Portable modular solutions designed for efficient installation compared to traditional housing.</p>
+         </div>
+
+         <div class="benefit-card">
+               <div class="benefit-icon"><i class="bi bi-cash-stack"></i></div>
+               <h3>Affordable Solutions</h3>
+               <p>Access practical housing options with competitive pricing for modern homeowners.</p>
+         </div>
+
+         <div class="benefit-card">
+               <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
+               <h3>Built For Comfort</h3>
+               <p>Designed to provide a comfortable and efficient living experience.</p>
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+<!-- PROCESS SECTION -->
+<section class="section process parallax-section" id="process">
+   <div class="parallax-overlay"></div>
+   <div class="container parallax-content">
+
+      <div class="section-header">
+         <span class="section-tag">Our Process</span>
+         <h2 class="heading-lg">How It Works</h2>
+         <p>From choosing your ideal home to getting it ready, Martin Boxabl makes the process simple and straightforward.</p>
+      </div>
+
+      <div class="process-grid">
+
+         <div class="process-card">
+               <span class="process-number">01</span>
+               <h3>Explore Available Homes</h3>
+               <p>Browse through available modular homes and find a design that fits your needs and lifestyle.</p>
+         </div>
+
+         <div class="process-card">
+               <span class="process-number">02</span>
+               <h3>Contact Martin</h3>
+               <p>Get in touch to discuss availability, pricing, and your home requirements.</p>
+         </div>
+
+         <div class="process-card">
+               <span class="process-number">03</span>
+               <h3>Choose Your Home</h3>
+               <p>Select your preferred modular home and complete the necessary purchase arrangements.</p>
+         </div>
+
+         <div class="process-card">
+               <span class="process-number">04</span>
+               <h3>Delivery & Setup</h3>
+               <p>Your home is prepared for transportation and setup according to your location requirements.</p>
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+<!-- AVAILABLE HOMES SECTION -->
+<section class="section">
+   <div class="container">
+
+      <div class="section-header">
+         <h2 class="heading-lg mb-1">Available Homes for Release</h2>
+         <p class="text-muted">Explore our premium engineered, luxury foldable living modules tailored to fit your
+            lifestyle.</p>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid product-grid">
+
+         {% for home in homes %}
+            {% include "shop/partials/product-grid.html" with home=home %}
+         {% empty %}
+            <div class="empty-products mx-auto text-center">
+               <h3>No homes at the moment</h3>
+            </div>
+         {% endfor %}
+
+      </div>
+   </div>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="section gallery" id="gallery">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Our Gallery</span>
+         <h2 class="heading-lg">Explore Modern Home Designs</h2>
+         <p>Take a look at some of the modular homes and living spaces available through Martin Boxabl.</p>
+      </div>
+
+      <div class="gallery-grid">
+         <a href="{% static 'images/gallery/gallery-1.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-1.jpg' %}" alt="Modern modular home exterior - Martin Boxabl">
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-2.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-2.jpg' %}" alt="Portable home interior design - Martin Boxabl">
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-3.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-3.jpg' %}" alt="Luxury modular home design - Martin Boxabl">
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-4.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-4.jpg' %}" alt="Modern prefab home setup - Martin Boxabl">
+         </a>
+                  <a href="{% static 'images/gallery/gallery-5.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-5.jpg' %}" alt="Modern modular home exterior - Martin Boxabl">
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-6.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-6.jpg' %}" alt="Portable home interior design - Martin Boxabl">
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-7.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-7.jpg' %}" alt="Luxury modular home design - Martin Boxabl">
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-8.jpg' %}" class="gallery-item">
+               <img src="{% static 'images/gallery/gallery-8.jpg' %}" alt="Modern prefab home setup - Martin Boxabl">
+         </a>
+      </div>
+
+   </div>
+</section>
+
+<!-- SUCCESS STORIES SECTION -->
+<section class="section success-stories parallax-section" id="success">
+   <div class="parallax-overlay"></div>
+
+   <div class="container parallax-content">
+
+      <div class="section-header">
+         <span class="section-tag">Success Stories</span>
+         <h2 class="heading-lg">Helping People Find Better Homes</h2>
+         <p>
+               See how modern modular housing solutions are helping people
+               achieve comfortable and practical living spaces.
+         </p>
+      </div>
+
+      <div class="success-grid">
+
+         <article class="success-card">
+               <div class="success-image">
+                  <img src="{% static 'images/blog/success-1.jpg' %}" alt="Martin Boxabl customer with modular home">
+               </div>
+               <div class="success-content">
+                  <h3>Modern Home Delivered</h3>
+                  <p>A seamless process from choosing a home to creating a comfortable living space.</p>
+               </div>
+         </article>
+
+         <article class="success-card">
+               <div class="success-image">
+                  <img src="{% static 'images/blog/success-2.jpg' %}" alt="Portable home customer experience - Martin Boxabl">
+               </div>
+               <div class="success-content">
+                  <h3>A Smarter Way To Live</h3>
+                  <p>Helping families access efficient and innovative housing solutions.</p>
+               </div>
+         </article>
+
+         <article class="success-card">
+               <div class="success-image">
+                  <img src="{% static 'images/blog/success-3.jpg' %}" alt="Modular home installation - Martin Boxabl">
+               </div>
+               <div class="success-content">
+                  <h3>Building New Possibilities</h3>
+                  <p>Bringing modern housing options closer to more people.</p>
+               </div>
+         </article>
+
+      </div>
+
+   </div>
+</section>
+
+<!-- CTA + FAQ SECTION -->
+<section class="cta-faq-section">
+   <div class="container">
+      <div class="cta-faq-wrapper">
+
+         <!-- CTA CONTENT -->
+         <div class="cta-content">
+            <span class="section-tag">Start Your Journey</span>
+            <h2 class="heading-lg">Ready To Own A Modern Portable Home?</h2>
+            <p>Explore available modular homes or contact {{ SITE.name|default:"Martin Boxabl" }} today to find the right housing solution for you.</p>
+            <div class="cta-actions">
+               <a href="#homes" class="btn btn-primary">View Available Homes</a>
+               <a href="#contact" class="btn btn-outline">Contact Us</a>
+            </div>
+         </div>
+
+         <!-- FAQ CONTENT -->
+         <div class="faq-wrapper">
+            <div class="section-header">
+               <span class="section-tag">FAQ</span>
+               <h2 class="heading-lg">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq1">
+                  What is a modular home?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer" id="faq1">
+                  <p>Modular homes are factory-built homes designed for efficient construction, transportation, and installation.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq2">
+                  How long does it take to get a modular home?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer" id="faq2">
+                  <p>Timelines depend on availability, location, and installation requirements.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq3">
+                  Are these homes portable?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer" id="faq3">
+                  <p>Modular homes are designed with flexibility in mind and can be transported and installed in suitable locations.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq4">
+                  How can I purchase an available home?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer" id="faq4">
+                  <p>Contact {{ SITE.name|default:"Martin Boxabl" }} to discuss available homes, pricing, and the next steps.</p>
+               </div>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="section contact parallax-section" id="contact">
+   <div class="parallax-overlay"></div>
+   <div class="container parallax-content">
+
+      <div class="contact-wrapper">
+
+         <div class="contact-content">
+               <span class="section-tag">Get In Touch</span>
+               <h2 class="heading-lg">Ready To Find Your Modern Home?</h2>
+               <p>Contact Martin Boxabl today and learn more about available modular homes and housing solutions.</p>
+
+               <div class="contact-details">
+                  <div class="contact-item">
+                     <h4>Phone</h4>
+                     <a href="tel:+15593671276">+1 559-367-1276</a>
+                  </div>
+
+                  <div class="contact-item">
+                     <h4>Email</h4>
+                     <a href="mailto:martin@martinboxabl.com">martin@martinboxabl.com</a>
+                  </div>
+
+                  <div class="contact-item">
+                     <h4>Address</h4>
+                     <p>California, United States</p>
+                  </div>
+               </div>
+
+               <div class="social-links">
+                  <a href="#" aria-label="Facebook">Facebook</a>
+                  <a href="#" aria-label="Instagram">Instagram</a>
+                  <a href="#" aria-label="TikTok">TikTok</a>
+               </div>
+         </div>
+
+         <div class="contact-card">
+               <h3>Send Us A Message</h3>
+               <form>
+                  <input type="text" placeholder="Your Name" required>
+                  <input type="email" placeholder="Your Email" required>
+                  <textarea placeholder="Your Message" required></textarea>
+                  <button type="submit" class="btn btn-primary">Send Message</button>
+               </form>
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+{% endblock %}

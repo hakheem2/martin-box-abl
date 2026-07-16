@@ -1,0 +1,84 @@
+<button class="mobile-filter-btn" id="mobileFilterBtn">
+   <i class="bi bi-sliders"></i>
+   Filters
+</button>
+
+<div class="filter-overlay"></div>
+
+<section class="shop-search" id="shopFilter" style="padding-bottom:0; margin-bottom:50px;">
+   <div class="container">
+      <form method="get" class="shop-search-wrapper" id="filterForm" data-url="{% url 'ajax_home_filter' %}">
+         <button type="button" class="filter-close" id="filterClose">
+            <i class="bi bi-x-lg"></i>
+         </button>
+
+         <div class="search-group">
+            <label for="search">Search</label>
+            <div class="search-field">
+               <i class="bi bi-search"></i>
+               <input
+                  type="text"
+                  id="search"
+                  name="search"
+                  placeholder="Search by home name..."
+                  value="{{ request.GET.search }}">
+            </div>
+         </div>
+
+         <div class="filter-group">
+            <label for="category">Category</label>
+            <select name="category" id="category">
+               <option value="">All Homes</option>
+               {% for category in categories %}
+                  <option value="{{ category.slug }}" {% if request.GET.category == category.slug %}selected{% endif %}>
+                     {{ category.name }}
+                  </option>
+               {% endfor %}
+            </select>
+         </div>
+
+         <div class="filter-group">
+            <label for="bedrooms">Bedrooms</label>
+            <select name="bedrooms" id="bedrooms">
+               <option value="">Any</option>
+               <option value="1" {% if request.GET.bedrooms == "1" %}selected{% endif %}>1 Bedroom</option>
+               <option value="2" {% if request.GET.bedrooms == "2" %}selected{% endif %}>2 Bedrooms</option>
+               <option value="3" {% if request.GET.bedrooms == "3" %}selected{% endif %}>3 Bedrooms</option>
+               <option value="4" {% if request.GET.bedrooms == "4" %}selected{% endif %}>4+ Bedrooms</option>
+            </select>
+         </div>
+
+         <div class="filter-group">
+            <label for="bathrooms">Bathrooms</label>
+            <select name="bathrooms" id="bathrooms">
+               <option value="">Any</option>
+               <option value="1" {% if request.GET.bathrooms == "1" %}selected{% endif %}>1 Bathroom</option>
+               <option value="2" {% if request.GET.bathrooms == "2" %}selected{% endif %}>2 Bathrooms</option>
+               <option value="3" {% if request.GET.bathrooms == "3" %}selected{% endif %}>3+ Bathrooms</option>
+            </select>
+         </div>
+
+         <div class="filter-group">
+            <label for="stories">Stories</label>
+            <select name="stories" id="stories">
+               <option value="">Any</option>
+               <option value="1" {% if request.GET.stories == "1" %}selected{% endif %}>1 Story</option>
+               <option value="2" {% if request.GET.stories == "2" %}selected{% endif %}>2 Stories</option>
+               <option value="3" {% if request.GET.stories == "3" %}selected{% endif %}>3 Stories</option>
+            </select>
+         </div>
+
+         <div class="filter-group">
+            <label for="sort">Sort By</label>
+            <select name="sort" id="sort">
+               <option value="">Featured</option>
+               <option value="newest" {% if request.GET.sort == "newest" %}selected{% endif %}>Newest</option>
+               <option value="price_low" {% if request.GET.sort == "price_low" %}selected{% endif %}>Price: Low to High</option>
+               <option value="price_high" {% if request.GET.sort == "price_high" %}selected{% endif %}>Price: High to Low</option>
+               <option value="largest" {% if request.GET.sort == "largest" %}selected{% endif %}>Largest First</option>
+            </select>
+         </div>
+
+      </form>
+   </div>
+</section>

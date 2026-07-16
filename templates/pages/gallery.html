@@ -1,0 +1,269 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!-- =========================
+PAGE TITLE
+========================= -->
+
+{% block title %}
+Gallery | {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+<!-- =========================
+SEO
+========================= -->
+
+{% block meta_description %}
+Browse the modular home gallery from {{ SITE.name|default:"Martin Boxabl" }} featuring modern portable homes, stylish interiors, and innovative living spaces.
+{% endblock %}
+
+{% block meta_keywords %}
+Martin Boxabl gallery, modular homes gallery, prefab homes, portable home gallery, modern home interiors, modular home exterior, martinboxabl.com
+{% endblock %}
+
+<!-- =========================
+OPEN GRAPH
+========================= -->
+
+{% block og_title %}
+Gallery | {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+{% block og_description %}
+Explore our collection of modern modular homes and discover beautiful interiors and exteriors.
+{% endblock %}
+
+{% block og_url %}
+https://martinboxabl.com/gallery/
+{% endblock %}
+
+<!-- =========================
+TWITTER
+========================= -->
+
+{% block twitter_title %}
+Gallery | {{ SITE.name|default:"Martin Boxabl" }}
+{% endblock %}
+
+{% block twitter_description %}
+Explore our modular home gallery.
+{% endblock %}
+
+<!-- =========================
+CANONICAL
+========================= -->
+
+{% block canonical_url %}
+https://martinboxabl.com/gallery/
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/gallery.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<section class="page-hero page-hero-gallery">
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+      <div class="page-hero-content">
+
+         <span class="section-tag">Home Gallery</span>
+
+         <h1 class="display-heading">Explore Modern Modular Living</h1>
+
+         <p>Discover beautiful modular homes, elegant interiors, and innovative designs that redefine modern living.</p>
+
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+GALLERY INTRO
+========================================= -->
+
+<section class="section gallery-intro">
+   <div class="container">
+      <div class="row align-items-center g-5">
+
+         <div class="col-lg-6">
+            <span class="section-tag">Discover Our Collection</span>
+
+            <h2 class="heading-lg">Every Home Is Designed For Modern Living</h2>
+
+            <p>At {{ SITE.name|default:"Martin Boxabl" }}, we believe a home should combine innovation, comfort, and
+               practicality. Every modular home showcased here reflects thoughtful design, efficient construction, and a
+               modern lifestyle.</p>
+
+            <p>Browse our gallery to explore beautiful exteriors, spacious interiors, functional living spaces, and the
+               craftsmanship that makes modular homes an exciting housing solution for today's homeowners.</p>
+
+            <div class="gallery-highlights">
+               <div class="highlight-item">
+                  <i class="bi bi-house-door"></i>
+                  <span>Modern Exterior Designs</span>
+               </div>
+               <div class="highlight-item">
+                  <i class="bi bi-layers"></i>
+                  <span>Functional Interior Spaces</span>
+               </div>
+               <div class="highlight-item">
+                  <i class="bi bi-award"></i>
+                  <span>Premium Build Quality</span>
+               </div>
+               <div class="highlight-item">
+                  <i class="bi bi-lightning-charge"></i>
+                  <span>Fast Installation</span>
+               </div>
+            </div>
+         </div>
+
+         <div class="col-lg-6">
+            <div class="gallery-intro-image">
+               <img src="{% static 'images/gallery/featured-6.jpg' %}" class="img-fluid rounded-4"
+                  alt="{{ SITE.name|default:'Martin Boxabl' }} modern modular home exterior">
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+FEATURED SHOWCASE
+========================================= -->
+
+<section class="section featured-gallery">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Featured Collection</span>
+         <h2 class="heading-lg">Premium Modular Home Showcase</h2>
+         <p>Explore some of our favorite modular home designs, featuring contemporary architecture, elegant interiors,
+            and functional living spaces.</p>
+      </div>
+
+      <div class="featured-grid">
+         <div class="featured-large">
+            <img src="{% static 'images/gallery/featured-7.jpg' %}"
+               alt="{{ SITE.name|default:'Martin Boxabl' }} Premium Modular Home">
+         </div>
+
+         <div class="featured-side">
+            <img src="{% static 'images/gallery/featured-2.jpg' %}" alt="Modern Modular Home">
+            <img src="{% static 'images/gallery/featured-3.jpg' %}" alt="Luxury Modular Interior">
+            <img src="{% static 'images/gallery/featured-4.jpg' %}" alt="Portable Home Exterior">
+         </div>
+
+         <div class="featured-bottom">
+            <img src="{% static 'images/gallery/featured-8.jpg' %}" alt="Modular Home Living Room">
+            <img src="{% static 'images/gallery/featured-6.jpg' %}" alt="Modern Portable Home">
+         </div>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+GALLERY GRID
+========================================= -->
+
+<section class="section gallery-grid-section">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Complete Gallery</span>
+         <h2 class="heading-lg">Explore Every Detail</h2>
+         <p>From elegant exteriors to beautifully designed interiors, discover the craftsmanship behind every modular
+            home.</p>
+      </div>
+
+      <div class="gallery-grid">
+         <a href="{% static 'images/gallery/gallery-1.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-1.jpg' %}" alt="Modern Modular Home Exterior">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-2.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-2.jpg' %}" alt="Luxury Modular Kitchen">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-3.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-3.jpg' %}" alt="Portable Home Living Room">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-4.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-4.jpg' %}" alt="Modern Bedroom">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-5.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-5.jpg' %}" alt="Dining Area">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-6.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-6.jpg' %}" alt="Luxury Modular Home">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-7.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-7.jpg' %}" alt="Portable Home Exterior">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+
+         <a href="{% static 'images/gallery/gallery-8.jpg' %}" class="gallery-item">
+            <img src="{% static 'images/gallery/gallery-8.jpg' %}" alt="Modern Home Interior">
+            <div class="gallery-overlay">
+               <i class="bi bi-arrows-fullscreen"></i>
+            </div>
+         </a>
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+GALLERY SHOWCASE
+========================================= -->
+
+<section class="gallery-showcase">
+   <div class="gallery-showcase-overlay"></div>
+   <div class="container">
+      <div class="gallery-showcase-content">
+
+         <span class="section-tag">Experience Modern Living</span>
+
+         <h2 class="heading-lg">More Than A Home, It's A Lifestyle</h2>
+
+         <p>Every modular home combines thoughtful architecture, premium craftsmanship, and efficient living to create
+            spaces you'll be proud to call home.</p>
+
+         <div class="gallery-showcase-actions">
+            <a href="#homes" class="btn btn-primary">View Available Homes</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+
+{% endblock %}

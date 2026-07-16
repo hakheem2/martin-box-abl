@@ -1,0 +1,49 @@
+{% load static %}
+<header class="header">
+   <nav class="navbar container" aria-label="Main Navigation">
+
+      <!-- LOGO -->
+      <a href="{% url 'home' %}" class="navbar-logo">
+         {% if SITE.logo %}
+            <img src="{{ SITE.logo.url}}" alt="{{ SITE.name }} Logo">
+         {% else %}
+            <img src="{% static 'images/logo/@logo.png' %}" alt="{{ SITE.name }} Logo">
+         {% endif %}
+      </a>
+
+      <!-- DESKTOP NAVIGATION -->
+      <ul class="navbar-nav">
+         <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+         <li><a href="{% url 'about' %}" class="nav-link">About</a></li>
+         <li><a href="{% url 'shop' %}" class="nav-link">Homes</a></li>
+         <li><a href="{% url 'gallery' %}" class="nav-link">Gallery</a></li>
+         <li><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+      </ul>
+
+      <!-- RIGHT ACTIONS -->
+      <div class="navbar-actions">
+         <a href="#homes" class="btn btn-primary">View Homes</a>
+         <button class="mobile-toggle" id="mobileToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+         </button>
+      </div>
+
+   </nav>
+
+   <!-- MOBILE MENU -->
+   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <nav aria-label="Mobile Navigation">
+         <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="#homes">Homes</a></li>
+            <li><a href="{% url 'gallery' %}">Gallery</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+         </ul>
+         <a href="#homes" class="btn btn-primary btn-full">View Available Homes</a>
+      </nav>
+   </div>
+ 
+</header>

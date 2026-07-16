@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+{% endblock  %}
+
+
+{% block content %}
+<section class="section checkout">
+   <div class="container">
+
+      <div class="section-header">
+         <h1 class="heading-lg">Complete Your Order Request</h1>
+         <p class="text-muted">Submit your details and we will contact you to finalize your home purchase.</p>
+      </div>
+
+      <div class="checkout-wrapper">
+         <!-- HOME SUMMARY -->
+         <div class="checkout-home">
+            <img src="{{ home.main_image.url }}" alt="{{ home.name }}">
+
+            <div class="checkout-home-info">
+               <h2 class="heading-md">{{ home.name }}</h2>
+
+               {% if home.series %}
+                  <p class="text-muted">{{ home.series }}</p>
+               {% endif %}
+
+               <h3>${{ home.price }}</h3>
+
+               <div class="home-specs">
+                  <span>{{ home.square_feet }} sqft</span>
+                  <span>{{ home.bedrooms }} Bedrooms</span>
+                  <span>{{ home.bathrooms }} Bathrooms</span>
+                  <span>{{ home.stories }} Stories</span>
+               </div>
+            </div>
+         </div>
+
+         <!-- ORDER FORM -->
+         <form method="POST" class="checkout-form">
+            {% csrf_token %}
+
+            <!-- USER INFORMATION -->
+            <div class="form-section">
+               <h3 class="heading-md">User Information</h3>
+               <div class="form-grid">
+                  <input type="text" name="first_name" placeholder="First Name" required>
+                  <input type="text" name="last_name" placeholder="Last Name" required>
+                  <input type="email" name="email" placeholder="Email Address" required>
+                  <input type="text" name="phone" placeholder="Phone Number" required>
+               </div>
+            </div>
+
+            <!-- SHIPPING INFORMATION -->
+            <div class="form-section">
+               <h3 class="heading-md">Shipping Information</h3>
+               <div class="form-grid">
+                  <input type="text" name="country" placeholder="Country" required>
+                  <input type="text" name="city" placeholder="City" required>
+               </div>
+               <textarea name="address" placeholder="Full Shipping Address" required></textarea>
+            </div>
+
+            <!-- NOTES -->
+            <div class="form-section">
+               <h3 class="heading-md">Additional Notes</h3>
+               <textarea name="notes" placeholder="Any questions or special requirements?"></textarea>
+            </div>
+
+            <button class="btn btn-primary btn-full">Submit Order Request</button>
+         </form>
+      </div>
+
+   </div>
+</section>
+{% endblock %}

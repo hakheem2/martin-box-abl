@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ home.name }} | Portable Home | Martin Boxabl
+{% endblock %}
+
+{% block meta_description %}
+{{ home.short_description|default:"Discover this modern portable home from Martin Boxabl featuring efficient design, premium construction, and flexible living solutions." }}
+{% endblock %}
+
+{% block meta_keywords %}
+{{ home.name }}, {{ home.series }}, portable home, modular home, prefab house, box home, modern home, Martin Boxabl
+{% endblock %}
+
+{% block og_title %}
+{{ home.name }} | Martin Boxabl
+{% endblock %}
+
+{% block og_description %}
+{{ home.short_description|default:"Explore this modern modular home designed for comfortable, affordable, and flexible living." }}
+{% endblock %}
+
+{% block og_image %}
+{{ home.main_image.url }}
+{% endblock %}
+
+{% block og_url %}
+https://martinboxabl.com{{ home.get_absolute_url }}
+{% endblock %}
+
+{% block twitter_title %}
+{{ home.name }} | Martin Boxabl
+{% endblock %}
+
+{% block twitter_description %}
+{{ home.short_description|default:"Modern portable homes built for efficient and flexible living." }}
+{% endblock %}
+
+{% block twitter_image %}
+{{ home.main_image.url }}
+{% endblock %}
+
+{% block canonical_url %}
+https://martinboxabl.com{{ home.get_absolute_url }}
+{% endblock %}
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"Product",
+   "name":"{{ home.name }}",
+   "description":"{{ home.short_description|escapejs }}",
+   "image":"{{ home.main_image.url }}",
+   "brand":{
+      "@type":"Brand",
+      "name":"Martin Boxabl"
+   },
+   "offers":{
+      "@type":"Offer",
+      "price":"{{ home.price }}",
+      "priceCurrency":"USD",
+      "availability":"https://schema.org/InStock",
+      "url":"https://martinboxabl.com{{ home.get_absolute_url }}"
+   }
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/details-page.css' %}">
+{% endblock  %}
+
+{% block content %}
+   <!-- MAIN PRODUCT DISPLAY SECTION -->
+<main class="section pdp-section">
+   <div class="container">
+      <div class="pdp-layout grid">
+
+         <!-- MEDIA -->
+         <div class="pdp-media flex">
+            <div class="media-thumbs flex">
+               <!-- Main Image -->
+               <button
+                  type="button"
+                  class="thumb-btn active"
+                  data-image="{{ home.main_image.url }}"
+                  data-index="1">
+                  <img src="{{ home.main_image.url }}" alt="{{ home.name }}">
+                  <span>Main</span>
+               </button>
+
+               {% for image in gallery %}
+                  <button
+                     type="button"
+                     class="thumb-btn"
+                     data-image="{{ image.image.url }}"
+                     data-index="{{ forloop.counter|add:1 }}">
+                     <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                     <span>{{ image.title }}</span>
+                  </button>
+               {% endfor %}
+
+            </div>
+
+
+            <div class="media-viewer">
+               <img
+                  src="{{ home.main_image.url }}"
+                  id="mainHeroImage"
+                  alt="{{ home.name }}">
+
+               <span class="viewer-counter">1 / {{ gallery.count|add:1 }}</span>
+            </div>
+         </div>
+
+         <!-- PRODUCT INFO -->
+         <div class="pdp-meta-panel flex">
+            <header class="pdp-header">
+               <span class="meta-tag">{{ home.category.name }}</span>
+               <h1 class="heading-lg product-pdp-title">{{ home.name }}</h1>
+               <p class="text-muted pdp-tagline">{{ home.short_description }}</p>
+            </header>
+
+            <div class="pdp-quick-specs flex">
+               <span><strong>{{ home.square_feet }}</strong> SF</span>
+               <span><strong>{{ home.bedrooms }}</strong> BED</span>
+               <span><strong>{{ home.bathrooms }}</strong> BATH</span>
+               <span><strong>{{ home.stories }}</strong> STORY</span>
+            </div>
+
+            <div class="pdp-pricing-card grid">
+               <div class="price-block">
+                  <span class="price-figure">${{ home.price|floatformat:0 }}</span>
+                  <span class="price-label">PRICE</span>
+               </div>
+
+               <div class="price-block">
+                  <span class="price-figure">${{ home.price_per_sqft|floatformat:0 }}</span>
+                  <span class="price-label">PER SQ FT</span>
+               </div>
+            </div>
+
+            <div class="pdp-actions-row grid">
+               {% if home.spec_sheet %}
+                  <a
+                     href="{{ home.spec_sheet.url }}"
+                     target="_blank"
+                     class="btn btn-secondary">
+                     Download Spec Sheet
+                  </a>
+               {% endif %}
+
+               <a href="{% url 'checkout' home.slug %}" class="btn btn-primary">Buy Now</a>
+            </div>
+         </div>
+
+      </div>
+   </div>
+</main>
+
+
+<!-- DATA INFORMATION TABS: DESCRIPTION & TECHNICAL SPECIFICATIONS -->
+<section class="section section-gray border-top">
+   <div class="container">
+      <div class="info-tabs-layout grid">
+
+         <div class="info-description-block">
+            <h2 class="heading-md mb-1">Overview</h2>
+            <p class="text-muted">{{ home.description|linebreaks }}</p>
+         </div>
+
+         <div class="info-specs-block">
+            <h2 class="heading-md mb-1">Engineering Specifications</h2>
+
+            <div class="spec-table flex">
+               {% for specification in specifications %}
+                  <div class="table-row flex">
+                     <span class="prop-title">{{ specification.title }}</span>
+                     <span class="prop-value">{{ specification.value }}</span>
+                  </div>
+               {% endfor %}
+            </div>
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- RELATED HOMES -->
+<section class="section border-top">
+   <div class="container">
+
+      <div class="section-header">
+         <h2 class="heading-md">Similar Homes</h2>
+      </div>
+
+      <div class="grid product-grid">
+         {% for home in related_homes %}
+            {% include "shop/includes/product-card.html" with home=home %}
+         {% endfor %}
+      </div>
+
+   </div>
+</section>
+
+{% endblock %}

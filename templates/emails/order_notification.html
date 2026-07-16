@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+</head>
+
+<body style="margin:0;padding:40px;background:#f7f5f0;font-family:Nunito,Arial,sans-serif;">
+
+   <table width="650" align="center" cellpadding="0" cellspacing="0"
+      style="background:#ffffff;border-radius:10px;overflow:hidden;">
+
+      <tr>
+         <td style="background:#1f6f5f;padding:30px;text-align:center;">
+
+            <h1 style="color:#ffffff;margin:0;">
+               Martin Box
+            </h1>
+
+            <p style="color:#ffffff;margin-top:10px;">
+               New Home Order Request
+            </p>
+
+         </td>
+      </tr>
+
+      <tr>
+
+         <td style="padding:35px;">
+
+            <h2>Customer Information</h2>
+
+            <p>
+               <strong>Name:</strong>
+               {{ order.first_name }} {{ order.last_name }}
+            </p>
+
+            <p>
+               <strong>Email:</strong>
+               {{ order.email }}
+            </p>
+
+            <p>
+               <strong>Phone:</strong>
+               {{ order.phone }}
+            </p>
+
+            <hr>
+
+            <h2>Shipping Information</h2>
+
+            <p>
+               <strong>Country:</strong>
+               {{ order.country }}
+            </p>
+
+            <p>
+               <strong>City:</strong>
+               {{ order.city }}
+            </p>
+
+            <p>
+               <strong>Address:</strong>
+               {{ order.address }}
+            </p>
+
+            <hr>
+
+            <h2>Selected Home</h2>
+
+            <p>
+               <strong>Name:</strong>
+               {{ home.name }}
+            </p>
+
+            <p>
+               <strong>SKU:</strong>
+               {{ home.sku }}
+            </p>
+
+            <p>
+               <strong>Price:</strong>
+               ${{ home.price }}
+            </p>
+
+            <p>
+               <strong>Bedrooms:</strong>
+               {{ home.bedrooms }}
+            </p>
+
+            <p>
+               <strong>Bathrooms:</strong>
+               {{ home.bathrooms }}
+            </p>
+
+            <p>
+               <strong>Square Feet:</strong>
+               {{ home.square_feet }}
+            </p>
+
+            <hr>
+
+            <h2>Customer Notes</h2>
+
+            <p>
+               {{ order.notes|default:"No additional notes." }}
+            </p>
+
+            <br>
+
+            <a href="{{ home_link }}"
+               style="
+                  display:inline-block;
+                  padding:14px 30px;
+                  background:#1f6f5f;
+                  color:#ffffff;
+                  text-decoration:none;
+                  border-radius:6px;
+                  font-weight:bold;
+               ">
+               View Home
+            </a>
+
+         </td>
+
+      </tr>
+
+   </table>
+
+</body>
+
+</html>

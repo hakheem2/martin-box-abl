@@ -1,0 +1,372 @@
+/* =========================================
+   8. COMPONENT: PRODUCT DETAILS PAGE (PDP)
+========================================= */
+
+/* Base body background override adjustment for a clean workspace layout view */
+body {
+   background-color: var(--bg-main);
+}
+
+.border-top {
+   border-top: 1px solid var(--border);
+}
+
+.pdp-layout {
+   grid-template-columns: repeat(12, 1fr);
+   gap: var(--space-lg);
+   align-items: start;
+}
+
+/* --- MEDIA MATRIX LEFT COMPONENT --- */
+.pdp-media {
+   grid-column: span 7;
+   gap: var(--space-sm);
+}
+
+.media-thumbs {
+   flex-direction: column;
+   gap: var(--space-xs);
+   width: 110px;
+   height: 500px;
+   overflow-y: scroll;
+   flex-shrink: 0;
+}
+
+.thumb-btn {
+   background: var(--white);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-sm);
+   padding: 4px;
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 4px;
+   transition: border-color 0.2s ease;
+}
+
+.thumb-btn img {
+   width: 100%;
+   aspect-ratio: 1;
+   object-fit: cover;
+   border-radius: 4px;
+}
+
+.thumb-btn span {
+   font-size: 0.65rem;
+   font-weight: 700;
+   text-transform: uppercase;
+   letter-spacing: 0.02em;
+   color: var(--text-muted);
+}
+
+.thumb-btn:hover,
+.thumb-btn.active {
+   border-color: var(--primary);
+}
+
+.thumb-btn.active span {
+   color: var(--primary);
+}
+
+.media-viewer {
+   position: relative;
+   flex-grow: 1;
+   background: var(--bg-light);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   overflow: hidden;
+   aspect-ratio: 4 / 3;
+}
+
+.media-viewer img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   padding: var(--space-sm);
+}
+
+.viewer-counter {
+   position: absolute;
+   bottom: var(--space-sm);
+   right: var(--space-sm);
+   background: rgba(17, 24, 39, 0.75);
+   backdrop-filter: blur(4px);
+   color: var(--white);
+   font-size: 0.75rem;
+   font-weight: 600;
+   padding: 0.25rem 0.6rem;
+   border-radius: 30px;
+}
+
+/* --- DETAILS DATA PANEL RIGHT COMPONENT --- */
+.pdp-meta-panel {
+   grid-column: span 5;
+   flex-direction: column;
+}
+
+.pdp-tagline {
+   margin-top: var(--space-xs);
+   font-size: 1.05rem;
+}
+
+.pdp-quick-specs {
+   gap: 1.5rem;
+   margin: var(--space-sm) 0;
+   background: var(--bg-light);
+   padding: 0.85rem var(--space-sm);
+   border-radius: var(--radius-sm);
+   border: 1px solid var(--border);
+}
+
+.pdp-quick-specs span {
+   font-size: 0.85rem;
+   color: var(--text-muted);
+   text-transform: uppercase;
+   letter-spacing: 0.04em;
+}
+
+.pdp-quick-specs strong {
+   color: var(--black);
+   font-size: 1rem;
+}
+
+/* Unified Architecture Pricing Matrix */
+.pdp-pricing-card {
+   grid-template-columns: repeat(2, 1fr);
+   background: var(--white);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   padding: 1.5rem;
+   gap: var(--space-sm);
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.price-block {
+   display: flex;
+   flex-direction: column;
+}
+
+.price-block:first-child {
+   border-right: 1px solid var(--border);
+}
+
+.price-figure {
+   font-size: 2.2rem;
+   font-weight: 800;
+   color: var(--black);
+   line-height: 1.1;
+}
+
+.price-label {
+   font-size: 0.7rem;
+   font-weight: 700;
+   color: var(--text-muted);
+   letter-spacing: 0.08em;
+   margin-top: 4px;
+}
+
+.price-disclaimer {
+   grid-column: span 2;
+   font-size: 0.78rem;
+   line-height: 1.5;
+}
+
+/* Order Interaction UI Box */
+.order-management-box {
+   background: var(--bg-light);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   padding: 1.25rem;
+   margin: var(--space-sm) 0;
+}
+
+.qty-selector-row {
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid var(--border);
+   padding-bottom: 0.75rem;
+   margin-bottom: 0.75rem;
+}
+
+.control-label {
+   font-size: 0.8rem;
+   font-weight: 700;
+   letter-spacing: 0.05em;
+   color: var(--text-muted);
+}
+
+.qty-counter {
+   background: var(--white);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-sm);
+   overflow: hidden;
+}
+
+.qty-btn {
+   background: transparent;
+   border: none;
+   width: 40px;
+   height: 40px;
+   font-size: 1.2rem;
+   font-weight: 600;
+   cursor: pointer;
+   color: var(--text);
+   transition: background 0.2s ease;
+}
+
+.qty-btn:hover {
+   background: var(--bg-light);
+}
+
+.qty-input {
+   width: 60px;
+   height: 40px;
+   border: none;
+   border-left: 1px solid var(--border);
+   border-right: 1px solid var(--border);
+   text-align: center;
+   font-size: 1rem;
+   font-weight: 700;
+   color: var(--black);
+   -moz-appearance: textfield;
+}
+
+.qty-input::-webkit-outer-spin-button,
+.qty-input::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+   margin: 0;
+}
+
+.total-valuation-row {
+   justify-content: space-between;
+   align-items: center;
+}
+
+.calculated-total {
+   font-size: 1.6rem;
+   font-weight: 800;
+   color: var(--primary);
+}
+
+.order-notice {
+   display: block;
+   font-size: 0.7rem;
+   font-weight: 600;
+   text-transform: uppercase;
+   letter-spacing: 0.04em;
+   color: var(--accent);
+   margin-top: 0.5rem;
+}
+
+/* Action Area Row Layouts */
+.pdp-actions-row {
+   grid-template-columns: repeat(2, 1fr);
+   gap: var(--space-xs);
+}
+
+.btn-secondary {
+   background: var(--white);
+   color: var(--text);
+   border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+   background: var(--bg-light);
+   border-color: var(--text-muted);
+}
+
+/* --- TECHNICAL SPECS & DESCRIPTIONS TAB LAYER --- */
+.info-tabs-layout {
+   grid-template-columns: repeat(2, 1fr);
+   gap: var(--space-lg);
+}
+
+.info-description-block p {
+   font-size: 0.95rem;
+   line-height: 1.7;
+}
+
+.spec-table {
+   flex-direction: column;
+   background: var(--white);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   overflow: hidden;
+}
+
+.table-row {
+   justify-content: space-between;
+   padding: 0.85rem var(--space-sm);
+}
+
+.table-row:not(:last-child) {
+   border-bottom: 1px solid var(--border);
+}
+
+.table-row:nth-child(even) {
+   background: var(--bg-light);
+}
+
+.prop-title {
+   font-size: 0.85rem;
+   font-weight: 700;
+   color: var(--text-muted);
+}
+
+.prop-value {
+   font-size: 0.85rem;
+   font-weight: 600;
+   color: var(--black);
+}
+
+/* --- RESPONSIVE ADAPTABILITY VIEWPORTS --- */
+@media (max-width: 992px) {
+   .pdp-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+   }
+
+   .pdp-media {
+      grid-column: span 1fr;
+   }
+
+   .pdp-meta-panel {
+      grid-column: span 1fr;
+   }
+
+   .info-tabs-layout {
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+   }
+}
+
+@media (max-width: 576px) {
+   .pdp-media {
+      flex-direction: column-reverse;
+   }
+
+   .media-thumbs {
+      flex-direction: row;
+      width: 100%;
+      overflow-x: auto;
+   }
+
+   .thumb-btn {
+      width: 80px;
+   }
+
+   .pdp-pricing-card {
+      grid-template-columns: 1fr;
+   }
+
+   .price-block:first-child {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+   }
+
+   .pdp-actions-row {
+      grid-template-columns: 1fr;
+   }
+}

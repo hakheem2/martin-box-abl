@@ -1,0 +1,136 @@
+/* =========================================
+   PAGE HERO
+========================================= */
+.page-hero-contact {
+   background-image: url("../images/bg/contact-bg.jpg");
+   background-position: center bottom;
+}
+
+
+/* =========================================
+   CONTACT INFORMATION
+========================================= */
+
+.contact-info {
+   background: var(--white);
+}
+
+.contact-details {
+   margin-top: 2rem;
+}
+
+.contact-item {
+   display: flex;
+   align-items: flex-start;
+   gap: 1rem;
+   margin-bottom: 1.5rem;
+}
+
+.contact-icon {
+   width: 55px;
+   height: 55px;
+   flex-shrink: 0;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: rgba(var(--primary-rgb), .12);
+   color: var(--primary);
+   border-radius: 50%;
+   font-size: 1.3rem;
+}
+
+.contact-item h4 {
+   margin-bottom: .3rem;
+   font-size: 1rem;
+}
+
+.contact-item a,
+.contact-item p {
+   margin: 0;
+   color: var(--text-muted);
+   text-decoration: none;
+}
+
+
+.contact-social {
+   display: flex;
+   gap: .8rem;
+   margin-top: 2rem;
+}
+
+.contact-social a {
+   width: 42px;
+   height: 42px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   background: var(--section-gray);
+   color: var(--primary);
+   border-radius: 50%;
+   transition: .3s;
+}
+
+.contact-social a:hover {
+   background: var(--primary);
+   color: var(--white);
+}
+
+
+/* =========================================
+   CONTACT FORM
+========================================= */
+
+.contact-form-wrapper {
+   padding: 2.5rem;
+   background: var(--section-gray);
+   border-radius: var(--radius-lg);
+}
+
+.contact-form-wrapper .form-control {
+   padding: 1rem;
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+}
+
+.contact-form-wrapper .form-control:focus {
+   border-color: var(--primary);
+   box-shadow: none;
+}
+
+@media(max-width:767px) {
+
+   .contact-form-wrapper {
+      padding: 1.5rem;
+   }
+
+}
+
+
+/* =========================================
+   MAP SECTION
+========================================= */
+
+.map-section {
+   background: var(--section-gray);
+}
+
+.map-wrapper {
+   width: 100%;
+   height: 500px;
+}
+
+.map-wrapper iframe {
+   width: 100%;
+   height: 100%;
+   border: 10px;
+}
+
+@media(max-width:767px) {
+
+   .map-wrapper {
+      height: 350px;
+   }
+
+}
+
+

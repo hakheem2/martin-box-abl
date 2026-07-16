@@ -1,0 +1,13 @@
+{% load humanize %}
+{% for home in homes %}
+
+   {% include "shop/partials/product-grid.html" with home=home %}
+
+{% empty %}
+
+<div class="empty-products mx-auto text-center">
+    <h3>No homes found.</h3>
+    <p>Try changing your filters.</p>
+</div>
+
+{% endfor %}
