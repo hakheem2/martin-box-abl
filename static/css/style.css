@@ -74,6 +74,7 @@ body {
    color: var(--text);
    font-family: var(--font-primary);
    line-height: 1.6;
+   font-display: swap;
 }
 
 img {
@@ -121,6 +122,21 @@ button {
    display: flex;
 }
 
+.hero-tag, .section-tag {
+   display: inline-flex;
+   margin-bottom: 1.2rem;
+   padding: .4rem 1rem;
+   border-radius: 50px;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: .9rem;
+   font-weight: 600;
+}
+
+.text-accent{
+   color: var(--accent);
+}
+
 /* =========================================
    SECTION UTILITIES
 ========================================= */
@@ -144,6 +160,12 @@ button {
 
 .heading-lg {
    font-size: clamp(2rem, 4vw, 3.2rem);
+   line-height: 1.2;
+   font-weight: 700;
+}
+
+.heading-l {
+   font-size: clamp(1.8rem, 3vw, 2.5rem);
    line-height: 1.2;
    font-weight: 700;
 }
@@ -217,6 +239,113 @@ button {
    margin-bottom: var(--space-md);
 }
 
+/* =========================================
+   CTA + FAQ SECTION
+========================================= */
+
+.cta-faq-section {
+   position: relative;
+   padding: 100px 0;
+   background: var(--primary);
+}
+
+.cta-faq-wrapper {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 4rem;
+   align-items: start;
+}
+
+.cta-content {
+   color: var(--white);
+}
+
+.cta-content .section-tag {
+   color: var(--accent);
+}
+
+.cta-content .heading-lg {
+   color: var(--white);
+}
+
+.cta-content p {
+   color: rgba(255, 255, 255, .85);
+   margin-top: 1rem;
+}
+
+.cta-actions {
+   display: flex;
+   gap: 1rem;
+   margin-top: 2rem;
+}
+
+.cta-content .btn-primary {
+   background: var(--white);
+   color: var(--primary);
+}
+
+.cta-content .btn-outline {
+   border-color: var(--white);
+   color: var(--white);
+}
+
+.cta-content .btn-outline:hover {
+   background: var(--white);
+   color: var(--primary);
+}
+
+
+/* FAQ */
+
+.cta-faq-section .section-header {
+   text-align: left;
+   margin-bottom: 2rem;
+}
+
+.cta-faq-section .section-header .heading-lg {
+   color: var(--white);
+}
+
+.faq-item {
+   background: rgba(255, 255, 255, .95);
+   border-radius: var(--radius-md);
+   margin-bottom: 1rem;
+   overflow: hidden;
+}
+
+.faq-question {
+   width: 100%;
+   padding: 1.2rem 1.5rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background: transparent;
+   border: 0;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.faq-answer {
+   display: none;
+   padding: 0 1.5rem 1.2rem;
+}
+
+.faq-answer p {
+   color: var(--text-muted);
+}
+
+
+@media(max-width:991px) {
+
+   .cta-faq-wrapper {
+      grid-template-columns: 1fr;
+   }
+
+   .cta-actions {
+      flex-direction: column;
+   }
+
+}
 
 
 /* =========================================
@@ -438,6 +567,68 @@ body.menu-open {
 
 }
 
+/* =========================================
+   CUSTOM NAV DROPDOWN
+========================================= */
+
+.custom-dropdown {
+   position: relative;
+}
+.custom-dropdown-menu {
+   position: absolute;
+   top: calc(100% + 15px);
+   left: 0;
+   min-width: 240px;
+   padding: .7rem;
+   margin: 0;
+   list-style: none;
+
+   background: rgba(255, 255, 255, .96);
+   backdrop-filter: blur(18px);
+   -webkit-backdrop-filter: blur(18px);
+
+   border-radius: 18px;
+   box-shadow: 0 20px 40px rgba(0, 0, 0, .12);
+
+   opacity: 0;
+   visibility: hidden;
+   transform: translateY(10px);
+
+   transition: .3s ease;
+}
+.custom-dropdown-menu li {
+   margin: 0;
+}
+.custom-dropdown-menu a {
+   display: block;
+   padding: .8rem 1rem;
+
+   color: var(--text);
+   font-size: .95rem;
+   font-weight: 500;
+
+   text-decoration: none;
+   border-radius: 12px;
+
+   transition: .3s ease;
+}
+.custom-dropdown-menu a:hover {
+   background: var(--bg-light);
+   color: var(--primary);
+}
+
+
+/* Hover desktop */
+@media (min-width: 992px) {
+
+   .custom-dropdown:hover .custom-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+   }
+
+}
+
 
 /* =========================================
    FOOTER SECTION
@@ -538,6 +729,119 @@ body.menu-open {
 @media (max-width: 576px) {
    .footer-wrapper {
       grid-template-columns: 1fr;
+   }
+}
+
+/* =========================================
+    COMPONENT: PRODUCT CARDS GRID
+========================================= */
+.category-section,  .home-types-section{
+   background: #fff;
+}
+
+.category-grid {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 30px;
+}
+
+.category-link {
+   text-decoration: none;
+   color: inherit;
+}
+
+.category-card {
+   background: #fff;
+   border-radius: 18px;
+   overflow: hidden;
+   border: 1px solid rgba(17, 24, 39, .08);
+   height: 100%;
+   transition: .35s ease;
+}
+
+.category-card:hover {
+   transform: translateY(-8px);
+   box-shadow: 0 20px 45px rgba(0, 0, 0, .12);
+}
+
+.category-image {
+   height: 260px;
+   overflow: hidden;
+}
+
+.category-image img {
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: .4s ease;
+}
+
+.category-card:hover img {
+   transform: scale(1.08);
+}
+
+.category-content {
+   padding: 30px;
+}
+
+.category-content h3 {
+   color: #111827;
+   font-size: 1.5rem;
+   margin-bottom: 15px;
+}
+
+.category-content p {
+   color: #6b7280;
+   line-height: 1.7;
+}
+
+.category-btn {
+   display: inline-flex;
+   align-items: center;
+   gap: 8px;
+   margin-top: 20px;
+   color: #1f6f5f;
+   font-weight: 700;
+}
+
+.category-cta {
+   background: #f7f5f0;
+   padding: 80px 0;
+}
+
+.category-cta-box {
+   background: #1f6f5f;
+   color: white;
+   padding: 50px;
+   border-radius: 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   gap: 30px;
+}
+
+.category-cta h2 {
+   font-size: 2.2rem;
+}
+
+@media(max-width:992px) {
+   .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+@media(max-width:768px) {
+   .category-grid {
+      grid-template-columns: 1fr;
+   }
+
+   .category-cta-box {
+      flex-direction: column;
+      text-align: center;
+   }
+
+   .category-hero {
+      min-height: 450px;
    }
 }
 

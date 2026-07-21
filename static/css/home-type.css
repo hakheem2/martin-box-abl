@@ -1,0 +1,215 @@
+.page-hero-shop {
+   background-image:
+      linear-gradient(rgba(0, 0, 0, .25), rgba(0, 0, 0, .25)),
+      url("../images/hero/shop-hero.jpg");
+}
+
+/* =========================================
+PREFAB HOMES INTRO
+========================================= */
+
+.prefab-intro .content-wrapper {
+   margin: 0 auto;
+}
+
+.prefab-intro .content-wrapper p {
+   color: var(--text-muted);
+   margin-bottom: 1.2rem;
+}
+
+.prefab-intro .feature-card {
+   height: 100%;
+   padding: 2rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   box-shadow: var(--shadow-card);
+   transition: .3s ease;
+}
+
+.prefab-intro .feature-card:hover {
+   transform: translateY(-5px);
+}
+
+.prefab-intro .feature-icon {
+   width: 55px;
+   height: 55px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: 1.5rem;
+   margin-bottom: 1.2rem;
+}
+
+.prefab-intro .feature-card h3 {
+   font-size: 1.25rem;
+   margin-bottom: .7rem;
+   font-weight: 700;
+}
+
+.prefab-intro .feature-card p {
+   margin: 0;
+}
+
+
+/* =========================================
+WHY PREFAB HOMES
+========================================= */
+
+.why-prefab .feature-card {
+   height: 100%;
+   padding: 1rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   box-shadow: var(--shadow-card);
+   transition: .3s ease;
+}
+
+.why-prefab .feature-card:hover {
+   transform: translateY(-6px);
+}
+
+.why-prefab .feature-icon {
+   width: 60px;
+   height: 60px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 1.25rem;
+   border-radius: 50%;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: 1.5rem;
+}
+
+.why-prefab .feature-card h3 {
+   margin-bottom: .75rem;
+}
+
+.why-prefab .feature-card p {
+   margin: 0;
+   color: var(--text-muted);
+}
+
+/* =========================================
+BUYING PROCESS
+========================================= */
+
+.process-card {
+   position: relative;
+   height: 100%;
+   padding: 2rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   box-shadow: var(--shadow-card);
+   text-align: center;
+   transition: .3s ease;
+}
+
+.process-card:hover {
+   transform: translateY(-6px);
+}
+
+.process-number {
+   position: absolute;
+   top: 18px;
+   right: 20px;
+   font-size: 2.5rem;
+   font-weight: 800;
+   color: rgba(31, 111, 95, .08);
+}
+
+.process-icon {
+   width: 70px;
+   height: 70px;
+   margin: 0 auto 1.5rem;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 50%;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: 1.7rem;
+}
+
+.process-card h3 {
+   margin-bottom: .8rem;
+}
+
+.process-card p {
+   margin: 0;
+   color: var(--text-muted);
+}
+
+
+/* =========================================
+HOME TYPES
+========================================= */
+
+.home-type-card {
+   display: block;
+   height: 100%;
+   padding: 2rem;
+   background: var(--bg-card);
+   border: 1px solid var(--border);
+   border-radius: var(--radius-md);
+   box-shadow: var(--shadow-card);
+   transition: .3s;
+}
+
+.home-type-card:hover {
+   transform: translateY(-6px);
+   color: inherit;
+}
+
+.home-type-icon {
+   width: 65px;
+   height: 65px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 1.5rem;
+   border-radius: 50%;
+   background: rgba(31, 111, 95, .1);
+   color: var(--primary);
+   font-size: 1.6rem;
+}
+
+.home-type-card h3 {
+   margin-bottom: .75rem;
+}
+
+.home-type-card p {
+   color: var(--text-muted);
+   margin-bottom: 1.5rem;
+}
+
+.home-type-card span {
+   color: var(--primary);
+   font-weight: 700;
+}
+
+
+/* =========================================
+PREFAB GUIDE
+========================================= */
+
+.prefab-guide .guide-content {
+   margin: auto;
+}
+
+.prefab-guide h3 {
+   margin: 2.5rem 0 1rem;
+   font-size: 1.6rem;
+   font-weight: 700;
+}
+
+.prefab-guide p {
+   margin-bottom: 1rem;
+   color: var(--text-muted);
+}

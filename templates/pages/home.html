@@ -13,24 +13,26 @@
       <div class="hero-wrapper">
 
          <div class="hero-content">
-               <span class="hero-tag">Modern Modular Living</span>
+               <span class="hero-tag">Modern Modular Homes</span>
 
-               <h1 class="heading-xl">Smart, Modern Homes Designed For The Future</h1>
+            <h1 class="heading-xl">
+               Modern Modular Homes Designed For The Future Of Living
+            </h1>
 
-               <p class="hero-text">
-                  Martin Boxabl brings innovative modular homes closer to you,
-                  offering efficient, stylish, and affordable housing solutions
-                  built for modern lifestyles.
-               </p>
+            <p class="hero-text">
+               Martin Boxabl showcases innovative modular homes, prefab houses, and
+               portable living solutions designed for modern lifestyles. Explore
+               efficient, stylish, and flexible homes built around smarter construction.
+            </p>
 
-               <div class="hero-actions">
-                  <a href="{% url "shop" %}" class="btn btn-primary">View Available Homes</a>
-                  <a href="{% url "contact" %}" class="btn btn-outline">Contact Martin</a>
-               </div>
+            <div class="hero-actions">
+               <a href="{% url "shop" %}" class="btn btn-primary">View Modular Homes For Sale</a>
+               <a href="{% url "contact" %}" class="btn btn-outline">Request Information</a>
+            </div>
          </div>
 
          <div class="hero-image">
-               <img src="{% static 'images/hero/hero-home.jpg' %}" alt="Modern modular home by martinboxabl.com">
+               <img src="{% static 'images/hero/hero-home.jpg' %}" alt="Modern modular home and prefab house design by Martin Boxabl">
          </div>
 
       </div>
@@ -38,85 +40,159 @@
 </section>
 
 <!-- ABOUT SECTION -->
-<section class="section about" id="about">
+<section class="section about" id="about" aria-label="About Boxabl Chief Financial Officer">
    <div class="container">
       <div class="about-wrapper">
 
          <div class="about-image">
-               <img src="{% static 'images/pages/about-home.jpg' %}" alt="{{ SITE.name|default:'Martin Boxabl' }} modern modular home">
+            <img src="{% static 'images/pages/about-home.jpg' %}"
+               alt="Boxabl CFO {{ SITE.name|default:'Martin Costas' }} - Executive Leadership and Modular Housing Financial Strategy">
          </div>
 
          <div class="about-content">
-               <span class="section-tag">About {{ SITE.name|default:"Martin Boxabl" }}</span>
+            <span class="section-tag">Boxabl Executive Leadership</span>
 
-               <h2 class="heading-lg">
-                  Bringing Modern Portable Homes To More People
-               </h2>
+            <h1 class="heading-l">
+               Boxabl CFO {{ SITE.name|default:"Martin Costas" }}: Driving the Future of Modular Housing Strategy
+            </h1>
 
-               <p>
-                  {{ SITE.name|default:"Martin Boxabl" }} was created with a vision of making
-                  modern, efficient, and affordable housing solutions more accessible.
-               </p>
+            <p>
+               <strong>{{ SITE.name|default:"Martin Costas" }}</strong> serves as the Chief Financial Officer (CFO) of
+               <strong>Boxabl</strong>, a disruptive building technology startup specializing in the mass production of
+               foldable modular homes. Bringing over 25 years of global corporate finance and operational
+               leadership—rooted in public accounting with PwC and executive tenures at Honeywell, Schlumberger, and
+               Sysco—he directs the company’s capital raises, financial operations, and long-term scaling strategy.
+            </p>
 
-               <p>
-                  Through innovative modular home solutions, Martin is working to connect
-                  people with high-quality portable homes designed for comfort, flexibility,
-                  and modern living.
-               </p>
+            <p>
+               Stepping into the executive team at a critical growth juncture, Costas successfully navigated the
+               financial compliance pathways required for the SEC's declaration of effectiveness on the company's
+               registration statement. His strategic guidance was pivotal in orchestrating Boxabl’s public listing
+               process via a Special Purpose Acquisition Company (SPAC) merger, managing a <strong>$3.5 billion
+                  valuation</strong> to list on the Nasdaq under the ticker <strong>$BXBL</strong>.
+            </p>
 
-               <p>
-                  By making these homes available for resale at competitive prices, the goal
-                  is to help more individuals and families discover a smarter way to own a
-                  beautiful, functional home.
-               </p>
+            <p>
+               Under his disciplined financial oversight, Boxabl bridges the gap between startup innovation and
+               corporate scaling. This stable fiscal foundation supports the expansion of Boxabl's product pipeline from
+               the signature 400 sq. ft. Casita into diverse multi-box layouts, while accelerating high-volume
+               business-to-business (B2B) agreements with residential developers globally.
+            </p>
 
-               <a href="{% url "shop" %}" class="btn btn-primary">Explore Homes</a>
+            <a href="{% url 'shop' %}" class="btn btn-primary" title="Explore Boxabl Modular Housing Units">Explore
+               Modular Homes</a>
          </div>
 
       </div>
    </div>
 </section>
 
+
 <!-- WHY CHOOSE SECTION -->
-<section class="section why-homes">
+<section class="section why-homes" aria-labelledby="why-boxabl-heading">
    <div class="container">
 
       <div class="section-header">
-         <span class="section-tag">{{ SITE.name|default:"Martin Boxabl" }}</span>
-         <h2 class="heading-lg">Why Choose A Modular Home?</h2>
-         <p>Modern housing solutions designed for flexibility, efficiency, and comfortable living.</p>
+         <span class="section-tag">Boxabl Strategic Scaling</span>
+         <h2 id="why-boxabl-heading" class="heading-l">Why Financial Discipline Powers Boxabl’s Modular Home Production
+         </h2>
+         <p class="text-dark">Scaling a disruptive housing startup requires a rock-solid corporate framework built on regulatory
+            compliance, lean capital efficiency, and global supply chain expertise.</p>
       </div>
 
       <div class="benefits-grid">
+         <article class="benefit-card">
+            <div class="benefit-icon">
+               <i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+            </div>
+            <h3>Global Corporate Finance Mastery</h3>
+            <p>Leveraging 25+ years of operational leadership from Big Four accounting at PwC and multinational
+               executive positions to safely steer through complex macroeconomic landscapes.</p>
+         </article>
 
-         <div class="benefit-card">
-               <div class="benefit-icon"><i class="bi bi-house"></i></div>
-               <h3>Modern Design</h3>
-               <p>Beautifully designed homes that combine functionality, comfort, and contemporary living.</p>
-         </div>
+         <article class="benefit-card">
+            <div class="benefit-icon">
+               <i class="bi bi-bank" aria-hidden="true"></i>
+            </div>
+            <h3>Nasdaq Listing &amp; SPAC Execution</h3>
+            <p>Orchestrating high-level investor relations and capital market strategies, successfully navigating a
+               $3.5B company valuation and the $BXBL Nasdaq merger process.</p>
+         </article>
 
-         <div class="benefit-card">
-               <div class="benefit-icon"><i class="bi bi-lightning"></i></div>
-               <h3>Fast Setup</h3>
-               <p>Portable modular solutions designed for efficient installation compared to traditional housing.</p>
-         </div>
+         <article class="benefit-card">
+            <div class="benefit-icon">
+               <i class="bi bi-shield-check" aria-hidden="true"></i>
+            </div>
+            <h3>Rigorous SEC Compliance</h3>
+            <p>Expertly managing strict financial risk profiles, corporate auditing frameworks, and the complex
+               compliance pipelines necessary to secure SEC effectiveness.</p>
+         </article>
 
-         <div class="benefit-card">
-               <div class="benefit-icon"><i class="bi bi-cash-stack"></i></div>
-               <h3>Affordable Solutions</h3>
-               <p>Access practical housing options with competitive pricing for modern homeowners.</p>
-         </div>
-
-         <div class="benefit-card">
-               <div class="benefit-icon"><i class="bi bi-shield-check"></i></div>
-               <h3>Built For Comfort</h3>
-               <p>Designed to provide a comfortable and efficient living experience.</p>
-         </div>
-
+         <article class="benefit-card">
+            <div class="benefit-icon">
+               <i class="bi bi-box-seam" aria-hidden="true"></i>
+            </div>
+            <h3>Automated Mass Production Scaling</h3>
+            <p>Funding the capital shift from single container units to a scaling multi-box product pipeline, driving
+               B2B residential developer growth via automotive-style assembly lines.</p>
+         </article>
       </div>
 
    </div>
 </section>
+
+
+<!-- =========================================
+EXPLORE MORE HOME TYPES
+========================================= -->
+<section class="section home-types-section">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Explore More</span>
+         <h2 class="heading-l">Discover More Housing Solutions</h2>
+         <p>Explore other modern housing options from Martin Boxabl, including modular homes, tiny homes, portable
+            homes, and affordable housing solutions.</p>
+      </div>
+
+      <div class="category-grid">
+
+         {% for type in home_types %}
+         <a href="{{ type.get_absolute_url }}" class="category-link">
+            <article class="category-card">
+
+               <div class="category-image">
+                  {% if type.image %}
+                  <img src="{{ type.image.url }}" alt="{{ type.name }}">
+                  {% else %}
+                  <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ type.name }}">
+                  {% endif %}
+               </div>
+
+               <div class="category-content">
+                  <h3>{{ category.name }}</h3>
+                  <p>{% if type.description %}
+                        {{ type.description|truncatewords:22 }}
+                     {% else %}
+                        Explore modern housing solutions from Martin Boxabl.
+                     {% endif %}</p>
+                  <span class="category-btn">View {{ type.name }}<i class="bi bi-arrow-right"></i></span>
+               </div>
+
+            </article>
+         </a>
+         {% empty %}
+
+         <div class="empty-category text-center">
+            <h3>No home categories available.</h3>
+         </div>
+
+         {% endfor %}
+
+      </div>
+   </div>
+</section>
+
 
 <!-- PROCESS SECTION -->
 <section class="section process parallax-section" id="process">
@@ -125,7 +201,7 @@
 
       <div class="section-header">
          <span class="section-tag">Our Process</span>
-         <h2 class="heading-lg">How It Works</h2>
+         <h2 class="heading-l">How It Works</h2>
          <p>From choosing your ideal home to getting it ready, Martin Boxabl makes the process simple and straightforward.</p>
       </div>
 
@@ -139,7 +215,7 @@
 
          <div class="process-card">
                <span class="process-number">02</span>
-               <h3>Contact Martin</h3>
+               <h3>Contact Martin Boxabl</h3>
                <p>Get in touch to discuss availability, pricing, and your home requirements.</p>
          </div>
 
@@ -165,9 +241,14 @@
    <div class="container">
 
       <div class="section-header">
-         <h2 class="heading-lg mb-1">Available Homes for Release</h2>
-         <p class="text-muted">Explore our premium engineered, luxury foldable living modules tailored to fit your
-            lifestyle.</p>
+         <h2 class="heading-l mb-1">
+            Modular Homes For Sale
+         </h2>
+         
+         <p class="text-muted">
+            Explore available modular homes, prefab houses, and modern living solutions
+            designed for comfortable and efficient lifestyles.
+         </p>
       </div>
 
       <!-- Product Cards Grid -->
@@ -191,8 +272,14 @@
 
       <div class="section-header">
          <span class="section-tag">Our Gallery</span>
-         <h2 class="heading-lg">Explore Modern Home Designs</h2>
-         <p>Take a look at some of the modular homes and living spaces available through Martin Boxabl.</p>
+         <h2 class="heading-l">
+            Explore Modular Home Designs
+         </h2>
+         
+         <p>
+            View modern prefab homes, portable housing concepts, and innovative modular
+            living spaces designed for the future.
+         </p>
       </div>
 
       <div class="gallery-grid">
@@ -239,7 +326,7 @@
 
       <div class="section-header">
          <span class="section-tag">Success Stories</span>
-         <h2 class="heading-lg">Helping People Find Better Homes</h2>
+         <h2 class="heading-l">Helping People Find Better Homes</h2>
          <p>
                See how modern modular housing solutions are helping people
                achieve comfortable and practical living spaces.
@@ -291,8 +378,14 @@
          <!-- CTA CONTENT -->
          <div class="cta-content">
             <span class="section-tag">Start Your Journey</span>
-            <h2 class="heading-lg">Ready To Own A Modern Portable Home?</h2>
-            <p>Explore available modular homes or contact {{ SITE.name|default:"Martin Boxabl" }} today to find the right housing solution for you.</p>
+            <h2 class="heading-l">
+               Find Your Future Modular Home
+            </h2>
+            
+            <p>
+               Explore our available modular homes or contact Martin Boxabl to discover
+               modern prefab housing solutions designed around your needs.
+            </p>
             <div class="cta-actions">
                <a href="{% url "shop" %}" class="btn btn-primary">View Available Homes</a>
                <a href="{% url "contact" %}" class="btn btn-outline">Contact Us</a>
@@ -303,7 +396,7 @@
          <div class="faq-wrapper">
             <div class="section-header">
                <span class="section-tag">FAQ</span>
-               <h2 class="heading-lg">Frequently Asked Questions</h2>
+               <h2 class="heading-l">Frequently Asked Questions</h2>
             </div>
 
             <div class="faq-item">
@@ -312,7 +405,10 @@
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer" id="faq1">
-                  <p>Modular homes are factory-built homes designed for efficient construction, transportation, and installation.</p>
+                  <p>
+                     Modular homes are factory-built residential structures designed for efficient
+                     construction, modern comfort, and flexible installation.
+                  </p>
                </div>
             </div>
 
@@ -322,7 +418,10 @@
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer" id="faq2">
-                  <p>Timelines depend on availability, location, and installation requirements.</p>
+                  <p>
+                     The timeline depends on the home model, location, availability, and required
+                     installation process.
+                  </p>
                </div>
             </div>
 
@@ -332,7 +431,10 @@
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer" id="faq3">
-                  <p>Modular homes are designed with flexibility in mind and can be transported and installed in suitable locations.</p>
+                  <p>
+                     Many modular homes are designed for transportation and installation in suitable
+                     locations, offering flexible housing options.
+                  </p>
                </div>
             </div>
 
@@ -342,7 +444,10 @@
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer" id="faq4">
-                  <p>Contact {{ SITE.name|default:"Martin Boxabl" }} to discuss available homes, pricing, and the next steps.</p>
+                  <p>
+                     Many modular homes are designed for transportation and installation in suitable
+                     locations, offering flexible housing options.
+                  </p>
                </div>
             </div>
          </div>
@@ -360,7 +465,7 @@
 
          <div class="contact-content">
                <span class="section-tag">Get In Touch</span>
-               <h2 class="heading-lg">Ready To Find Your Modern Home?</h2>
+               <h2 class="heading-l">Ready To Find Your Modern Home?</h2>
                <p>Contact Martin Boxabl today and learn more about available modular homes and housing solutions.</p>
 
                <div class="contact-details">

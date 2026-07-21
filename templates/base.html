@@ -38,19 +38,18 @@
 
    <title>
       {% block title %}
-      Martin Boxabl | Modern Modular Homes
+      Martin Boxabl | Modern Modular Homes & Prefab Housing Solutions
       {% endblock %}
    </title>
 
-   <!-- SITE BRAND -->
    <meta name="application-name" content="{{ SITE.name }}">
    <meta property="og:site_name" content="{{ SITE.name }}">
 
    <meta name="description"
-      content="{% block meta_description %}Martin Boxabl specializes in modern modular homes, portable homes, and premium resale opportunities designed for affordable, stylish, and efficient living.{% endblock %}">
+   content="{% block meta_description %}Martin Boxabl showcases modern modular homes, prefab houses, and innovative housing solutions designed for efficient, flexible, and comfortable living.{% endblock %}">
 
    <meta name="keywords"
-      content="{% block meta_keywords %}Martin Boxabl, martinboxabl.com, modular homes, portable homes, prefab homes, box homes, tiny homes, affordable housing, modern homes{% endblock %}">
+   content="{% block meta_keywords %}Martin Boxabl, modular homes, modular homes for sale, prefab homes, prefab houses, tiny homes, portable homes, affordable modular homes, modern housing solutions{% endblock %}">
 
    <meta name="author" content="{{ SITE.name }}">
 
@@ -61,18 +60,18 @@
    ========================= -->
 
    <meta property="og:title"
-      content="{% block og_title %}Martin Boxabl | Modern Modular Homes{% endblock %}">
+   content="{% block og_title %}Martin Boxabl | Modern Modular Homes & Prefab Housing{% endblock %}">
 
    <meta property="og:description"
-      content="{% block og_description %}Discover modern modular homes available for resale with Martin Boxabl.{% endblock %}">
+   content="{% block og_description %}Explore modern modular homes, prefab housing solutions, and innovative living spaces designed for the future of housing.{% endblock %}">
 
    <meta property="og:image"
-      content="{% block og_image %}{% static 'images/logo/logo.jpg' %}{% endblock %}">
+   content="{% block og_image %}{% static 'images/logo/logo.jpg' %}{% endblock %}">
 
    <meta property="og:type" content="website">
 
    <meta property="og:url"
-      content="{% block og_url %}https://martinboxabl.com{% endblock %}">
+   content="{% block og_url %}https://martinboxabl.com{% endblock %}">
 
    <!-- =========================
    TWITTER
@@ -81,13 +80,13 @@
    <meta name="twitter:card" content="summary_large_image">
 
    <meta name="twitter:title"
-      content="{% block twitter_title %}Martin Boxabl | Modern Modular Homes{% endblock %}">
+   content="{% block twitter_title %}Martin Boxabl | Modern Modular Homes{% endblock %}">
 
    <meta name="twitter:description"
-      content="{% block twitter_description %}Modern modular homes designed for flexible, affordable, and innovative living.{% endblock %}">
+   content="{% block twitter_description %}Discover innovative modular homes, prefab houses, and flexible housing solutions built for modern living.{% endblock %}">
 
    <meta name="twitter:image"
-      content="{% block twitter_image %}{% static 'images/logo/logo.jpg' %}{% endblock %}">
+   content="{% block twitter_image %}{% static 'images/logo/logo.jpg' %}{% endblock %}">
 
    <!-- =========================
    CANONICAL
@@ -123,13 +122,14 @@
    {% block schema_markup %}
    <script type="application/ld+json">
    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Martin Boxabl",
-      "url": "{{ request.scheme }}://{{ request.get_host }}",
-      "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/logo.png' %}",
-      "email": "martin@martinboxabl.com",
-      "sameAs": [
+      "@context":"https://schema.org",
+      "@type":"Organization",
+      "name":"Martin Boxabl",
+      "url":"https://martinboxabl.com",
+      "logo":"https://martinboxabl.com{% static 'images/logo/logo.png' %}",
+      "email":"martin@martinboxabl.com",
+      "description":"Martin Boxabl showcases modern modular homes, prefab housing solutions, and innovative living spaces.",
+      "sameAs":[
          "{{site.facebook_link}}",
          "{{site.instagram_link}}",
          "{{site.tiktok_link}}"
@@ -139,10 +139,15 @@
 
    <script type="application/ld+json">
    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Martin Boxabl",
-      "url": "{{ request.scheme }}://{{ request.get_host }}"
+      "@context":"https://schema.org",
+      "@type":"WebSite",
+      "name":"Martin Boxabl",
+      "url":"https://martinboxabl.com",
+      "potentialAction":{
+         "@type":"SearchAction",
+         "target":"https://martinboxabl.com/homes-for-sale/?q={search_term_string}",
+         "query-input":"required name=search_term_string"
+      }
    }
    </script>
    {% endblock %}
@@ -217,7 +222,7 @@
    <!-- =========================
    JAVASCRIPT
    ========================= -->
-
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
    <script src="{% static 'js/main.js' %}"></script>
    

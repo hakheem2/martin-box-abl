@@ -4,5 +4,6 @@ Disallow: /admin/
 Disallow: /checkout/
 Disallow: /cart/
 Disallow: /accounts/
+Disallow: /order-success/
 
 Sitemap: https://martinboxabl.com/sitemap.xml

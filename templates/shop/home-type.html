@@ -1,0 +1,580 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ home_type.seo_title|default:home_type.name }} | Martin Boxabl
+{% endblock %}
+
+{% block meta_description %}
+{{ home_type.meta_description|default:home_type.description }}
+{% endblock %}
+
+{% block meta_keywords %}
+{{ home_type.meta_keywords }}
+{% endblock %}
+
+{% block og_title %}
+{{ home_type.name }} For Sale | Modern Prefabricated Housing | Martin Boxabl
+{% endblock %}
+
+{% block og_description %}
+Browse modern {{ home_type.name }} designed for affordable, efficient, and flexible living. Explore prefab home designs, floor plans, and available homes from Martin Boxabl.
+{% endblock %}
+
+{% block og_url %}
+{{ request.scheme }}://{{ request.get_host }}{{ home_type.get_absolute_url }}
+{% endblock %}
+
+{% block twitter_title %}
+{{ home_type.name }} For Sale | Martin Boxabl
+{% endblock %}
+
+{% block twitter_description %}
+Discover modern {{ home_type.name|lower }}, affordable housing solutions, innovative designs, and available homes from
+Martin Boxabl.
+{% endblock %}
+
+{% block canonical_url %}
+{{ request.scheme }}://{{ request.get_host }}{{ home_type.get_absolute_url }}
+{% endblock %}
+
+
+{% block schema_markup %}
+
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"CollectionPage",
+   "name":"{{ home_type.name }} For Sale | Martin Boxabl",
+   "description":"Explore {{ home_type.name|lower }}, modern housing solutions, available floor plans, and affordable homes from Martin Boxabl.",
+   "url":"{{ request.scheme }}://{{ request.get_host }}{{ home_type.get_absolute_url }}",
+   "publisher":{
+      "@type":"Organization",
+      "name":"{{ SITE.name }}",
+      "url":"https://martinboxabl.com"
+   }
+}
+</script>
+
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"FAQPage",
+   "mainEntity":[
+      {
+         "@type":"Question",
+         "name":"What are {{ home_type.name }}?",
+         "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"{{ home_type.description|default:'Modern housing solutions built with efficient construction methods, flexible designs, and quality materials.' }}"
+         }
+      },
+      {
+         "@type":"Question",
+         "name":"How much do {{ home_type.name }} cost?",
+         "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"The cost of {{ home_type.name|lower }} depends on size, design, features, location, and customization options."
+         }
+      },
+      {
+         "@type":"Question",
+         "name":"Can {{ home_type.name }} be customized?",
+         "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Many {{ home_type.name|lower }} can be customized with different layouts, floor plans, finishes, and features."
+         }
+      }
+   ]
+}
+</script>
+
+{% endblock %}
+
+{% block extra_css %}
+   <link rel="stylesheet" href="{% static 'css/home-type.css' %}">
+{% endblock %}
+
+{% block content%}
+<!-- =========================================
+{{ home_type.name }} HERO
+========================================= -->
+<section class="page-hero page-hero-shop">
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+      <div class="page-hero-content">
+         <span class="section-tag">{{ home_type.name }}</span>
+         <h1 class="display-heading">{{ home_type.name }} For Sale Built For Modern Living</h1>
+         <p>Discover {{ home_type.name|lower }} designed for modern lifestyles, efficient construction, and flexible housing
+            solutions. Martin Boxabl helps you explore quality-built homes with innovative designs and comfortable living spaces.
+         </p>
+         <div class="hero-actions">
+            <a href="#homes-grid" class="btn btn-primary">Browse {{ home_type.name }}</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline">Request Consultation</a>
+         </div>
+         <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span>{{ home_type.name }}</span>
+         </nav>
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+{{ home_type.name }} INTRO
+========================================= -->
+
+<section class="section prefab-intro">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="hero-tag">{{ home_type.name }}</span>
+         <h2 class="heading-l">Modern {{ home_type.name }} Designed For Affordable & Flexible Living</h2>
+         <p>Discover innovative {{ home_type.name|lower }} from Martin Boxabl, built for homeowners looking for modern
+            designs, efficient construction, and flexible housing solutions.</p>
+      </div>
+
+      <div class="content-wrapper">
+         <p>
+            {{ home_type.description|default:"Explore modern housing solutions from Martin Boxabl. Our homes are designed with efficient construction, flexible layouts, and comfortable living spaces for different lifestyles." }}
+         </p>
+
+         <p>
+            {{ home_type.name }} provide innovative housing solutions with modern designs,
+            efficient construction methods, and flexible options for homeowners looking
+            for quality living spaces.
+         </p>
+
+         <h3 class="heading-md mt-2">Why Choose {{ home_type.name }}?</h3>
+
+         <div class="row g-4 mt-2">
+            <div class="col-lg-4 col-md-6">
+               <div class="feature-card">
+                  <div class="feature-icon"><i class="bi bi-clock-history"></i></div>
+                  <h3>Faster Construction</h3>
+                  <p>Prefabricated homes are produced in controlled environments, allowing faster completion compared to
+                     traditional construction methods.</p>
+               </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+               <div class="feature-card">
+                  <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                  <h3>Quality Built Homes</h3>
+                  <p>Factory-controlled manufacturing helps maintain consistent quality, accuracy, and reliable
+                     construction standards.</p>
+               </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+               <div class="feature-card">
+                  <div class="feature-icon"><i class="bi bi-house-heart"></i></div>
+                  <h3>Modern Home Designs</h3>
+                  <p>Explore flexible floor plans, stylish layouts, and comfortable living spaces designed around modern
+                     needs.</p>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+
+<!-- =========================================
+AVAILABLE HOME TYPE
+========================================= -->
+
+<section class="section homes-grid-section" id="homes-grid" style="padding-top:0;margin-top:0;">
+   <div class="container">
+
+      <div class="section-header d-flex justify-content-between align-items-center flex-wrap pt-4 pt-md-0">
+         <span class="section-tag">Available {{ home_type.name }}</span>
+         <span>{{ homes.count }} Home {{ homes.count|pluralize }}</span>
+      </div>
+
+      <div class="product-grid-wrapper position-relative">
+
+         <div class="grid product-grid" id="productGrid">
+            {% include "shop/partials/home-list.html" %}
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+BUYING PROCESS
+========================================= -->
+<section class="section buying-process">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Buying Process</span>
+         <h2 class="heading-l">How To Buy Your Prefab Home</h2>
+         <p>Buying a prefab home is straightforward. Our process helps you compare available homes, understand your
+            options, and connect with us for the next steps.</p>
+      </div>
+
+      <div class="row g-4">
+
+         <div class="col-lg-3 col-md-6">
+            <div class="process-card">
+               <div class="process-number">01</div>
+               <div class="process-icon">
+                  <i class="bi bi-search"></i>
+               </div>
+               <h3>Browse Homes</h3>
+               <p>Explore our collection of {{ home_type.name }} and compare layouts, sizes, features, and pricing.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="process-card">
+               <div class="process-number">02</div>
+               <div class="process-icon">
+                  <i class="bi bi-chat-dots"></i>
+               </div>
+               <h3>Speak With Us</h3>
+               <p>Contact our team to discuss availability, floor plans, pricing, and the best home for your needs.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="process-card">
+               <div class="process-number">03</div>
+               <div class="process-icon">
+                  <i class="bi bi-file-earmark-check"></i>
+               </div>
+               <h3>Choose Your Home</h3>
+               <p>Select the prefab home that fits your lifestyle, budget, and preferred design.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="process-card">
+               <div class="process-number">04</div>
+               <div class="process-icon">
+                  <i class="bi bi-house-heart"></i>
+               </div>
+               <h3>Delivery & Installation</h3>
+               <p>We guide you through the delivery process so your new prefab home is ready for its new location.</p>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+EXPLORE MORE HOME TYPES
+========================================= -->
+<section class="section home-types-section">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Explore More</span>
+         <h2 class="heading-l">Discover More Housing Solutions</h2>
+         <p>Explore other modern housing options from Martin Boxabl, including modular homes, tiny homes, portable
+            homes, and affordable housing solutions.</p>
+      </div>
+
+      <div class="category-grid">
+
+         {% for type in related_home_types %}
+         <a href="{{ type.get_absolute_url }}" class="category-link">
+            <article class="category-card">
+
+               <div class="category-image">
+                  {% if type.image %}
+                  <img src="{{ type.image.url }}" alt="{{ type.name }}">
+                  {% else %}
+                  <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ type.name }}">
+                  {% endif %}
+               </div>
+
+               <div class="category-content">
+                  <h3>{{ category.name }}</h3>
+                  <p>{% if type.description %}
+                        {{ type.description|truncatewords:22 }}
+                     {% else %}
+                        Explore modern housing solutions from Martin Boxabl.
+                     {% endif %}</p>
+                  <span class="category-btn">View {{ type.name }}<i class="bi bi-arrow-right"></i></span>
+               </div>
+
+            </article>
+         </a>
+         {% empty %}
+
+         <div class="empty-category text-center">
+            <h3>No home categories available.</h3>
+         </div>
+
+         {% endfor %}
+
+      </div>
+   </div>
+</section>
+
+
+<!-- =========================================
+WHY CHOOSE HOME TYPE
+========================================= -->
+
+<section class="section why-prefab">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Why {{ home_type.name }}?</span>
+         <h2 class="heading-l">Why More Homeowners Are Choosing {{ home_type.name }}</h2>
+         <p>{{ home_type.name }} continue to grow in popularity because they combine modern design, efficient construction,
+            affordability, and long-term value. Whether you're buying your first home, downsizing, investing, or looking
+            for a vacation property, prefabricated homes offer a practical solution without sacrificing comfort.</p>
+      </div>
+
+      <div class="row g-4">
+
+         <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-house-check"></i>
+               </div>
+               <h3>Modern Home Designs</h3>
+               <p>Choose from stylish {{ home_type.name }} featuring open layouts, contemporary finishes, spacious interiors,
+                  and functional floor plans designed for modern living.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-lightning-charge"></i>
+               </div>
+               <h3>Faster Project Completion</h3>
+               <p>Factory-built construction helps reduce build times, allowing many {{ home_type.name }} to be completed much
+                  faster than traditional site-built houses.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-currency-dollar"></i>
+               </div>
+               <h3>Affordable Housing</h3>
+               <p>Efficient manufacturing reduces waste and helps keep many {{ home_type.name }} more affordable while
+                  maintaining excellent quality and durability.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-tree"></i>
+               </div>
+               <h3>Energy Efficient Living</h3>
+               <p>Many modern {{ home_type.name }} are designed with energy-efficient materials and construction methods that
+                  can help reduce long-term utility costs.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-grid"></i>
+               </div>
+               <h3>Flexible Floor Plans</h3>
+               <p>From compact {{ home_type.name }} to spacious family residences, there are floor plans available to match
+                  different lifestyles and budgets.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-4 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-award"></i>
+               </div>
+               <h3>Built To Last</h3>
+               <p>Today's {{ home_type.name }} are manufactured to meet strict building standards, delivering strength,
+                  reliability, and lasting value for homeowners.</p>
+            </div>
+         </div>
+
+      </div>
+
+   </div>
+</section>
+
+<!-- =========================================
+CTA + PREFAB FAQ
+========================================= -->
+
+<section class="cta-faq-section">
+   <div class="container">
+      <div class="cta-faq-wrapper align-items-start">
+
+         <div class="cta-content pt-lg-5">
+            <span class="section-tag">Ready To Get Started?</span>
+
+            <h2 class="heading-l">
+               Find The Right {{ home_type.name }} Today
+            </h2>
+
+            <p>
+               Whether you're searching for affordable {{ home_type.name }}, modern prefabricated houses, or customizable floor
+               plans, Martin Boxabl is here to help you compare options and choose the right home.
+            </p>
+
+            <div class="cta-actions">
+               <a href="{% url 'contact' %}" class="btn btn-outline">
+                  Contact Martin
+               </a>
+            </div>
+
+         </div>
+
+         <div class="faq-wrapper">
+
+            <div class="section-header">
+               <span class="section-tag text-accent p-0">FAQ</span>
+               <h2 class="heading-l text-white">
+                  Prefab Home Questions
+               </h2>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question">
+                  What is a prefab home?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>A prefab home is a house manufactured in sections inside a factory before being transported and
+                     assembled at its permanent location.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question">
+                  Are {{ home_type.name }} cheaper than traditional homes?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Many {{ home_type.name }} are more affordable because factory construction reduces waste, improves
+                     efficiency, and shortens construction time. Final pricing depends on size, finishes,
+                     transportation, and installation.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question">
+                  How long does it take to build a prefab home?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Factory construction is typically much faster than conventional building methods. Overall
+                     completion depends on manufacturing, transportation, site preparation, and installation.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question">
+                  Can {{ home_type.name }} be customized?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes. Many {{ home_type.name }} offer different layouts, bedroom configurations, finishes, kitchens,
+                     bathrooms, and exterior designs.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question">
+                  Are {{ home_type.name }} energy efficient?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Most modern {{ home_type.name }} are designed with quality insulation and energy-efficient construction
+                     techniques that can reduce long-term energy costs.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question">
+                  Can {{ home_type.name }} appreciate in value?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes. Like many residential properties, well-maintained {{ home_type.name }} installed on permanent
+                     foundations may appreciate depending on market conditions and location.</p>
+               </div>
+            </div>
+
+         </div>
+
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+PREFAB HOME GUIDE
+========================================= -->
+
+<section class="section prefab-guide">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">{{ home_type.name }} Guide</span>
+         <h2 class="heading-l">Everything You Need To Know About {{ home_type.name }}</h2>
+      </div>
+
+      <div class="guide-content">
+
+         <h3>What Are {{ home_type.name }}?</h3>
+
+         <p>{{ home_type.description|default:" "|add:home_type.name|add:"are residential buildings manufactured in controlled factory environments before being transported to their permanent location for installation. Modern "|add:home_type.name|add:" combine advanced construction techniques, contemporary architecture, and efficient manufacturing to deliver high-quality housing solutions." }}</p>
+
+         <p>Today's {{ home_type.name }} are available in a wide range of styles, layouts, and sizes. Whether you're looking for
+            a compact retreat, a family residence, or an investment property, prefabricated homes provide flexible
+            housing options that continue to grow in popularity across the United States.</p>
+
+         <h3>Benefits Of Buying A Prefab Home</h3>
+
+         <p>One of the biggest advantages of {{ home_type.name }} is efficiency. Because much of the construction takes place
+            inside a factory, weather delays are reduced and quality standards remain consistent. Buyers also appreciate
+            modern floor plans, energy-efficient materials, and contemporary finishes that fit today's lifestyles.</p>
+
+         <p>Many buyers also choose {{ home_type.name }} because they offer excellent long-term value. Factory-built
+            construction minimizes material waste while producing homes designed to meet strict quality standards.</p>
+
+         <h3>Are {{ home_type.name }} Affordable?</h3>
+
+         <p>Affordability depends on the home's size, customization, location, transportation, and installation
+            requirements. While prices vary, {{ home_type.name }} are often considered a cost-effective alternative to many
+            traditional site-built houses because of their streamlined manufacturing process.</p>
+
+         <h3>Choosing The Right Prefab Home</h3>
+
+         <p>When comparing {{ home_type.name }}, consider your available space, preferred layout, number of bedrooms, bathrooms,
+            future expansion plans, energy efficiency, and overall budget. Choosing the right floor plan ensures your
+            new home meets both your current and future needs.</p>
+
+         <h3>Explore Available {{ home_type.name }}</h3>
+
+         <p>Martin Boxabl helps buyers discover modern {{ home_type.name }} featuring innovative layouts, beautiful designs, and
+            flexible living spaces. Browse our available listings above or contact us to learn more about pricing,
+            availability, and the best prefab home for your lifestyle.</p>
+
+      </div>
+
+   </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/shop-page.js' %}"></script>
+{% endblock %}

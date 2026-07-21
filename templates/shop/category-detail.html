@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}{{ category.name }} | Modular Homes | Martin Boxabl{% endblock %}
+{% block title %}{{ category.name }} For Sale | Modern {{ category.name }} | Martin Boxabl{% endblock %}
 
-{% block meta_description %}Explore {{ category.name }} from Martin Boxabl. Browse modern modular homes designed for comfortable, efficient, and flexible living.{% endblock %}
+{% block meta_description %}
+Browse {{ category.name|lower }} for sale at Martin Boxabl. Explore affordable {{ category.name|lower }}, modern floor plans, flexible layouts, and energy-efficient prefab housing designed for today's lifestyle.
+{% endblock %}
 
 {% block meta_keywords %}{{ category.name }}, modular homes, portable homes, prefab houses, box homes, modern housing, Martin Boxabl{% endblock %}
 
@@ -49,19 +51,19 @@
    <link rel="stylesheet" href="{% static 'css/shop-page.css' %}">
 {% endblock  %}
 
+
 {% block content %}
 
 <!-- =========================================
 SHOP HERO
 ========================================= -->
-
 <section class="page-hero page-hero-shop">
    <div class="page-hero-overlay"></div>
    <div class="container">
       <div class="page-hero-content">
          <span class="section-tag">{{ category.name }}</span>
-         <h1 class="display-heading">Explore {{ category.name }}</h1>
-         <p>{{ category.description|default:"Discover modern modular homes designed for comfortable, efficient, and flexible living." }}</p>
+         <h1 class="display-heading">{{ category.name }} For Sale</h1>
+         <p>Browse our collection of {{ category.name|lower }} for sale. Whether you're searching for affordable prefab housing, energy-efficient modular homes, or modern portable living solutions, Martin Boxabl helps you find the perfect home for your lifestyle and budget.</p>
          <div class="hero-actions">
             <a href="#homes-grid" class="btn btn-primary">Browse Homes</a>
             <a href="{% url 'contact' %}" class="btn btn-outline">Request Consultation</a>
@@ -69,7 +71,7 @@ SHOP HERO
          <nav class="breadcrumb">
             <a href="{% url 'home' %}">Home</a>
             <span>/</span>
-            <a href="{% url 'shop' %}">Homes</a>
+            <a href="{% url 'shop' %}">View Modular Homes</a>
             <span>/</span>
             <span>{{ category.name }}</span>
          </nav>
@@ -78,21 +80,20 @@ SHOP HERO
 </section>
 
 
-
 <!-- =========================================
 SEARCH & FILTER
 ========================================= -->
 {% include "shop/partials/shop-filters.html" %}
 
+
 <!-- =========================================
 AVAILABLE HOMES
 ========================================= -->
-
 <section class="section homes-grid-section" id="homes-grid" style='padding-top: 0; margin-top: 0;'>
    <div class="container">
 
       <div class="section-header w-100 d-flex justify-content-between align-items-center flex-wrap pt-4 pt-md-0">
-         <span class="section-tag">Our Collection </span> 
+         <span class="section-tag">Our Collection</span> 
          <span id="resultCount">{{ homes.count }} Homes</span>
       </div>
 
@@ -106,9 +107,28 @@ AVAILABLE HOMES
          </div>
       </div>
 
-      {% comment %} <div class="homes-pagination">
-         <a href="#" class="btn btn-outline">Load More Homes</a>
-      </div> {% endcomment %}
+   </div>
+</section>
+
+
+<!-- =========================================
+SEO Section
+========================================= -->
+<section class="section section-light">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">About {{ category.name }}</span>
+         <h2 class="heading-lg">Everything You Need To Know About {{ category.name }}</h2>
+      </div>
+
+      <p>
+         {{ category.name }} have become one of the fastest-growing housing options thanks to their affordability, faster construction, energy efficiency, and modern designs. Whether you're looking for a primary residence, vacation property, guest house, or investment opportunity, these homes provide excellent value without compromising quality.
+      </p>
+
+      <p>
+         At Martin Boxabl, we help buyers discover quality {{ category.name|lower }} for sale with flexible layouts, modern finishes, and competitive pricing. Browse our available homes or contact our team for expert guidance.
+      </p>
 
    </div>
 </section>
@@ -122,8 +142,8 @@ WHY CHOOSE MARTIN
 
       <div class="section-header">
          <span class="section-tag">Why Choose Us</span>
-         <h2 class="heading-lg">Why Buy Through {{ SITE.name|default:"Martin Boxabl" }}?</h2>
-         <p>We make finding and purchasing a modern modular home simple, transparent, and stress-free from your first inquiry to final delivery.</p>
+         <h2 class="heading-lg">Why Choose Our {{ category.name }}?</h2>
+         <p>Our {{ category.name|lower }} combine modern architecture, quality construction, energy efficiency, and flexible floor plans to deliver affordable housing without sacrificing comfort.</p>
       </div>
 
       <div class="row g-4">
@@ -132,8 +152,8 @@ WHY CHOOSE MARTIN
                <div class="feature-icon">
                   <i class="bi bi-house-check"></i>
                </div>
-               <h3>Premium Selection</h3>
-               <p>Every home is carefully selected for quality, design, functionality, and long-term value.</p>
+               <h3>Modern Design</h3>
+               <p>Beautiful layouts optimized for modern living.</p>
             </div>
          </div>
 
@@ -142,8 +162,8 @@ WHY CHOOSE MARTIN
                <div class="feature-icon">
                   <i class="bi bi-currency-dollar"></i>
                </div>
-               <h3>Competitive Pricing</h3>
-               <p>Enjoy competitive resale pricing without compromising on quality or modern features.</p>
+               <h3>Faster Construction</h3>
+               <p>Factory-built homes reduce construction time.</p>
             </div>
          </div>
 
@@ -152,8 +172,8 @@ WHY CHOOSE MARTIN
                <div class="feature-icon">
                   <i class="bi bi-truck"></i>
                </div>
-               <h3>Reliable Delivery</h3>
-               <p>We guide you through delivery logistics and installation planning every step of the way.</p>
+               <h3>Energy Efficient</h3>
+               <p>Designed to reduce energy costs.</p>
             </div>
          </div>
 
@@ -162,8 +182,8 @@ WHY CHOOSE MARTIN
                <div class="feature-icon">
                   <i class="bi bi-headset"></i>
                </div>
-               <h3>Dedicated Support</h3>
-               <p>Receive personalized guidance before, during, and after your purchase.</p>
+               <h3>Flexible Floor Plans</h3>
+               <p>Choose layouts that fit every lifestyle.</p>
             </div>
          </div>
       </div>
@@ -234,8 +254,9 @@ TESTIMONIALS
 
       <div class="section-header">
          <span class="section-tag">Testimonials</span>
-         <h2 class="heading-lg">What Our Clients Say</h2>
-         <p>Hear from homeowners who trusted {{ SITE.name|default:"Martin Boxabl" }} to help them find the perfect modular home.</p>
+         <h2 class="heading-l">What Our Clients Say</h2>
+         <p>Hear from homeowners who trusted {{ SITE.name|default:"Martin Boxabl" }} to help them find the perfect
+            modular home.</p>
       </div>
 
       <div class="row g-4">
@@ -251,9 +272,10 @@ TESTIMONIALS
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                </div>
-               <p>Martin made the entire buying process incredibly simple. The home exceeded our expectations and the support was outstanding from start to finish.</p>
+               <p>Martin made the entire buying process incredibly simple. The home exceeded our expectations and the
+                  support was outstanding from start to finish.</p>
                <div class="testimonial-author">
-                  <img src="{% static 'images/testimonials/client-1.jpg' %}" alt="Sarah Johnson">
+                  <img src="{% static 'images/testimonials/default-image.jpg' %}" alt="Sarah Johnson">
                   <div>
                      <h4>Sarah Johnson</h4>
                      <span>California, USA</span>
@@ -274,9 +296,10 @@ TESTIMONIALS
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                </div>
-               <p>We were looking for a modern home without spending years building. Martin helped us every step of the way.</p>
+               <p>We were looking for a modern home without spending years building. Martin helped us every step of the
+                  way.</p>
                <div class="testimonial-author">
-                  <img src="{% static 'images/testimonials/client-2.jpg' %}" alt="Michael Brown">
+                  <img src="{% static 'images/testimonials/default-image.jpg' %}" alt="Michael Brown">
                   <div>
                      <h4>Michael Brown</h4>
                      <span>Texas, USA</span>
@@ -297,9 +320,10 @@ TESTIMONIALS
                   <i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i>
                </div>
-               <p>Excellent communication, competitive pricing, and a beautiful modular home that perfectly matched our family's needs.</p>
+               <p>Excellent communication, competitive pricing, and a beautiful modular home that perfectly matched our
+                  family's needs.</p>
                <div class="testimonial-author">
-                  <img src="{% static 'images/testimonials/client-3.jpg' %}" alt="Emily Wilson">
+                  <img src="{% static 'images/testimonials/default-image.jpg' %}" alt="Emily Wilson">
                   <div>
                      <h4>Emily Wilson</h4>
                      <span>Florida, USA</span>
@@ -315,17 +339,15 @@ TESTIMONIALS
 <!-- =========================================
 ABOUT CTA + FAQ SECTION
 ========================================= -->
-
 <section class="cta-faq-section">
    <div class="container">
-      <div class="cta-faq-wrapper">
+      <div class="cta-faq-wrapper align-items-start">
 
          <!-- CTA CONTENT -->
          <div class="cta-content">
             <span class="section-tag">Let's Get Started</span>
-            <h2 class="heading-lg">Your Modern Modular Home Is Closer Than You Think</h2>
-            <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
-               resale opportunities and personalized support.</p>
+            <h2 class="heading-lg">Find The Right {{ category.name }} Today</h2>
+            <p>Browse available {{ category.name|lower }} or contact Martin Boxabl to discuss pricing, availability, financing, and delivery.</p>
             <div class="cta-actions">
                <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
             </div>
@@ -334,48 +356,97 @@ ABOUT CTA + FAQ SECTION
          <!-- FAQ CONTENT -->
          <div class="faq-wrapper">
             <div class="section-header">
-               <span class="section-tag">FAQ</span>
-               <h2 class="heading-lg">Common Questions</h2>
+               <span class="section-tag text-accent">FAQ</span>
+               <h2 class="heading-lg">Questions about {{ category.name }}</h2>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  What makes modular homes different?
+                  What are {{ category.name }}?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>Modular homes are built with modern construction methods designed for efficiency, quality, and
-                     flexibility.</p>
+                  <p>{{ category.name }} are factory-built homes designed to provide a faster, more efficient alternative to traditional site-built houses. They offer modern layouts, quality construction, energy-efficient features, and flexible living spaces for homeowners looking for affordable housing solutions.</p>
                </div>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  Why choose Martin Boxabl?
+                  How much do {{ category.name }} cost?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>We provide trusted guidance and help buyers access modern modular housing solutions.</p>
+                  <p>The cost of {{ category.name|lower }} depends on factors such as size, floor plan, materials, included features, customization options, transportation, and installation. Contact Martin Boxabl for current pricing and available inventory.</p>
                </div>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  Can I view available homes before buying?
+                  Are {{ category.name }} built to last?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>Yes, available homes can be reviewed and discussed before moving forward with a purchase.</p>
+                  <p>Yes. Modern {{ category.name|lower }} are built using durable materials and engineered to meet applicable building codes. With proper installation and maintenance, they can provide long-lasting performance comparable to many traditional homes.</p>
                </div>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  How do I start the process?
+                  Can {{ category.name }} be customized?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>Contact us and we will guide you through available options, pricing, and next steps.</p>
+                  <p>Many {{ category.name|lower }} can be customized with different floor plans, bedroom layouts, kitchens, bathrooms, finishes, and exterior styles. Available customization options vary depending on the home model and manufacturer.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Are {{ category.name }} energy efficient?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes. Most modern {{ category.name|lower }} include quality insulation, energy-efficient windows, and advanced construction techniques that help reduce heating and cooling costs while improving year-round comfort.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Can I finance {{ category.name }}?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>In many cases, yes. Financing options are available through banks, credit unions, and mortgage lenders, depending on the home type, installation method, land ownership, and your financial qualifications.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  How long does it take to receive {{ category.name }}?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Delivery timelines depend on inventory availability, customization requirements, transportation distance, and site preparation. Factory-built homes are often completed and delivered much faster than traditional construction projects.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Do {{ category.name }} increase in value?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Like many residential properties, well-maintained {{ category.name|lower }} installed on permanent foundations can appreciate in value over time. Appreciation depends on factors such as location, market demand, property condition, and ongoing maintenance.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Why choose Martin Boxabl for {{ category.name|lower }}?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Martin Boxabl helps buyers explore quality {{ category.name|lower }}, compare available models, understand pricing, and receive expert guidance throughout the buying process. Our goal is to make purchasing a modern factory-built home simple, transparent, and stress-free.</p>
                </div>
             </div>
          </div>

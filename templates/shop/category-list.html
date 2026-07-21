@@ -1,9 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Home Categories | Martin Boxabl{% endblock %}
+{% block title %}Modular Home Types & Categories | Martin Boxabl{% endblock %}
 
-{% block meta_description %}Explore all modular home categories from Martin Boxabl. Discover modern portable homes, prefab houses, and flexible housing solutions.{% endblock %}
+{% block meta_description %}
+Explore modular home types and categories from Martin Boxabl. Browse modern modular homes, prefab houses, portable homes, and flexible housing solutions designed for different lifestyles and budgets.
+{% endblock %}
+
+{% block meta_keywords %}
+modular home types, modular homes, prefab home types, portable homes, tiny homes, prefab houses, affordable modular homes, modern homes, Martin Boxabl
+{% endblock %}
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"CollectionPage",
+   "name":"Modular Home Types & Categories | Martin Boxabl",
+   "description":"Explore modular homes, prefab houses, portable homes, and modern housing categories.",
+   "url":"https://martinboxabl.com/categories/",
+   "publisher":{
+      "@type":"Organization",
+      "name":"Martin Boxabl",
+      "url":"https://martinboxabl.com"
+   }
+}
+</script>
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/category-page.css' %}">
@@ -19,8 +42,8 @@ CATEGORY HERO
    <div class="container">
       <div class="category-hero-content">
          <span class="section-tag">Explore Homes</span>
-         <h1>Find The Perfect Modular Home</h1>
-         <p>Browse our collection of modern modular homes designed for comfort, efficiency, and flexible living.</p>
+        <h1>Explore Modular Home Types & Housing Options</h1>
+         <p>Discover modern modular homes, prefab houses, portable homes, and innovative housing solutions designed for affordable, efficient, and comfortable living.</p>
          <div class="hero-actions">
             <a href="{% url 'shop' %}" class="btn btn-primary">View All Homes</a>
             <a href="{% url 'contact' %}" class="btn btn-light btn-outline-success">Request Consultation</a>
@@ -41,8 +64,9 @@ CATEGORY GRID
 <div class="container">
    <div class="section-header text-center">
       <span class="section-tag">Home Categories</span>
-      <h2 class="heading-lg">Choose Your Home Style</h2>
-      <p>Explore different layouts and designs created for modern lifestyles.</p>
+      <h2 class="heading-l">Browse Our Modular Home Categories</h2>
+      <p>Explore different types of modular homes, from compact portable houses to spacious prefab homes built for modern
+         living.</p>
    </div>
 
    <div class="category-grid">
@@ -58,7 +82,7 @@ CATEGORY GRID
             </div>
             <div class="category-content">
                <h3>{{ category.name }}</h3>
-               <p>{{ category.description|default:"Explore modern modular homes designed for efficient and comfortable living."|truncatewords:18 }}</p>
+               <p>{{ category.description|default:"Explore "|add:category.name|add:" designed with modern layouts, efficient construction, and flexible living solutions."|truncatewords:22 }}</p>
                <span class="category-btn">
                   Explore Homes
                   <i class="bi bi-arrow-right"></i>
@@ -77,19 +101,127 @@ CATEGORY GRID
 </section>
 
 <!-- =========================================
-CTA SECTION
+ABOUT CTA + FAQ SECTION
 ========================================= -->
-<section class="category-cta">
-<div class="container">
-   <div class="category-cta-box">
-      <div>
-         <span class="section-tag">Need Help?</span>
-         <h2>Not Sure Which Home Fits You?</h2>
-         <p>Our team can help you choose the right modular home based on your space, lifestyle, and budget.</p>
+
+<section class="cta-faq-section">
+   <div class="container">
+      <div class="cta-faq-wrapper align-items-start">
+
+         <!-- CTA CONTENT -->
+         <div class="cta-content pt-lg-5">
+            <span class="section-tag">Let's Get Started</span>
+            <h2 class="heading-l">Your Modern Modular Home Is Closer Than You Think</h2>
+            <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
+               resale opportunities and personalized support.</p>
+            <div class="cta-actions">
+               <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
+            </div>
+         </div>
+
+         <!-- FAQ CONTENT -->
+         <div class="faq-wrapper">
+            <div class="section-header">
+               <span class="section-tag text-accent p-0">FAQ</span>
+               <h2 class="heading-l text-white">Modular Home Category Questions</h2>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  What types of modular homes are available?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Modular homes are available in many styles including portable homes, prefab houses, tiny homes, family homes, and custom modular housing options designed for different needs and budgets.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  What is the difference between prefab and modular homes?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Prefab homes are built off-site in a factory. Modular homes are a specific type of prefab construction where
+                     sections are manufactured and assembled together on the final site.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  How much do modular homes cost?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>The cost of a modular home depends on its size, floor plan, materials, features, and delivery
+                     location. Smaller modular and tiny homes are generally more affordable, while larger custom homes
+                     cost more. Contact Martin Boxabl for current availability and pricing information.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Can modular homes be financed?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes. Many modular homes qualify for financing through banks, credit unions, and mortgage lenders.
+                     Financing options depend on the home, land ownership, and your lender's requirements.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Do modular homes, prefab homes increase in value?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Like traditional homes, modular homes can appreciate in value depending on their location,
+                     maintenance, market demand, and overall condition. A well-maintained modular home installed on a
+                     permanent foundation may gain value over time.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Where can I buy modular homes in the USA?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Martin Boxabl helps buyers explore modern modular homes, prefab homes, portable homes, and tiny
+                     homes available across the United States. Browse our available listings or contact us to discuss
+                     the right home for your needs.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Are tiny homes and modular homes the same?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>No. Tiny homes refer to homes with a small living footprint, while modular homes describe how a
+                     home is built. A tiny home can be modular, portable, or site-built, depending on its design and
+                     construction method.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Can modular homes be customized?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes. Many modular homes can be customized with different floor plans, bedroom layouts, exterior
+                     finishes, kitchens, bathrooms, and interior features. Available customization options vary
+                     depending on the manufacturer and home model.</p>
+               </div>
+            </div>
+
+         </div>
+
       </div>
-      <a href="{% url 'contact' %}" class="btn btn-light btn-outline-success">Contact Martin Boxabl</a>
    </div>
-</div>
 </section>
 
 {% endblock %}

@@ -2,15 +2,15 @@
 {% load static %}
 
 {% block title %}
-Portable Homes For Sale | Martin Boxabl
+Modular Homes For Sale | Prefab, Portable & Tiny Homes | Martin Boxabl
 {% endblock %}
 
 {% block meta_description %}
-Explore modern portable homes, modular houses, and affordable box homes available for sale with Martin Boxabl. Discover stylish, efficient, and customizable housing solutions.
+Browse modular homes for sale, prefab homes, portable homes, tiny homes, and modern house kits with Martin Boxabl. Compare floor plans, prices, and affordable modular housing solutions across the USA.
 {% endblock %}
 
 {% block meta_keywords %}
-portable homes for sale, modular homes, box homes, prefab houses, tiny homes, affordable homes, modern housing, Martin Boxabl
+modular homes for sale, modular homes USA, modular homes price list, prefab homes for sale, prefab house kits with prices, portable homes for sale, tiny homes for sale, boxabl homes for sale, affordable modular homes, Martin Boxabl
 {% endblock %}
 
 {% block og_title %}
@@ -77,11 +77,9 @@ SHOP HERO
    <div class="container">
       <div class="page-hero-content">
 
-         <span class="section-tag">Available Homes</span>
-
-         <h1 class="display-heading">Discover Your Perfect Modular Home</h1>
-
-         <p>Explore our carefully selected collection of premium modular homes designed for modern living. Whether you're looking for a compact retreat or a spacious family residence, {{ SITE.name|default:"Martin Boxabl" }} helps you find the perfect solution at competitive prices.</p>
+         <span class="section-tag">Modular Homes For Sale</span>
+         <h1 class="display-heading">Modular Homes, Prefab Homes & Portable Homes For Sale</h1>
+         <p>Browse modern modular homes for sale, prefab homes, portable homes, tiny homes, and innovative housing solutions. Martin Boxabl helps buyers compare floor plans, prices, layouts, and available homes across the United States.</p>
 
          <div class="hero-actions">
             <a href="#homes-grid" class="btn btn-primary">Browse Homes</a>
@@ -103,6 +101,28 @@ SHOP HERO
 SEARCH & FILTER
 ========================================= -->
 {% include "shop/partials/shop-filters.html" %}
+
+<!-- =========================================
+SHOP INTRO
+========================================= -->
+<section class="section" style="padding: 0;">
+   <div class="container">
+
+      <div class="section-header" style="padding: 10px 0; margin: 0;">
+         <span class="hero-tag">Modern Housing Solutions</span>
+         <h2 class="heading-l">Find The Right Modular Home For Your Lifestyle</h2>
+      </div>
+
+      <p>Whether you're searching for modular homes for sale, prefab homes, portable homes, or tiny homes, Martin Boxabl
+         makes it easier to compare modern housing solutions in one place. Explore affordable modular homes, luxury
+         prefab homes, small portable houses, and innovative home designs built for comfortable living.</p>
+
+      <p>Our collection includes compact tiny homes, spacious family modular homes, portable homes with bathrooms,
+         modern prefab houses, and flexible housing options designed for homeowners, investors, retirees, and vacation
+         property buyers.</p>
+
+   </div>
+</section>
 
 <!-- =========================================
 AVAILABLE HOMES
@@ -134,64 +154,6 @@ AVAILABLE HOMES
 </section>
 
 <!-- =========================================
-WHY CHOOSE MARTIN
-========================================= -->
-
-<section class="section why-martin">
-   <div class="container">
-
-      <div class="section-header">
-         <span class="section-tag">Why Choose Us</span>
-         <h2 class="heading-lg">Why Buy Through {{ SITE.name|default:"Martin Boxabl" }}?</h2>
-         <p>We make finding and purchasing a modern modular home simple, transparent, and stress-free from your first inquiry to final delivery.</p>
-      </div>
-
-      <div class="row g-4">
-         <div class="col-lg-3 col-md-6">
-            <div class="feature-card">
-               <div class="feature-icon">
-                  <i class="bi bi-house-check"></i>
-               </div>
-               <h3>Premium Selection</h3>
-               <p>Every home is carefully selected for quality, design, functionality, and long-term value.</p>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-6">
-            <div class="feature-card">
-               <div class="feature-icon">
-                  <i class="bi bi-currency-dollar"></i>
-               </div>
-               <h3>Competitive Pricing</h3>
-               <p>Enjoy competitive resale pricing without compromising on quality or modern features.</p>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-6">
-            <div class="feature-card">
-               <div class="feature-icon">
-                  <i class="bi bi-truck"></i>
-               </div>
-               <h3>Reliable Delivery</h3>
-               <p>We guide you through delivery logistics and installation planning every step of the way.</p>
-            </div>
-         </div>
-
-         <div class="col-lg-3 col-md-6">
-            <div class="feature-card">
-               <div class="feature-icon">
-                  <i class="bi bi-headset"></i>
-               </div>
-               <h3>Dedicated Support</h3>
-               <p>Receive personalized guidance before, during, and after your purchase.</p>
-            </div>
-         </div>
-      </div>
-
-   </div>
-</section>
-
-<!-- =========================================
 BUYING PROCESS
 ========================================= -->
 
@@ -200,8 +162,9 @@ BUYING PROCESS
 
       <div class="section-header">
          <span class="section-tag">Simple Process</span>
-         <h2 class="heading-lg">Your Journey To A New Home</h2>
-         <p>Purchasing your modular home is straightforward. We guide you through every stage, ensuring a smooth and transparent experience.</p>
+         <h2 class="heading-l">How To Buy A Modular Home</h2>
+         <p>Buying a prefab home doesn't have to be complicated. Our step-by-step process helps you compare homes, understand
+            pricing, and move toward ownership with confidence.</p>
       </div>
 
       <div class="process-wrapper">
@@ -245,16 +208,184 @@ BUYING PROCESS
    </div>
 </section>
 
+
+<!-- =========================================
+EXPLORE MORE HOME TYPES
+========================================= -->
+<section class="section home-types-section">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Explore More</span>
+         <h2 class="heading-l">Discover More Housing Solutions</h2>
+         <p>Explore other modern housing options from Martin Boxabl, including modular homes, tiny homes, portable
+            homes, and affordable housing solutions.</p>
+      </div>
+
+      <div class="category-grid">
+
+         {% for type in home_types %}
+         <a href="{{ type.get_absolute_url }}" class="category-link">
+            <article class="category-card">
+
+               <div class="category-image">
+                  {% if type.image %}
+                  <img src="{{ type.image.url }}" alt="{{ type.name }}">
+                  {% else %}
+                  <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ type.name }}">
+                  {% endif %}
+               </div>
+
+               <div class="category-content">
+                  <h3>{{ category.name }}</h3>
+                  <p>{% if type.description %}
+                        {{ type.description|truncatewords:22 }}
+                     {% else %}
+                        Explore modern housing solutions from Martin Boxabl.
+                     {% endif %}</p>
+                  <span class="category-btn">View {{ type.name }}<i class="bi bi-arrow-right"></i></span>
+               </div>
+
+            </article>
+         </a>
+         {% empty %}
+
+         <div class="empty-category text-center">
+            <h3>No home categories available.</h3>
+         </div>
+
+         {% endfor %}
+
+      </div>
+   </div>
+</section>
+
+
+<!-- =========================================
+POPULAR HOME CATEGORIES
+========================================= -->
+<section class="section category-section">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Popular Home Categories</span>
+         <h2 class="heading-l">Browse Modular, Prefab & Portable Homes</h2>
+         <p>Explore our most popular categories featuring modular homes for sale, prefab homes, portable homes, tiny
+            homes, and modern housing solutions designed for every lifestyle and budget.</p>
+      </div>
+
+      <div class="category-grid">
+
+         {% for category in featured_categories %}
+         <a href="{{ category.get_absolute_url }}" class="category-link">
+            <article class="category-card">
+
+               <div class="category-image">
+                  {% if category.image %}
+                  <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                  {% else %}
+                  <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ category.name }}">
+                  {% endif %}
+               </div>
+
+               <div class="category-content">
+                  <h3>{{ category.name }}</h3>
+                  <p>{% if category.description %}
+                        {{ category.description|truncatewords:22 }}
+                     {% else %}
+                        Explore {{ category.name | lower }} with modern floor plans, innovative designs, competitive pricing, and
+                        flexible living solutions from Martin Boxabl.
+                     {% endif %}</p>
+                  <span class="category-btn">View {{ category.name }}<i class="bi bi-arrow-right"></i></span>
+               </div>
+
+            </article>
+         </a>
+         {% empty %}
+
+         <div class="empty-category text-center">
+            <h3>No home categories available.</h3>
+         </div>
+
+         {% endfor %}
+
+      </div>
+
+   </div>
+</section>
+
+
+<!-- =========================================
+WHY CHOOSE MARTIN
+========================================= -->
+<section class="section why-martin">
+   <div class="container">
+
+      <div class="section-header">
+         <h2 class="heading-l">Why Buy Modular Homes Through Martin Boxabl?</h2>
+         <p>Finding the right modular home should be simple. Martin Boxabl helps buyers compare available prefab homes,
+            portable
+            homes, and modern modular housing while providing trusted guidance throughout the buying process.</p>
+      </div>
+
+      <div class="row g-4">
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-house-check"></i>
+               </div>
+               <h3>Curated Modular Homes</h3>
+               <p>Browse carefully selected modular homes, prefab homes, portable homes, and tiny homes from modern
+                  manufacturers.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-currency-dollar"></i>
+               </div>
+               <h3>Transparent Pricing</h3>
+               <p>Compare modular home prices, prefab house costs, and available home options before making your
+                  decision.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-truck"></i>
+               </div>
+               <h3>Industry Knowledge</h3>
+               <p>Learn about modular construction, floor plans, home layouts, delivery options, and current housing
+                  trends.</p>
+            </div>
+         </div>
+
+         <div class="col-lg-3 col-md-6">
+            <div class="feature-card">
+               <div class="feature-icon">
+                  <i class="bi bi-headset"></i>
+               </div>
+               <h3>Expert Guidance</h3>
+               <p>Receive professional assistance while choosing the modular home that best matches your budget and
+                  lifestyle.</p>
+            </div>
+         </div>
+      </div>
+
+   </div>
+</section>
+
 <!-- =========================================
 TESTIMONIALS
 ========================================= -->
-
 <section class="section testimonials">
    <div class="container">
 
       <div class="section-header">
          <span class="section-tag">Testimonials</span>
-         <h2 class="heading-lg">What Our Clients Say</h2>
+         <h2 class="heading-l">What Our Clients Say</h2>
          <p>Hear from homeowners who trusted {{ SITE.name|default:"Martin Boxabl" }} to help them find the perfect modular home.</p>
       </div>
 
@@ -333,17 +464,17 @@ TESTIMONIALS
 </section>
 
 <!-- =========================================
-ABOUT CTA + FAQ SECTION
+CTA + FAQ SECTION
 ========================================= -->
 
 <section class="cta-faq-section">
    <div class="container">
-      <div class="cta-faq-wrapper">
+      <div class="cta-faq-wrapper align-items-start">
 
          <!-- CTA CONTENT -->
-         <div class="cta-content">
+         <div class="cta-content pt-lg-5">
             <span class="section-tag">Let's Get Started</span>
-            <h2 class="heading-lg">Your Modern Modular Home Is Closer Than You Think</h2>
+            <h2 class="heading-l">Your Modern Modular Home Is Closer Than You Think</h2>
             <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
                resale opportunities and personalized support.</p>
             <div class="cta-actions">
@@ -354,55 +485,115 @@ ABOUT CTA + FAQ SECTION
          <!-- FAQ CONTENT -->
          <div class="faq-wrapper">
             <div class="section-header">
-               <span class="section-tag">FAQ</span>
-               <h2 class="heading-lg">Common Questions</h2>
+               <span class="section-tag text-accent p-0">FAQ</span>
+               <h2 class="heading-l text-white">Common Questions</h2>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  What makes modular homes different?
+                  What is the difference between a modular home and a prefab home?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>Modular homes are built with modern construction methods designed for efficiency, quality, and
-                     flexibility.</p>
+                  <p>A prefab home is any home built in a factory before being transported to its final location. A modular home is a type of prefab home that is constructed in sections, delivered to the building site, and permanently installed on a foundation while meeting local building codes.</p>
                </div>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  Why choose Martin Boxabl?
+                  How much do modular homes cost?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>We provide trusted guidance and help buyers access modern modular housing solutions.</p>
+                  <p>The cost of a modular home depends on its size, floor plan, materials, features, and delivery location. Smaller modular and tiny homes are generally more affordable, while larger custom homes cost more. Contact Martin Boxabl for current availability and pricing information.</p>
                </div>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  Can I view available homes before buying?
+                  Are portable homes cheaper than traditional houses?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>Yes, available homes can be reviewed and discussed before moving forward with a purchase.</p>
+                  <p>In many cases, portable homes can be more affordable than traditional site-built houses because they are manufactured in controlled factory environments that reduce construction time and material waste. However, final costs vary depending on transportation, installation, and site preparation.</p>
                </div>
             </div>
 
             <div class="faq-item">
                <button class="faq-question" type="button">
-                  How do I start the process?
+                  Can modular homes be financed?
                   <span class="faq-icon">+</span>
                </button>
                <div class="faq-answer">
-                  <p>Contact us and we will guide you through available options, pricing, and next steps.</p>
+                  <p>Yes. Many modular homes qualify for financing through banks, credit unions, and mortgage lenders. Financing options depend on the home, land ownership, and your lender's requirements.</p>
                </div>
             </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Do modular homes increase in value?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Like traditional homes, modular homes can appreciate in value depending on their location, maintenance, market demand, and overall condition. A well-maintained modular home installed on a permanent foundation may gain value over time.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Where can I buy modular homes in the USA?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Martin Boxabl helps buyers explore modern modular homes, prefab homes, portable homes, and tiny homes available across the United States. Browse our available listings or contact us to discuss the right home for your needs.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Are tiny homes and modular homes the same?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>No. Tiny homes refer to homes with a small living footprint, while modular homes describe how a home is built. A tiny home can be modular, portable, or site-built, depending on its design and construction method.</p>
+               </div>
+            </div>
+
+            <div class="faq-item">
+               <button class="faq-question" type="button">
+                  Can modular homes be customized?
+                  <span class="faq-icon">+</span>
+               </button>
+               <div class="faq-answer">
+                  <p>Yes. Many modular homes can be customized with different floor plans, bedroom layouts, exterior finishes, kitchens, bathrooms, and interior features. Available customization options vary depending on the manufacturer and home model.</p>
+               </div>
+            </div>
+            
          </div>
 
       </div>
    </div>
 </section>
+
+<section class="section">
+   <div class="container">
+
+      <div class="section-header">
+         <span class="section-tag">Modular Home Guide</span>
+         <h2 class="heading-l">Everything You Need To Know About Modular Homes</h2>
+      </div>
+
+      <p>Modern modular homes have become one of the fastest-growing housing solutions in the United States. Homeowners
+         choose prefab homes because they offer faster construction, quality manufacturing, energy efficiency, and
+         flexible floor plans.</p>
+
+      <p>Whether you're comparing modular homes for sale, portable homes, tiny homes, or prefab house kits with prices,
+         understanding your options is the first step toward choosing the right home. Martin Boxabl provides
+         information, inspiration, and available home listings to help buyers make informed decisions.</p>
+
+   </div>
+</section>
+
 {% endblock %}
 
 {% block extra_js %}

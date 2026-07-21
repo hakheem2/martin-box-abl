@@ -1,13 +1,12 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Category, Home, HomeGallery, Specification
+from .models import HomeType, Category, Home, HomeGallery, Specification
 
 
 # =========================================
 # CATEGORY
 # =========================================
-
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
    list_display = ("image_preview", "name", "active", "created_at")
@@ -18,6 +17,41 @@ class CategoryAdmin(admin.ModelAdmin):
 
    fieldsets = (
       ("Category", {
+         "fields": (
+               "name",
+               "slug",
+               "description",
+               "image",
+               "image_preview",
+               "active",
+         )
+      }),
+   )
+
+   def image_preview(self, obj):
+      if obj.image:
+         return format_html(
+               '<img src="{}" width="70" style="border-radius:8px;">',
+               obj.image.url
+         )
+      return "-"
+
+   image_preview.short_description = "Preview"
+
+
+# =========================================
+# HOMETYPE
+# =========================================
+@admin.register(HomeType)
+class HomeTypeAdmin(admin.ModelAdmin):
+   list_display = ("image_preview", "name", "active", "created_at")
+   list_filter = ("active",)
+   search_fields = ("name",)
+   readonly_fields = ("slug", "image_preview")
+   ordering = ("name",)
+
+   fieldsets = (
+      ("Home Type", {
          "fields": (
                "name",
                "slug",
@@ -118,6 +152,7 @@ class HomeAdmin(admin.ModelAdmin):
 
       ("Basic Information", {
          "fields": (
+               "home_type",
                "category",
                "name",
                "slug",

@@ -4,6 +4,8 @@ from django.db import models
 class SiteSettings(models.Model):
    name = models.CharField(max_length=100, default="Martin Boxabl")
 
+   ceo = models.CharField(max_length=100, default="Martin Noe Costas")
+
    number = models.CharField(max_length=50, blank=True, null=True)
 
    email = models.EmailField(blank=True, null=True)

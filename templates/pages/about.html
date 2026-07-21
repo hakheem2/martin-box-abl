@@ -6,19 +6,15 @@ PAGE TITLE
 ========================= -->
 
 {% block title %}
-About {{ SITE.name|default:"Martin Boxabl" }} | Modern Modular Home Reseller
+About Martin Boxabl | Modern Modular Homes & Future Housing Solutions
 {% endblock %}
 
-<!-- =========================
-SEO
-========================= -->
-
 {% block meta_description %}
-Learn about {{ SITE.name|default:"Martin Boxabl" }}, our mission to make modern modular homes more accessible through trusted resale opportunities across the United States.
+Discover the vision behind Martin Boxabl, showcasing modern modular homes, prefab housing solutions, and innovative construction concepts designed for the future of living.
 {% endblock %}
 
 {% block meta_keywords %}
-{{ SITE.name|default:"Martin Boxabl" }}, Martin Boxabl, martinboxabl.com, modular homes, portable homes, prefab homes, Boxabl reseller, modern homes, affordable modular housing
+Martin Boxabl, modular homes, prefab homes, modular homes for sale, portable homes, tiny homes, modern housing solutions, prefab house designs, future of housing
 {% endblock %}
 
 <!-- =========================
@@ -95,10 +91,15 @@ CONTENT
 
          <span class="section-tag">About {{ SITE.name|default:"Martin Boxabl" }}</span>
 
-         <h1 class="display-heading">Bringing Modern Modular Homes Within Reach</h1>
+         <h1 class="display-heading">
+            Redefining The Future Of Modular Housing
+         </h1>
 
-         <p>Learn the story behind {{ SITE.name|default:"Martin Boxabl" }}, our mission, and our commitment to making
-            premium modular homes more accessible through trusted resale opportunities.</p>
+         <p>
+            Martin Boxabl explores the future of modern living through innovative modular
+            homes, advanced construction concepts, and smarter housing solutions designed
+            for today's homeowners.
+         </p>
 
          <nav class="breadcrumb">
             <a href="{% url 'home' %}">Home</a>
@@ -116,9 +117,12 @@ OUR STORY
 
 <section class="section about-story">
    <div class="container">
-      <div class="row align-items-center g-5 align-items-center">
+      <div class="row g-5 align-items-start">
 
-         <div class="col-lg-6">
+         <div class="col-lg-6 pt-lg-5">
+            <h1 class="heading-l d-none d-lg-block">
+               A Vision For Smarter Modern Living: Scaling Boxabl's Modular Housing Strategy
+            </h1>
             <div class="about-story-image">
                <img src="{% static 'images/pages/about-martin.jpg' %}" class="img-fluid rounded-4"
                   alt="{{ SITE.name|default:'Martin Boxabl' }} - Modern modular home">
@@ -126,21 +130,38 @@ OUR STORY
          </div>
 
          <div class="col-lg-6">
-            <span class="section-tag">Our Story</span>
+            <span class="hero-tag">My Story</span>
 
-            <h2 class="heading-lg">Making Modern Modular Homes More Accessible</h2>
+            <h1 class="heading-l d-lg-none">
+               A Vision For Smarter Modern Living: Scaling Boxabl's Modular Housing Strategy
+            </h1>
+            
+            <p>
+               <strong>{{ SITE.name|default:"Martin Costas" }}</strong> joined the <strong>Boxabl</strong> executive leadership team
+               as Chief Financial Officer (CFO) out of a passion for driving the next generation of automated housing. As global
+               demand for efficient, affordable, and flexible homes continues to soar, modern modular construction represents a
+               groundbreaking shift in how residential real estate is engineered, manufactured, and delivered globally.
+            </p>
+            
+            <p>
+               Inspired by the heavy manufacturing processes transforming the construction industry, Costas leverages more than 25
+               years of corporate leadership—built on a foundational public accounting career with PwC and executive tenures at
+               Honeywell, Schlumberger, and Sysco—to prove that factory-built, foldable housing layouts can solve modern supply
+               shortages. Under his fiscal stewardship, Boxabl showcases how advanced technology and automotive-style mass assembly
+               lines can streamline production timelines.
+            </p>
+            
+            <p>
+               Our strategic focus centers on connecting individuals and residential developers with thoughtfully designed modular
+               homes while proving the scalability of faster construction and adaptable living environments.
+            </p>
+            
+            <p>
+               This strategic operational foundation successfully
+               guided Boxabl through its historic public listing process via a SPAC business combination, managing a <strong>$3.5
+                  billion valuation</strong> to list on the Nasdaq Stock Market under the ticker symbol <strong>$BXBL</strong>.
+            </p>
 
-            <p>{{ SITE.name|default:"Martin Boxabl" }} was founded with a simple vision: make innovative modular homes
-               more accessible to individuals and families looking for smarter housing solutions.</p>
-
-            <p>Inspired by the latest generation of modular homes introduced by Boxabl, Martin saw an opportunity to
-               connect buyers with modern, high-quality homes through a trusted resale process. Rather than allowing
-               these innovative homes to remain out of reach for many people, the goal became to source available units
-               and make them easier to purchase at competitive prices.</p>
-
-            <p>Every home represents more than just a place to live—it represents flexibility, affordability,
-               efficiency, and a modern lifestyle. Our commitment is to help buyers navigate the process with
-               transparency, personalized guidance, and dependable service from inquiry to delivery.</p>
 
             <a href="{% url "contact" %}" class="btn btn-primary">Contact Us Today</a>
          </div>
@@ -159,34 +180,41 @@ MISSION & VISION
 
       <div class="section-header">
          <span class="section-tag">Our Purpose</span>
-         <h2 class="heading-lg">Driven By Innovation & Trust</h2>
-         <p>Every decision we make is centered around helping more people experience modern, efficient, and affordable
-            modular living.</p>
+         <h2 class="heading-l">
+            Driven By Innovation & The Future Of Housing
+         </h2>
+         <p>
+            Our mission is to showcase modern modular housing solutions and help more
+            people discover the possibilities of efficient, flexible, and innovative homes.
+         </p>
       </div>
 
       <div class="row g-4">
          <div class="col-lg-6">
             <div class="mission-card">
                <div class="mission-icon">
-                  <i class="bi bi-bullseye"></i>
+                  <i class="bi bi-bullseye" aria-hidden="true"></i>
                </div>
                <h3>Our Mission</h3>
-               <p>To make premium modular homes more accessible by sourcing quality homes and connecting buyers with
-                  reliable resale opportunities backed by honest guidance and exceptional customer service.</p>
+               <p>To disrupt traditional construction by accelerating automotive-style mass production, expanding the product
+                  pipeline from the signature Casita to multi-box layouts like the Chucasita, and securing B2B developer
+                  partnerships.</p>
             </div>
          </div>
 
          <div class="col-lg-6">
             <div class="mission-card">
                <div class="mission-icon">
-                  <i class="bi bi-eye"></i>
+                  <i class="bi bi-eye" aria-hidden="true"></i>
                </div>
                <h3>Our Vision</h3>
-               <p>To become one of the most trusted names in modular home resale by helping individuals and families
-                  embrace a smarter, more sustainable, and flexible way of living.</p>
+               <p>To bridge the gap between startup innovation and rigorous corporate discipline, utilizing a <strong>$3.5
+                     billion Nasdaq listing ($BXBL)</strong> and strict SEC compliance to scale foldable modular housing on a
+                  global level.</p>
             </div>
          </div>
       </div>
+
 
    </div>
 </section>
@@ -200,9 +228,13 @@ WHY CHOOSE MARTIN BOXABL
 
       <div class="section-header">
          <span class="section-tag">Why Choose Us</span>
-         <h2 class="heading-lg">Why Choose {{ SITE.name|default:"Martin Boxabl" }}</h2>
-         <p>We are committed to making modern modular home ownership simple, transparent, and stress-free from your
-            first inquiry to final delivery.</p>
+         <h2 class="heading-l">
+            Why Choose Martin Boxabl?
+         </h2>
+         <p>
+            Discover modern modular housing solutions built around innovation, quality,
+            efficient design, and a better way of experiencing home ownership.
+         </p>
       </div>
 
       <div class="row g-4">
@@ -211,8 +243,10 @@ WHY CHOOSE MARTIN BOXABL
                <div class="feature-icon">
                   <i class="bi bi-house-door"></i>
                </div>
-               <h3>Quality Homes</h3>
-               <p>Carefully selected modular homes built with modern designs, durability, and everyday comfort in mind.
+               <h3>Innovative Housing Technology</h3>
+               <p>
+                  Explore modular homes inspired by next-generation construction methods focused
+                  on efficiency, scalability, and smarter building processes.
                </p>
             </div>
          </div>
@@ -222,9 +256,11 @@ WHY CHOOSE MARTIN BOXABL
                <div class="feature-icon">
                   <i class="bi bi-cash-stack"></i>
                </div>
-               <h3>Competitive Pricing</h3>
-               <p>Helping buyers access premium modular homes through trusted resale opportunities at fair market
-                  prices.</p>
+               <h3>Modern Home Designs</h3>
+               <p>
+                  Discover stylish modular homes created with functional layouts, contemporary
+                  architecture, and comfortable living spaces.
+               </p>
             </div>
          </div>
 
@@ -233,8 +269,11 @@ WHY CHOOSE MARTIN BOXABL
                <div class="feature-icon">
                   <i class="bi bi-shield-check"></i>
                </div>
-               <h3>Trusted Guidance</h3>
-               <p>Honest communication, professional support, and a transparent buying process from start to finish.</p>
+               <h3>Efficient Construction</h3>  
+               <p>
+                  Modular housing offers a streamlined approach to home building with reduced
+                  complexity and flexible installation options.
+               </p>
             </div>
          </div>
 
@@ -243,8 +282,10 @@ WHY CHOOSE MARTIN BOXABL
                <div class="feature-icon">
                   <i class="bi bi-headset"></i>
                </div>
-               <h3>Personal Support</h3>
-               <p>Every buyer receives personalized assistance to help find the right home and make informed decisions.
+               <h3>Personalized Support</h3>
+               <p>
+                  We help visitors explore available homes, understand options, and find modular
+                  solutions that match their needs.
                </p>
             </div>
          </div>
@@ -263,7 +304,7 @@ STATISTICS SECTION
 
       <div class="section-header">
          <span class="section-tag">Our Impact</span>
-         <h2 class="heading-lg">Building Confidence Through Modern Housing</h2>
+         <h2 class="heading-l">Building Confidence Through Modern Housing</h2>
          <p>Our commitment is to provide trusted guidance and quality modular homes while making the buying experience
             simple and transparent.</p>
       </div>
@@ -310,7 +351,7 @@ HOW IT WORKS
 
       <div class="section-header">
          <span class="section-tag">Our Process</span>
-         <h2 class="heading-lg">From Inquiry To Your New Home</h2>
+         <h2 class="heading-l">From Inquiry To Your New Home</h2>
          <p>We simplify the journey of finding and purchasing a modular home with a transparent step-by-step process.
          </p>
       </div>
@@ -365,12 +406,12 @@ ABOUT CTA + FAQ SECTION
          <!-- CTA CONTENT -->
          <div class="cta-content">
             <span class="section-tag">Let's Get Started</span>
-            <h2 class="heading-lg">Your Modern Modular Home Is Closer Than You Think</h2>
-            <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
-               resale opportunities and personalized support.</p>
+            <h2 class="heading-l">Your Modern Modular Home Is Closer Than You Think</h2>
+            <p>Discover modern modular homes, prefab housing solutions, and innovative designs
+            created for a smarter way of living.</p>
             <div class="cta-actions">
-               <a href="{% url "shop" %}" class="btn btn-primary">Browse Available Homes</a>
-               <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
+               <a href="{% url 'shop' %}" class="btn btn-primary">Browse Available Homes</a>
+               <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin Boxabl</a>
             </div>
          </div>
 
@@ -378,7 +419,7 @@ ABOUT CTA + FAQ SECTION
          <div class="faq-wrapper">
             <div class="section-header">
                <span class="section-tag">FAQ</span>
-               <h2 class="heading-lg">Common Questions</h2>
+               <h2 class="heading-l">Common Questions</h2>
             </div>
 
             <div class="faq-item">

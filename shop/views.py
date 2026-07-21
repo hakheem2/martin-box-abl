@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Category, Home, Order
+from .models import HomeType, Category, Home, Order
 
 from django.template.loader import render_to_string
 from django.http import JsonResponse
@@ -43,12 +43,19 @@ def get_filtered_homes(request, base_queryset=None):
     return homes
 
 
-
 def home_list(request):
     homes = get_filtered_homes(request)
     categories = Category.objects.filter(active=True)
+    featured_categories = Category.objects.filter(active=True).order_by("?")[:3]
+    home_types = HomeType.objects.filter(active=True).order_by("?")[:3]
+    context = {
+        "homes": homes, 
+        "categories": categories,
+        "home_types": home_types,
+        "featured_categories": featured_categories
+    }
 
-    return render(request, "shop/shop-page.html", {"homes": homes, "categories": categories})
+    return render(request, "shop/shop-page.html", context)
 
 
 def ajax_home_filter(request):
@@ -62,13 +69,9 @@ def ajax_home_filter(request):
     })
 
 
-
-
 def category_list(request):
     categories = Category.objects.filter(active=True)
     return render(request, "shop/category-list.html", {"categories": categories})
-
-
 
 
 def category_detail(request, category_slug):
@@ -92,6 +95,13 @@ def category_detail(request, category_slug):
     return render(request, "shop/category-detail.html", context)
 
 
+def home_type_detail(request, slug):
+   home_type = get_object_or_404(HomeType, slug=slug, active=True)
+   homes = Home.objects.filter(home_type=home_type, active=True)
+   related_home_types = HomeType.objects.filter(active=True).exclude(id=home_type.id)
+
+   return render(request, "shop/home-type.html", {"home_type": home_type, "homes": homes, "related_home_types": related_home_types})
+
 
 def home_detail(request, category_slug, slug):
     home = get_object_or_404(
@@ -112,48 +122,45 @@ def home_detail(request, category_slug, slug):
     return render(request, "shop/deailts-page.html", context)
 
 
-
 from django.conf import settings
 import resend
 resend.api_key = settings.RESEND_API_KEY
 
-
-
 def checkout(request, slug):
-   home = get_object_or_404(Home, slug=slug, active=True)
+    home = get_object_or_404(Home, slug=slug, active=True)
 
-   if request.method == "POST":
-      order = Order.objects.create(
-         home=home,
-         first_name=request.POST.get("first_name"),
-         last_name=request.POST.get("last_name"),
-         email=request.POST.get("email"),
-         phone=request.POST.get("phone"),
-         country=request.POST.get("country"),
-         city=request.POST.get("city"),
-         address=request.POST.get("address"),
-         notes=request.POST.get("notes"),
-      )
+    if request.method == "POST":
+        order = Order.objects.create(
+            home=home,
+            first_name=request.POST.get("first_name"),
+            last_name=request.POST.get("last_name"),
+            email=request.POST.get("email"),
+            phone=request.POST.get("phone"),
+            country=request.POST.get("country"),
+            city=request.POST.get("city"),
+            address=request.POST.get("address"),
+            notes=request.POST.get("notes"),
+        )
 
-      home_link = request.build_absolute_uri(home.get_absolute_url())
-      html = render_to_string("emails/order_notification.html", {"order": order, "home": home, "home_link": home_link})
-      
-      print(settings.RESEND_API_KEY)
-      try:
-         response = resend.Emails.send({
-               "from": settings.DEFAULT_FROM_EMAIL,
-               "to": [settings.CONTACT_EMAIL],
-               "subject": f"New Home Order Request - {home.name}",
-               "html": html,
-         })
-         print(response)
-      except Exception as e:
-         print("RESEND ERROR:", e)
+        home_link = request.build_absolute_uri(home.get_absolute_url())
+        html = render_to_string("emails/order_notification.html", {"order": order, "home": home, "home_link": home_link})
+        
+        print(settings.RESEND_API_KEY)
+        try:
+            response = resend.Emails.send({
+                "from": settings.DEFAULT_FROM_EMAIL,
+                "to": [settings.CONTACT_EMAIL],
+                "subject": f"New Home Order Request - {home.name}",
+                "html": html,
+            })
+            print(response)
+        except Exception as e:
+            print("RESEND ERROR:", e)
 
-      return redirect("order_success")
+        return redirect("order_success")
 
-   context = {"home": home}
-   return render(request, "shop/checkout.html", context)
+    context = {"home": home}
+    return render(request, "shop/checkout.html", context)
 
 
 
