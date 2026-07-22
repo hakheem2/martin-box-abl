@@ -7,16 +7,20 @@ from django.conf import settings
 from django.contrib import messages
 from django.template.loader import render_to_string
 
+from blog.models import BlogPostPage
+
 
 # Create your views here.
 def home(request):
     homes = Home.objects.filter(active=True, featured=True).select_related("category").order_by("?")[:6]
     categories = Category.objects.filter(active=True)
     home_types = HomeType.objects.filter(active=True).order_by("?")[:3]
+    blog_posts = BlogPostPage.objects.live().public().order_by("-first_published_at")[:3]
     context = {
         "homes": homes,
         "categories": categories,
         "home_types": home_types,
+        "blog_posts": blog_posts,
     }
     return render(request, "pages/home.html",  context)
 

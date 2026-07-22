@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Modular Home Types & Categories | Martin Boxabl{% endblock %}
+{% block title %}Modular Home Solutions & Types | Martin Boxabl{% endblock %}
 
 {% block meta_description %}
-Explore modular home types and categories from Martin Boxabl. Browse modern modular homes, prefab houses, portable homes, and flexible housing solutions designed for different lifestyles and budgets.
+Explore modular home types and Home Solutions from Martin Boxabl. Browse modern modular homes, prefab houses, portable homes, and flexible housing solutions designed for different lifestyles and budgets.
 {% endblock %}
 
 {% block meta_keywords %}
@@ -16,9 +16,9 @@ modular home types, modular homes, prefab home types, portable homes, tiny homes
 {
    "@context":"https://schema.org",
    "@type":"CollectionPage",
-   "name":"Modular Home Types & Categories | Martin Boxabl",
-   "description":"Explore modular homes, prefab houses, portable homes, and modern housing categories.",
-   "url":"https://martinboxabl.com/categories/",
+   "name":"Modular Home Types & Home Solutions | Martin Boxabl",
+   "description":"Explore modular homes, prefab houses, portable homes, and modern housing Home Solutions.",
+   "url":"https://martinboxabl.com/home-types/",
    "publisher":{
       "@type":"Organization",
       "name":"Martin Boxabl",
@@ -45,13 +45,13 @@ CATEGORY HERO
         <h1>Explore Modular Home Types & Housing Options</h1>
          <p>Discover modern modular homes, prefab houses, portable homes, and innovative housing solutions designed for affordable, efficient, and comfortable living.</p>
          <div class="hero-actions">
-            <a href="{% url 'shop' %}" class="btn btn-primary">View All Homes</a>
+            <a href="{% url 'shop' %}" class="btn btn-primary">View Boxabl Homes</a>
             <a href="{% url 'contact' %}" class="btn btn-light btn-outline-success">Request Consultation</a>
          </div>
          <nav class="breadcrumb">
             <a href="{% url 'home' %}">Home</a>
             <span>/</span>
-            <span>Categories</span>
+            <span>Home Types</span>
          </nav>
       </div>
    </div>
@@ -63,28 +63,28 @@ CATEGORY GRID
 <section class="section category-section">
 <div class="container">
    <div class="section-header text-center">
-      <span class="section-tag">Home Categories</span>
-      <h2 class="heading-l">Browse Our Modular Home Categories</h2>
+      <span class="section-tag">Home Solutions</span>
+      <h2 class="heading-l">Browse Our Housing Options </h2>
       <p>Explore different types of modular homes, from compact portable houses to spacious prefab homes built for modern
          living.</p>
    </div>
 
    <div class="category-grid">
-      {% for category in categories %}
-      <a href="{{ category.get_absolute_url }}" class="category-link">
+      {% for type in home_types %}
+      <a href="{{ type.get_absolute_url }}" class="category-link">
          <article class="category-card">
             <div class="category-image">
-               {% if category.image %}
-               <img src="{{ category.image.url }}" alt="{{ category.name }}">
+               {% if type.image %}
+               <img src="{{ type.image.url }}" alt="{{ type.name }}">
                {% else %}
-               <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ category.name }}">
+               <img src="{% static 'images/homes/default-home.jpg' %}" alt="{{ type.name }}">
                {% endif %}
             </div>
             <div class="category-content">
-               <h3>{{ category.name }}</h3>
-               <p>{{ category.description|default:"Explore "|add:category.name|add:" designed with modern layouts, efficient construction, and flexible living solutions."|truncatewords:22 }}</p>
+               <h3>{{ type.name }}</h3>
+               <p>{{ type.description|default:"Explore "|add:type.name|add:" designed with modern layouts, efficient construction, and flexible living solutions."|truncatewords:22 }}</p>
                <span class="category-btn">
-                  Explore {{ category.name }} for Sale
+                  Explore {{ type.name }} for Sale
                   <i class="bi bi-arrow-right"></i>
                </span>
             </div>
@@ -92,7 +92,7 @@ CATEGORY GRID
       </a>
       {% empty %}
       <div class="empty-category">
-         <h3>No categories available</h3>
+         <h3>No Home Solutions available</h3>
          <p>Please check back later.</p>
       </div>
       {% endfor %}

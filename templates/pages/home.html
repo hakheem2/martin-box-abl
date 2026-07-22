@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags %}
 
 {% block extra_css %}
    <link rel="stylesheet" href="{% static 'css/home.css' %}">
@@ -46,18 +46,18 @@
 
          <div class="about-image">
             <img src="{% static 'images/pages/about-home.jpg' %}"
-               alt="Boxabl CFO {{ SITE.name|default:'Martin Costas' }} - Executive Leadership and Modular Housing Financial Strategy">
+               alt="Boxabl CFO {{ site.ceo|default:'Martin Noe Costas' }} - Executive Leadership and Modular Housing Financial Strategy">
          </div>
 
          <div class="about-content">
             <span class="section-tag">Boxabl Executive Leadership</span>
 
             <h1 class="heading-l">
-               Boxabl CFO {{ SITE.name|default:"Martin Costas" }}: Driving the Future of Modular Housing Strategy
+               Boxabl CFO {{ site.ceo|default:"Martin Noe Costas" }}: Driving the Future of Modular Housing Strategy
             </h1>
 
             <p>
-               <strong>{{ SITE.name|default:"Martin Costas" }}</strong> serves as the Chief Financial Officer (CFO) of
+               <strong>{{ site.ceo|default:"Martin Noe Costas" }}</strong> serves as the Chief Financial Officer (CFO) of
                <strong>Boxabl</strong>, a disruptive building technology startup specializing in the mass production of
                foldable modular homes. Bringing over 25 years of global corporate finance and operational
                leadership—rooted in public accounting with PwC and executive tenures at Honeywell, Schlumberger, and
@@ -150,7 +150,7 @@ EXPLORE MORE HOME TYPES
 
       <div class="section-header">
          <span class="section-tag">Explore More</span>
-         <h2 class="heading-l">Discover More Housing Solutions</h2>
+         <h2 class="heading-l">Discover More Housing Solutions By Martin Boxabl</h2>
          <p>Explore other modern housing options from Martin Boxabl, including modular homes, tiny homes, portable
             homes, and affordable housing solutions.</p>
       </div>
@@ -176,7 +176,7 @@ EXPLORE MORE HOME TYPES
                      {% else %}
                         Explore modern housing solutions from Martin Boxabl.
                      {% endif %}</p>
-                  <span class="category-btn">View {{ type.name }}<i class="bi bi-arrow-right"></i></span>
+                  <span class="category-btn">View {{ type.name }} for Sale<i class="bi bi-arrow-right"></i></span>
                </div>
 
             </article>
@@ -184,12 +184,18 @@ EXPLORE MORE HOME TYPES
          {% empty %}
 
          <div class="empty-category text-center">
-            <h3>No home categories available.</h3>
+            <h3>No home type solutions available.</h3>
          </div>
 
          {% endfor %}
 
       </div>
+      <a href="{% url "home_types_listing" %}" class="btn mt-4 text-success d-flex justify-content-end">
+         View Home Solutions
+         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+         </svg>
+      </a>
    </div>
 </section>
 
@@ -201,7 +207,7 @@ EXPLORE MORE HOME TYPES
 
       <div class="section-header">
          <span class="section-tag">Our Process</span>
-         <h2 class="heading-l">How It Works</h2>
+         <h2 class="heading-l">How It Martin Boxabl</h2>
          <p>From choosing your ideal home to getting it ready, Martin Boxabl makes the process simple and straightforward.</p>
       </div>
 
@@ -242,7 +248,7 @@ EXPLORE MORE HOME TYPES
 
       <div class="section-header">
          <h2 class="heading-l mb-1">
-            Modular Homes For Sale
+            Marin Boxabl Homes For Sale
          </h2>
          
          <p class="text-muted">
@@ -263,6 +269,12 @@ EXPLORE MORE HOME TYPES
          {% endfor %}
 
       </div>
+      <a href="{% url "shop" %}" class="btn mt-4 text-success d-flex justify-content-end">
+         View Available Homes
+         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+         </svg>
+      </a>
    </div>
 </section>
 
@@ -272,8 +284,8 @@ EXPLORE MORE HOME TYPES
 
       <div class="section-header">
          <span class="section-tag">Our Gallery</span>
-         <h2 class="heading-l">
-            Explore Modular Home Designs
+         <h2 class="heading-l text-white">
+            Explore Home Designs by Martin boxabl
          </h2>
          
          <p>
@@ -318,55 +330,65 @@ EXPLORE MORE HOME TYPES
    </div>
 </section>
 
-<!-- SUCCESS STORIES SECTION -->
-<section class="section success-stories parallax-section" id="success">
-   <div class="parallax-overlay"></div>
 
-   <div class="container parallax-content">
-
-      <div class="section-header">
-         <span class="section-tag">Success Stories</span>
-         <h2 class="heading-l">Helping People Find Better Homes</h2>
-         <p>
-               See how modern modular housing solutions are helping people
-               achieve comfortable and practical living spaces.
-         </p>
+<!-- =========================================
+BLOG POSTS GRID
+========================================= -->
+<section class="section blog-posts-section" id="blog-posts">
+   <div class="container">
+      <div class="section-header d-flex justify-content-between align-items-center flex-wrap">
+         <div>
+            <span class="section-tag">Latest Articles</span>
+            <h2 class="heading-l">Explore Our Latest Housing Guides</h2>
+         </div>
       </div>
-
-      <div class="success-grid">
-
-         <article class="success-card">
-               <div class="success-image">
-                  <img src="{% static 'images/blog/success-1.jpg' %}" alt="Martin Boxabl customer with modular home">
+      <div class="row g-4">
+         {% for post in blog_posts %}
+         <div class="col-lg-4 col-md-6">
+            <article class="blog-card">
+               <div class="blog-image">
+                  {% if post.featured_image %}
+                  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                  {% else %}
+                  <img src="{% static 'images/blog/default-blog.jpg' %}" alt="{{ post.title }}">
+                  {% endif %}
                </div>
-               <div class="success-content">
-                  <h3>Modern Home Delivered</h3>
-                  <p>A seamless process from choosing a home to creating a comfortable living space.</p>
+               <div class="blog-content">
+                  {% if post.category %}
+                  <span class="blog-category">{{ post.category.name }}</span>
+                  {% endif %}
+                  <h3>
+                     <a href="{{ post.url }}">{{ post.title }}</a>
+                  </h3>
+                  <p>
+                     {{ post.excerpt|default:"Discover expert insights, guides, and information about modern housing solutions from Martin Boxabl."|truncatewords:25 }}
+                  </p>
+                  <div class="blog-meta">
+                     <span>By {{ post.author }}</span>
+                     <span>{{ post.first_published_at|date:"M d, Y" }}</span>
+                  </div>
+                  <a href="{{ post.url }}" class="btn btn-primary btn-full mt-2">
+                     Read Article
+                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                     </svg>
+                  </a>
                </div>
-         </article>
-
-         <article class="success-card">
-               <div class="success-image">
-                  <img src="{% static 'images/blog/success-2.jpg' %}" alt="Portable home customer experience - Martin Boxabl">
-               </div>
-               <div class="success-content">
-                  <h3>A Smarter Way To Live</h3>
-                  <p>Helping families access efficient and innovative housing solutions.</p>
-               </div>
-         </article>
-
-         <article class="success-card">
-               <div class="success-image">
-                  <img src="{% static 'images/blog/success-3.jpg' %}" alt="Modular home installation - Martin Boxabl">
-               </div>
-               <div class="success-content">
-                  <h3>Building New Possibilities</h3>
-                  <p>Bringing modern housing options closer to more people.</p>
-               </div>
-         </article>
-
+            </article>
+         </div>
+         {% empty %}
+         <div class="empty-products text-center">
+            <h3>No articles available yet.</h3>
+            <p>Check back soon for new modular home guides and housing insights.</p>
+         </div>
+         {% endfor %}
       </div>
-
+      <a href="{{ blog_page.url }}" class="btn mt-4 text-success d-flex justify-content-end">
+         View Latest Articles
+         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+         </svg>
+      </a>
    </div>
 </section>
 

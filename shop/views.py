@@ -95,6 +95,11 @@ def category_detail(request, category_slug):
     return render(request, "shop/category-detail.html", context)
 
 
+def home_types_listing(request):
+   home_types = HomeType.objects.filter(active=True)
+
+   return render(request, "shop/home-types.html", {"home_types": home_types})
+
 def home_type_detail(request, slug):
    home_type = get_object_or_404(HomeType, slug=slug, active=True)
    homes = Home.objects.filter(home_type=home_type, active=True)

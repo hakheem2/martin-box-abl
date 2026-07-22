@@ -77,6 +77,10 @@ body {
    font-display: swap;
 }
 
+body.no-scroll{
+   overflow-y: hidden;
+}
+
 img {
    max-width: 100%;
    display: block;
@@ -165,7 +169,7 @@ button {
 }
 
 .heading-l {
-   font-size: clamp(1.8rem, 3vw, 2.5rem);
+   font-size: clamp(1.7rem, 3vw, 2.5rem);
    line-height: 1.2;
    font-weight: 700;
 }
@@ -238,6 +242,42 @@ button {
 .mb-2 {
    margin-bottom: var(--space-md);
 }
+
+
+/* ========================================
+  WHATSAPP BUTTON
+  ======================================== */
+.whatsapp-chat {
+   position: fixed;
+   right: 30px;
+   bottom: 120px;
+   width: 55px;
+   height: 55px;
+   border-radius: 50%;
+   background: var(--primary);
+   color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 32px;
+   text-decoration: none;
+   box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+   z-index: 9999;
+   transition: .3s;
+}
+
+.whatsapp-chat:hover {
+   transform: scale(1.08);
+   color: #fff;
+}
+
+@media (max-width:999px) {
+   .whatsapp-chat {
+
+      bottom: 100px;
+   }
+}
+
 
 /* =========================================
    CTA + FAQ SECTION
@@ -488,7 +528,7 @@ button {
 .mobile-menu {
    position: fixed;
    top: 85px;
-   right: -100%;
+   right: -120%;
    width: 100%;
    max-width: 95%;
    height: calc(100vh - 85px);

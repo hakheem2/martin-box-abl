@@ -38,13 +38,16 @@ $(function () {
 
 const filter = $("#shopFilter");
 const overlay = $(".filter-overlay");
+const body = $("body");
 
 $("#mobileFilterBtn").on("click", function () {
    filter.addClass("active");
    overlay.addClass("active");
+   body.addClass("no-scroll");
 });
 
 $("#filterClose,.filter-overlay").on("click", function () {
    filter.removeClass("active");
    overlay.removeClass("active");
+   body.removeClass("no-scroll");
 });

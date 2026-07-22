@@ -26,15 +26,36 @@ $(document).ready(function () {
 
 
    // NAV LINK ACTIVE STATE
+   // NAV LINK ACTIVE STATE
    $(document).ready(function () {
       let currentPath = window.location.pathname;
 
       $('.nav-link').each(function () {
-         let linkPath = new URL($(this).attr('href'), window.location.origin).pathname;
+         let navLink = $(this);
+         let href = navLink.attr('href');
 
-         if (linkPath === currentPath) {
-            $('.nav-link').removeClass('active');
-            $(this).addClass('active');
+         // normal links
+         if (href) {
+            let linkPath = new URL(href, window.location.origin).pathname;
+
+            if (linkPath === currentPath) {
+               $('.nav-link').removeClass('active');
+               navLink.addClass('active');
+            }
+         }
+
+         // dropdown parent links
+         let dropdown = navLink.closest('.custom-dropdown');
+
+         if (dropdown.length) {
+            dropdown.find('.custom-dropdown-menu a').each(function () {
+               let childPath = new URL($(this).attr('href'), window.location.origin).pathname;
+
+               if (childPath === currentPath) {
+                  $('.nav-link').removeClass('active');
+                  navLink.addClass('active');
+               }
+            });
          }
       });
    });

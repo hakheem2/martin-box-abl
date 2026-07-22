@@ -8,6 +8,8 @@ class SiteSettings(models.Model):
 
    number = models.CharField(max_length=50, blank=True, null=True)
 
+   wa_number = models.CharField(max_length=50, blank=True, null=True)
+
    email = models.EmailField(blank=True, null=True)
 
    address = models.TextField(blank=True, null=True)

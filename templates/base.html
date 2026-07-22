@@ -42,8 +42,8 @@
       {% endblock %}
    </title>
 
-   <meta name="application-name" content="{{ SITE.name }}">
-   <meta property="og:site_name" content="{{ SITE.name }}">
+   <meta name="application-name" content="{{ site.name }}">
+   <meta property="og:site_name" content="{{ site.name }}">
 
    <meta name="description"
    content="{% block meta_description %}Martin Boxabl showcases modern modular homes, prefab houses, and innovative housing solutions designed for efficient, flexible, and comfortable living.{% endblock %}">
@@ -51,7 +51,7 @@
    <meta name="keywords"
    content="{% block meta_keywords %}Martin Boxabl, modular homes, modular homes for sale, prefab homes, prefab houses, tiny homes, portable homes, affordable modular homes, modern housing solutions{% endblock %}">
 
-   <meta name="author" content="{{ SITE.name }}">
+   <meta name="author" content="{{ site.name }}">
 
    <meta name="robots" content="index, follow">
 
@@ -228,6 +228,18 @@
    
    {% block extra_js %}{% endblock %}
 
+
+   <!-- =========================
+   WHATSAPP CHAT
+   ========================= -->
+   {% if site.wa_number %}
+   <a href="https://wa.me/{{ site.wa_number }}?text=Hello%20I%20am%20interested%20in%20your%20homes"
+      class="whatsapp-chat"
+      target="_blank"
+      aria-label="Chat on WhatsApp">
+      <i class="bi bi-whatsapp"></i>
+   </a>
+   {% endif %}
 
    <!--Start of Tawk.to Script-->
    <script type="text/javascript">

@@ -22,7 +22,7 @@ OPEN GRAPH
 ========================= -->
 
 {% block og_title %}
-Gallery | {{ SITE.name|default:"Martin Boxabl" }}
+Gallery | {{ site.name|default:"Martin Boxabl" }}
 {% endblock %}
 
 {% block og_description %}
@@ -38,7 +38,7 @@ TWITTER
 ========================= -->
 
 {% block twitter_title %}
-Gallery | {{ SITE.name|default:"Martin Boxabl" }}
+Gallery | {{ site.name|default:"Martin Boxabl" }}
 {% endblock %}
 
 {% block twitter_description %}
@@ -82,7 +82,7 @@ GALLERY INTRO
          <div class="col-lg-6">
             <span class="section-tag">Discover Our Collection</span>
             <h2 class="heading-l">A New Generation Of Modular Housing</h2>
-            <p>At {{ SITE.name|default:"Martin Boxabl" }}, we showcase the future of housing through modern modular homes designed around innovation, efficiency, and smarter living.</p>
+            <p>At {{ site.name|default:"Martin Boxabl" }}, we showcase the future of housing through modern modular homes designed around innovation, efficiency, and smarter living.</p>
             <p>Explore our collection of prefab homes, portable housing solutions, and contemporary designs that demonstrate how modular construction is transforming the way people think about homes.</p>
 
             <div class="gallery-highlights">
@@ -108,7 +108,7 @@ GALLERY INTRO
          <div class="col-lg-6">
             <div class="gallery-intro-image">
                <img src="{% static 'images/gallery/featured-6.jpg' %}" class="img-fluid rounded-4"
-                  alt="{{ SITE.name|default:'Martin Boxabl' }} modern modular home exterior">
+                  alt="{{ site.name|default:'Martin Boxabl' }} modern modular home exterior">
             </div>
          </div>
 
@@ -132,7 +132,7 @@ FEATURED SHOWCASE
       <div class="featured-grid">
          <div class="featured-large">
             <img src="{% static 'images/gallery/featured-7.jpg' %}"
-               alt="{{ SITE.name|default:'Martin Boxabl' }} Premium Modular Home by Martin Boxabl">
+               alt="{{ site.name|default:'Martin Boxabl' }} Premium Modular Home by Martin Boxabl">
          </div>
 
          <div class="featured-side">

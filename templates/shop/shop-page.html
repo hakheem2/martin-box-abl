@@ -55,7 +55,7 @@ https://martinboxabl.com/homes/
    "url":"https://martinboxabl.com/homes/",
    "publisher":{
       "@type":"Organization",
-      "name":"{{ SITE.name }}",
+      "name":"{{ site.name }}",
       "url":"https://martinboxabl.com"
    }
 }
@@ -243,7 +243,7 @@ EXPLORE MORE HOME TYPES
                      {% else %}
                         Explore modern housing solutions from Martin Boxabl.
                      {% endif %}</p>
-                  <span class="category-btn">View {{ type.name }}<i class="bi bi-arrow-right"></i></span>
+                  <span class="category-btn">View {{ type.name }} for Sale<i class="bi bi-arrow-right"></i></span>
                </div>
 
             </article>
@@ -257,6 +257,14 @@ EXPLORE MORE HOME TYPES
          {% endfor %}
 
       </div>
+
+      <a href="{% url 'home_types_listing' %}" class="btn btn-full mt-3 text-success">
+         View Home Solutions
+         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+      </a>
+
    </div>
 </section>
 
@@ -296,7 +304,7 @@ POPULAR HOME CATEGORIES
                         Explore {{ category.name | lower }} with modern floor plans, innovative designs, competitive pricing, and
                         flexible living solutions from Martin Boxabl.
                      {% endif %}</p>
-                  <span class="category-btn">View {{ category.name }}<i class="bi bi-arrow-right"></i></span>
+                  <span class="category-btn">View {{ category.name }} for Sale<i class="bi bi-arrow-right"></i></span>
                </div>
 
             </article>
@@ -310,6 +318,13 @@ POPULAR HOME CATEGORIES
          {% endfor %}
 
       </div>
+
+      <a href="{% url 'category_list' %}" class="btn btn-full mt-3 text-success">
+         View Home Categories
+         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+      </a>
 
    </div>
 </section>
@@ -386,7 +401,7 @@ TESTIMONIALS
       <div class="section-header">
          <span class="section-tag">Testimonials</span>
          <h2 class="heading-l">What Our Clients Say</h2>
-         <p>Hear from homeowners who trusted {{ SITE.name|default:"Martin Boxabl" }} to help them find the perfect modular home.</p>
+         <p>Hear from homeowners who trusted {{ site.name|default:"Martin Boxabl" }} to help them find the perfect modular home.</p>
       </div>
 
       <div class="row g-4">
@@ -475,7 +490,7 @@ CTA + FAQ SECTION
          <div class="cta-content pt-lg-5">
             <span class="section-tag">Let's Get Started</span>
             <h2 class="heading-l">Your Modern Modular Home Is Closer Than You Think</h2>
-            <p>{{ SITE.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
+            <p>{{ site.name|default:"Martin Boxabl" }} helps buyers discover innovative modular homes through trusted
                resale opportunities and personalized support.</p>
             <div class="cta-actions">
                <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>

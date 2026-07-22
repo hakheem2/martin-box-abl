@@ -22,11 +22,11 @@ OPEN GRAPH
 ========================= -->
 
 {% block og_title %}
-About {{ SITE.name|default:"Martin Boxabl" }}
+About {{ site.name|default:"Martin Boxabl" }}
 {% endblock %}
 
 {% block og_description %}
-Discover the story, mission, and vision behind {{ SITE.name|default:"Martin Boxabl" }} and our commitment to modern modular housing.
+Discover the story, mission, and vision behind {{ site.name|default:"Martin Boxabl" }} and our commitment to modern modular housing.
 {% endblock %}
 
 {% block og_url %}
@@ -38,11 +38,11 @@ TWITTER
 ========================= -->
 
 {% block twitter_title %}
-About {{ SITE.name|default:"Martin Boxabl" }}
+About {{ site.name|default:"Martin Boxabl" }}
 {% endblock %}
 
 {% block twitter_description %}
-Learn about {{ SITE.name|default:"Martin Boxabl" }} and our modular home resale mission.
+Learn about {{ site.name|default:"Martin Boxabl" }} and our modular home resale mission.
 {% endblock %}
 
 <!-- =========================
@@ -62,7 +62,7 @@ SCHEMA
 {
    "@context":"https://schema.org",
    "@type":"AboutPage",
-   "name":"About {{ SITE.name|default:'Martin Boxabl' }}",
+   "name":"About {{ site.name|default:'Martin Boxabl' }}",
    "url":"https://martinboxabl.com/about/"
 }
 </script>
@@ -89,7 +89,7 @@ CONTENT
    <div class="container">
       <div class="page-hero-content">
 
-         <span class="section-tag">About {{ SITE.name|default:"Martin Boxabl" }}</span>
+         <span class="section-tag">About {{ site.ceo|default:"Martin Noe Costas" }}</span>
 
          <h1 class="display-heading">
             Redefining The Future Of Modular Housing
@@ -125,7 +125,7 @@ OUR STORY
             </h1>
             <div class="about-story-image">
                <img src="{% static 'images/pages/about-martin.jpg' %}" class="img-fluid rounded-4"
-                  alt="{{ SITE.name|default:'Martin Boxabl' }} - Modern modular home">
+                  alt="{{ site.name|default:'Martin Boxabl' }} - Modern modular home">
             </div>
          </div>
 
@@ -137,7 +137,7 @@ OUR STORY
             </h1>
             
             <p>
-               <strong>{{ SITE.name|default:"Martin Costas" }}</strong> joined the <strong>Boxabl</strong> executive leadership team
+               <strong>{{ site.ceo|default:"Martin Noe Costas" }}</strong> joined the <strong>Boxabl</strong> executive leadership team
                as Chief Financial Officer (CFO) out of a passion for driving the next generation of automated housing. As global
                demand for efficient, affordable, and flexible homes continues to soar, modern modular construction represents a
                groundbreaking shift in how residential real estate is engineered, manufactured, and delivered globally.
@@ -243,7 +243,7 @@ WHY CHOOSE MARTIN BOXABL
                <div class="feature-icon">
                   <i class="bi bi-house-door"></i>
                </div>
-               <h3>Innovative Housing Technology</h3>
+               <h3>Innovative Housing</h3>
                <p>
                   Explore modular homes inspired by next-generation construction methods focused
                   on efficiency, scalability, and smarter building processes.
@@ -304,7 +304,7 @@ STATISTICS SECTION
 
       <div class="section-header">
          <span class="section-tag">Our Impact</span>
-         <h2 class="heading-l">Building Confidence Through Modern Housing</h2>
+         <h2 class="heading-l text-white">Building Confidence Through Modern Housing</h2>
          <p>Our commitment is to provide trusted guidance and quality modular homes while making the buying experience
             simple and transparent.</p>
       </div>

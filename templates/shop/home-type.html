@@ -50,7 +50,7 @@ Martin Boxabl.
    "url":"{{ request.scheme }}://{{ request.get_host }}{{ home_type.get_absolute_url }}",
    "publisher":{
       "@type":"Organization",
-      "name":"{{ SITE.name }}",
+      "name":"{{ site.name }}",
       "url":"https://martinboxabl.com"
    }
 }
@@ -304,7 +304,7 @@ EXPLORE MORE HOME TYPES
                      {% else %}
                         Explore modern housing solutions from Martin Boxabl.
                      {% endif %}</p>
-                  <span class="category-btn">View {{ type.name }}<i class="bi bi-arrow-right"></i></span>
+                  <span class="category-btn">View {{ type.name }} for Sale<i class="bi bi-arrow-right"></i></span>
                </div>
 
             </article>
@@ -318,6 +318,13 @@ EXPLORE MORE HOME TYPES
          {% endfor %}
 
       </div>
+      <a href="{% url 'home_types_listing' %}" class="btn btn-full mt-3 text-success">
+         View Home Categories
+         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+         </svg>
+      </a>
+      
    </div>
 </section>
 

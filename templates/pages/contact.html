@@ -6,7 +6,7 @@ PAGE TITLE
 ========================= -->
 
 {% block title %}
-Contact {{ SITE.name|default:"Martin Boxabl" }} | Get In Touch
+Contact {{ site.name|default:"Martin Boxabl" }} | Get In Touch
 {% endblock %}
 
 <!-- =========================
@@ -14,7 +14,7 @@ SEO
 ========================= -->
 
 {% block meta_description %}
-Contact {{ SITE.name|default:"Martin Boxabl" }} to learn more about modern modular homes, availability, pricing, or schedule a consultation.
+Contact {{ site.name|default:"Martin Boxabl" }} to learn more about modern modular homes, availability, pricing, or schedule a consultation.
 {% endblock %}
 
 {% block meta_keywords %}
@@ -26,11 +26,11 @@ OPEN GRAPH
 ========================= -->
 
 {% block og_title %}
-Contact {{ SITE.name|default:"Martin Boxabl" }}
+Contact {{ site.name|default:"Martin Boxabl" }}
 {% endblock %}
 
 {% block og_description %}
-Get in touch with {{ SITE.name|default:"Martin Boxabl" }} for modular home inquiries and consultations.
+Get in touch with {{ site.name|default:"Martin Boxabl" }} for modular home inquiries and consultations.
 {% endblock %}
 
 {% block og_url %}
@@ -42,7 +42,7 @@ TWITTER
 ========================= -->
 
 {% block twitter_title %}
-Contact {{ SITE.name|default:"Martin Boxabl" }}
+Contact {{ site.name|default:"Martin Boxabl" }}
 {% endblock %}
 
 {% block twitter_description %}
@@ -66,7 +66,7 @@ SCHEMA
 {
    "@context":"https://schema.org",
    "@type":"ContactPage",
-   "name":"Contact {{ SITE.name|default:'Martin Boxabl' }}",
+   "name":"Contact {{ site.name|default:'Martin Boxabl' }}",
    "url":"https://martinboxabl.com/contact/"
 }
 </script>
@@ -129,7 +129,7 @@ CONTACT INFORMATION + FORM
                   </div>
                   <div>
                      <h4>Phone</h4>
-                     <a href="tel:{{ SITE.number }}">{{ SITE.number|default:"(123) 456-7890" }}</a>
+                     <a href="tel:{{ site.number }}">{{ site.number|default:"(123) 456-7890" }}</a>
                   </div>
                </div>
 
@@ -139,7 +139,7 @@ CONTACT INFORMATION + FORM
                   </div>
                   <div>
                      <h4>Email</h4>
-                     <a href="mailto:{{ SITE.email }}">{{ SITE.email|default:"martin@martinboxabl.com" }}</a>
+                     <a href="mailto:{{ site.email }}">{{ site.email|default:"martin@martinboxabl.com" }}</a>
                   </div>
                </div>
 
@@ -149,15 +149,15 @@ CONTACT INFORMATION + FORM
                   </div>
                   <div>
                      <h4>Address</h4>
-                     <p>{{ SITE.address|default:"123 Main Street, Anytown, USA" }}</p>
+                     <p>{{ site.address|default:"123 Main Street, Anytown, USA" }}</p>
                   </div>
                </div>
             </div>
 
             <div class="contact-social">
-               <a href="{{ SITE.facebook_link }}" target="_blank"><i class="bi bi-facebook"></i></a>
-               <a href="{{ SITE.instagram_link }}" target="_blank"><i class="bi bi-instagram"></i></a>
-               <a href="{{ SITE.tiktok_link }}" target="_blank"><i class="bi bi-tiktok"></i></a>
+               <a href="{{ site.facebook_link }}" target="_blank"><i class="bi bi-facebook"></i></a>
+               <a href="{{ site.instagram_link }}" target="_blank"><i class="bi bi-instagram"></i></a>
+               <a href="{{ site.tiktok_link }}" target="_blank"><i class="bi bi-tiktok"></i></a>
             </div>
          </div>
 

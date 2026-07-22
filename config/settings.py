@@ -34,6 +34,25 @@ CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="").split(",")
 # Application definition
 
 INSTALLED_APPS = [
+    #wigtail apps and config
+    "home",
+    "search",
+
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "modelcluster",
+    "taggit",
+
+    #django apps and config
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,11 +61,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    #my apps and config
     'django.contrib.sitemaps',
 
     'core',
     'emails',
     'shop',
+    'blog'
 ]
 
 MIDDLEWARE = [
@@ -57,6 +78,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     'core.middleware.CustomErrorMiddleware',
@@ -76,6 +98,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'core.context_processors.global_categories',
+                "core.context_processors.global_pages",
+                "core.context_processors.site_settings",
             ],
         },
     },
@@ -139,12 +163,15 @@ STATICFILES_STORAGE = ("whitenoise.storage.CompressedManifestStaticFilesStorage"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
+# WAGTAIL DATA
+WAGTAIL_SITE_NAME = "Martin Boxabl"
+WAGTAILADMIN_BASE_URL = config("WAGTAILADMIN_BASE_URL")
+SITE_ID = 1
 
 # Resend
 RESEND_API_KEY = config("RESEND_API_KEY")
 DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
 CONTACT_EMAIL = config("CONTACT_EMAIL")
-
 
 #Security Settings
 PRODUCTION = config("PRODUCTION", default=False, cast=bool)

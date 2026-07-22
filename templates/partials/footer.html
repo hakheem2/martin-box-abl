@@ -9,14 +9,22 @@
                <a href="{% url 'home' %}" class="footer-logo">
                   <img src="{% static 'images/logo/logo-footer.png' %}" alt="{{ site.name }} | Martin Boxabl | martinboxabl.com">
                </a>
-               <p>Modern portable homes designed to provide smarter and more flexible living solutions.</p>
+               <p>Martin Boxabl specializes in modern modular and prefab homes, combining innovative building technology with efficient designs for affordable, flexible, and sustainable living.</p>
 
             <div class="footer-contact mt-4">
-               <h3>Contact</h3>
+               <h3>About MArtin Boxabl</h3>
                <ul>
-                  <li><a href="tel:{{ SITE.phone}}">{{ SITE.phone}}</a></li>
-                  <li><a href="mailto:{{ SITE.email}}">{{ SITE.email}}</a></li>
-                  <li>{{ SITE.address }}</li>
+                  {% if site.phone %}
+                  <li><a href="tel:{{ site.phone }}">{{ site.phone }}</a></li>
+                  {% endif %}
+
+                  {% if site.email %}
+                  <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+                  {% endif %}
+
+                  {% if site.address %}
+                  <li>{{ site.address }}</li>
+                  {% endif %}
                </ul>
             </div>
          </div>
@@ -24,8 +32,11 @@
          <div class="footer-links">
                <h3>Quick Links</h3>
                <ul>
-                  <li><a href="{% url 'about' %}">About</a></li>
-                  <li><a href="{% url 'shop' %}">Homes</a></li>
+                  <li><a href="{% url 'about' %}">About Martin</a></li>
+                  <li><a href="{{ blog_page.url }}">Articles</a></li>
+                  <li><a href="{% url 'shop' %}">Boxabl Homes</a></li>
+                  <li><a href="{% url 'category_list' %}">Boxabl Homes Categories</a></li>
+                  <li><a href="{% url 'home_types_listing' %}">Boxabl Homes Types</a></li>
                   <li><a href="{% url 'gallery' %}">Our Gallery</a></li>
                   <li><a href="{% url 'contact' %}">Contact</a></li>
                </ul>
@@ -43,9 +54,9 @@
          <div class="footer-social">
             <h3>Follow Us</h3>
             <div class="social-links">
-               <a href="{{ SITE.facebook_link }}" class="text-success me-3" aria-label="Facebook">Facebook</a>
-               <a href="{{ SITE.instagram_link }}" class="text-success me-3" aria-label="Instagram">Instagram</a>
-               <a href="{{ SITE.tiktok_link }}" class="text-success me-3" aria-label="TikTok">TikTok</a>
+               <a href="{{ site.facebook_link }}" class="text-success me-3" aria-label="Facebook">Facebook</a>
+               <a href="{{ site.instagram_link }}" class="text-success me-3" aria-label="Instagram">Instagram</a>
+               <a href="{{ site.tiktok_link }}" class="text-success me-3" aria-label="TikTok">TikTok</a>
             </div>
 
             <div class="mt-4">
@@ -90,7 +101,7 @@
       </div>
 
       <div class="footer-bottom">
-         <p>© {% now "Y" %} {{ SITE.name|default:"Martin Boxabl" }}. All Rights Reserved.</p>
+         <p>© {% now "Y" %} {{ site.name|default:"Martin Boxabl" }}. All Rights Reserved.</p>
       </div>
 
    </div>

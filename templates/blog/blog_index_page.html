@@ -1,0 +1,384 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{{ page.seo_title|default:"Martin Boxabl Blog | Modular Homes, Prefab Homes & Housing Guides" }}
+{% endblock %}
+
+{% block meta_description %}
+{{ page.search_description|default:"Explore Martin Boxabl's blog for expert guides about modular homes, prefab homes, tiny homes, portable homes, housing trends, buying advice, and modern living solutions." }}
+{% endblock %}
+
+{% block meta_keywords %}
+modular homes blog, prefab homes guide, tiny homes guide, portable homes, modular home prices, prefab house tips, modern housing solutions, Martin Boxabl
+{% endblock %}
+
+{% block og_title %}
+{{ page.seo_title|default:"Martin Boxabl Blog | Modern Housing Insights" }}
+{% endblock %}
+
+{% block og_description %}
+{{ page.search_description|default:"Discover expert articles about modular homes, prefab homes, affordable housing, and modern home solutions from Martin Boxabl." }}
+{% endblock %}
+
+{% block og_image %}
+{% static 'images/og/blog.jpg' %}
+{% endblock %}
+
+{% block og_url %}
+{{ request.build_absolute_uri }}
+{% endblock %}
+
+{% block twitter_title %}
+{{ page.seo_title|default:"Martin Boxabl Blog | Modular Home Guides" }}
+{% endblock %}
+
+{% block twitter_description %}
+{{ page.search_description|default:"Read the latest guides, insights, and resources about modular homes, prefab homes, and modern housing." }}
+{% endblock %}
+
+{% block twitter_image %}
+{% static 'images/og/blog.jpg' %}
+{% endblock %}
+
+{% block canonical_url %}
+{{ request.build_absolute_uri }}
+{% endblock %}
+
+{% block schema_markup %}
+<script type="application/ld+json">
+{
+   "@context":"https://schema.org",
+   "@type":"Blog",
+   "name":"{{ page.title }}",
+   "description":"{{ page.search_description }}",
+   "url":"{{ request.build_absolute_uri }}",
+   "publisher":{
+      "@type":"Organization",
+      "name":"{{ SITE.name }}",
+      "url":"https://martinboxabl.com"
+   }
+}
+</script>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- BLOG HERO -->
+<section class="page-hero page-hero-blog" style="background-image: url('../../static/images/hero/blog-hero.jpg'); background-position: center bottom;">
+   <div class="page-hero-overlay"></div>
+   <div class="container">
+      <div class="page-hero-content">
+         <span class="section-tag">Martin Boxabl Blog</span>
+         <h1 class="display-heading">Modular Homes, Prefab Homes & Modern Housing Insights</h1>
+         <p>
+            Explore expert guides, home buying advice, construction insights,
+            and the latest trends in modular homes, prefab homes, tiny homes,
+            and innovative housing solutions.
+         </p>
+         <div class="hero-actions">
+            <a href="#blog-posts" class="btn btn-primary">Explore Articles</a>
+            <a href="{% url 'contact' %}" class="btn btn-outline">Talk To Martin</a>
+         </div>
+         <nav class="breadcrumb">
+            <a href="{% url 'home' %}">Home</a>
+            <span>/</span>
+            <span>Blog</span>
+         </nav>
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+BLOG POSTS GRID
+========================================= -->
+<section class="section blog-posts-section" id="blog-posts">
+   <div class="container">
+      <div class="section-header d-flex justify-content-between align-items-center flex-wrap">
+         <div>
+            <span class="section-tag">Latest Articles</span>
+            <h2 class="heading-l">Explore Our Latest Housing Guides</h2>
+         </div>
+         <span class="blog-count">{{ posts.count }} Article{{ posts.count|pluralize }}</span>
+      </div>
+      <div class="row g-4">
+         {% for post in posts %}
+         <div class="col-lg-4 col-md-6">
+            <article class="blog-card">
+               <div class="blog-image">
+                  {% if post.featured_image %}
+                  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                  {% else %}
+                  <img src="{% static 'images/blog/default-blog.jpg' %}" alt="{{ post.title }}">
+                  {% endif %}
+               </div>
+               <div class="blog-content">
+                  {% if post.category %}
+                  <span class="blog-category">{{ post.category.name }}</span>
+                  {% endif %}
+                  <h3>
+                     <a href="{{ post.url }}">{{ post.title }}</a>
+                  </h3>
+                  <p>
+                     {{ post.excerpt|default:"Discover expert insights, guides, and information about modern housing solutions from Martin Boxabl."|truncatewords:25 }}
+                  </p>
+                  <div class="blog-meta">
+                     <span>By {{ post.author }}</span>
+                     <span>{{ post.first_published_at|date:"M d, Y" }}</span>
+                  </div>
+                  <a href="{{ post.url }}" class="btn btn-primary btn-full mt-2">
+                     Read Article
+                     <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                     </svg>
+                  </a>
+               </div>
+            </article>
+         </div>
+         {% empty %}
+         <div class="empty-products text-center">
+            <h3>No articles available yet.</h3>
+            <p>Check back soon for new modular home guides and housing insights.</p>
+         </div>
+         {% endfor %}
+      </div>
+   </div>
+</section>
+
+<!-- =========================================
+POPULAR BLOG TOPICS
+========================================= -->
+<section class="section blog-topics-section">
+<div class="container">
+   <div class="section-header">
+      <span class="section-tag">Popular Topics</span>
+      <h2 class="heading-l">Explore Housing Topics & Guides</h2>
+      <p>
+      Learn more about modular homes, prefab homes, tiny homes, and modern
+      housing solutions through our detailed guides and expert articles.
+      </p>
+   </div>
+
+   <div class="row g-4">
+      {% for category in categories %}
+      <div class="col-lg-4 col-md-6">
+      <a href="{{ category.get_absolute_url }}" class="blog-topic-card">
+         <div class="topic-content">
+            <h3>{{ category.name }}</h3>
+            <p>{{ category.description|default:"Explore expert guides, insights, and helpful information about modern housing solutions."|truncatewords:18 }}</p>
+            <span>
+            View Articles
+            <i class="bi bi-arrow-right"></i>
+            </span>
+         </div>
+      </a>
+      </div>
+      {% empty %}
+      <div class="text-center">
+      <h3>More topics coming soon.</h3>
+      </div>
+      {% endfor %}
+   </div>
+</div>
+</section>
+
+<!-- =========================================
+WHY READ MARTIN BOXABL BLOG
+========================================= -->
+<section class="section why-blog-section">
+<div class="container">
+   <div class="section-header">
+      <span class="section-tag">Why Our Blog</span>
+      <h2 class="heading-l">Trusted Information For Smarter Home Decisions</h2>
+      <p>
+      Buying a home is a major decision. Our articles provide clear,
+      practical information to help you understand modern construction,
+      compare housing options, and choose the right solution.
+      </p>
+   </div>
+
+   <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+         <div class="feature-card">
+            <div class="feature-icon">
+               <i class="bi bi-house-check"></i>
+            </div>
+            <h3>Housing Guides</h3>
+            <p>
+               Learn about modular homes, prefab homes, tiny homes, floor plans,
+               construction methods, and modern housing trends.
+            </p>
+         </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+         <div class="feature-card">
+            <div class="feature-icon">
+               <i class="bi bi-search"></i>
+            </div>
+            <h3>Expert Insights</h3>
+            <p>
+               Understand important factors like pricing, customization,
+               installation, and choosing the right home design.
+            </p>
+         </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+         <div class="feature-card">
+            <div class="feature-icon">
+               <i class="bi bi-lightbulb"></i>
+            </div>
+            <h3>Modern Living Ideas</h3>
+            <p>
+               Discover innovative housing ideas, efficient designs, and future
+               trends shaping the way people live.
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+</section>
+
+<!-- =========================================
+BLOG CTA SECTION
+========================================= -->
+<section class="cta-faq-section">
+<div class="container">
+   <div class="cta-faq-wrapper align-items-start">
+      <div class="cta-content pt-lg-5">
+      <span class="section-tag">Need Help Choosing A Home?</span>
+      <h2 class="heading-l">Find The Right Modular Home For Your Future</h2>
+      <p>
+         Whether you are researching modular homes, prefab homes, tiny homes,
+         or modern housing solutions, Martin Boxabl helps you understand your
+         options and find the right path toward your new home.
+      </p>
+      <div class="cta-actions">
+         <a href="{% url 'contact' %}" class="btn btn-outline">Contact Martin</a>
+      </div>
+      </div>
+
+      <div class="faq-wrapper">
+      <div class="section-header">
+         <span class="section-tag text-accent p-0">FAQ</span>
+         <h2 class="heading-l text-white">Common Questions About Modular Homes</h2>
+      </div>
+
+      <div class="faq-item">
+         <button class="faq-question">
+            What is a modular home?
+            <span class="faq-icon">+</span>
+         </button>
+         <div class="faq-answer">
+            <p>
+            A modular home is a factory-built home constructed in sections
+            before being transported and permanently installed on a
+            foundation at its final location.
+            </p>
+         </div>
+      </div>
+
+      <div class="faq-item">
+         <button class="faq-question">
+            What is the difference between modular homes and prefab homes?
+            <span class="faq-icon">+</span>
+         </button>
+         <div class="faq-answer">
+            <p>
+            Prefab homes are a broad category of factory-built homes,
+            while modular homes are a specific type of prefab construction
+            built in sections and assembled on-site.
+            </p>
+         </div>
+      </div>
+
+      <div class="faq-item">
+         <button class="faq-question">
+            Are prefab homes cheaper than traditional homes?
+            <span class="faq-icon">+</span>
+         </button>
+         <div class="faq-answer">
+            <p>
+            Prefab homes can be more affordable because factory
+            construction improves efficiency, reduces waste, and helps
+            shorten construction time.
+            </p>
+         </div>
+      </div>
+
+      <div class="faq-item">
+         <button class="faq-question">
+            Can modular homes be customized?
+            <span class="faq-icon">+</span>
+         </button>
+         <div class="faq-answer">
+            <p>
+            Yes. Many modular homes can be customized with different floor
+            plans, layouts, finishes, kitchens, bathrooms, and design
+            features.
+            </p>
+         </div>
+      </div>
+
+      <div class="faq-item">
+         <button class="faq-question">
+            Where can I learn more about modular homes?
+            <span class="faq-icon">+</span>
+         </button>
+         <div class="faq-answer">
+            <p>
+            The Martin Boxabl blog provides guides and resources covering
+            modular homes, prefab homes, tiny homes, pricing, designs,
+            construction methods, and modern housing trends.
+            </p>
+         </div>
+      </div>
+      </div>
+   </div>
+</div>
+</section>
+
+<!-- =========================================
+BLOG SEO CONTENT
+========================================= -->
+<section class="section blog-guide-section">
+<div class="container">
+   <div class="section-header">
+      <span class="section-tag">Housing Resource Center</span>
+      <h2 class="heading-l">Everything You Need To Know About Modern Housing</h2>
+   </div>
+
+   <div class="guide-content">
+      <p>
+      The housing industry is changing rapidly as more homeowners explore
+      alternatives to traditional construction. Modular homes, prefab homes,
+      tiny homes, and portable homes are becoming popular choices because
+      they provide flexible, efficient, and modern living solutions.
+      </p>
+      <p>
+      Through the Martin Boxabl blog, we share helpful information about
+      home construction, buying decisions, design inspiration, and the latest
+      trends shaping the future of housing.
+      </p>
+      <p>
+      Whether you are searching for affordable modular homes, comparing prefab
+      house options, researching home prices, or looking for modern floor
+      plans, our guides are designed to help you make informed decisions.
+      </p>
+      <p>
+      Explore our latest articles and discover how innovative housing
+      solutions can help create comfortable, efficient, and beautiful homes
+      for different lifestyles.
+      </p>
+   </div>
+</div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock %}
