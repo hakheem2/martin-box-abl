@@ -13,17 +13,15 @@ The custom, responsive site dashboard is available at `/dashboard/` (sign in at 
 
 ## Coolify deployment
 
-Set `DEBUG=False`, `PRODUCTION=True`, `SECRET_KEY`, `ALLOWED_HOSTS`, and `CSRF_TRUSTED_ORIGINS` in the Coolify application environment. Set `DATABASE_URL` to the attached PostgreSQL service URL. The application uses PostgreSQL when `DATABASE_URL` is present and SQLite only for local development.
+Set `DEBUG=False`, `PRODUCTION=True`, `SECRET_KEY`, `ALLOWED_HOSTS`, and `CSRF_TRUSTED_ORIGINS` in Coolify. Production now refuses to start without both `DATABASE_URL` and Cloudinary configuration, so it cannot silently fall back to ephemeral SQLite or local media. Set `DATABASE_URL` to the internal PostgreSQL service URL using the service's internal hostname and port, not a public endpoint. Coolify PostgreSQL normally uses `DATABASE_SSL_REQUIRE=False`; set it to `True` only if your database requires TLS.
 
 For persistent uploads, configure Cloudinary using `CLOUDINARY_URL` or `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, and `CLOUDINARY_API_SECRET`. Uploads are stored under the Cloudinary `MartinBoxes/` prefix, then organized by media type (for example, `MartinBoxes/homes/` and `MartinBoxes/categories/`). Install dependencies with `pip install -r requirements.txt` so `django-cloudinary-storage` is available when Cloudinary is enabled. For notifications, set `RESEND_API_KEY` and the verified sender in `DEFAULT_FROM_EMAIL`. Contact messages go to `SUPPORT_EMAIL` and order requests go to `ORDER_EMAIL`; both have Martin Boxabl defaults and can be overridden in Coolify.
 
-Configure Coolify to run `python manage.py migrate` as a pre-deploy command and start the web service with:
+The repository includes a root `Dockerfile` and no longer uses the old Railway Procfile. In Coolify, set **Build Pack** to **Dockerfile**, **Base Directory** to `/`, **Dockerfile Location** to `Dockerfile`, and **Ports Exposes** to `8000`. Leave the start command on the Dockerfile default. The image installs `requirements.txt` (including Cloudinary), collects static assets, then runs database migrations before Gunicorn starts. The container exposes `/health/` for health checks and honors Coolify's `PORT` variable.
 
-```sh
-gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3 --access-logfile - --error-logfile -
-```
+In Coolify's Environment Variables settings, mark secrets and application configuration **Runtime only** (Build time unavailable, Runtime available). The Dockerfile does not need credentials to build: static collection uses temporary build-only Django settings. Set `SECRET_KEY`, `DEBUG=False`, `PRODUCTION=True`, `ALLOWED_HOSTS`, `CSRF_TRUSTED_ORIGINS`, `DATABASE_URL`, `DATABASE_SSL_REQUIRE`, Cloudinary credentials, `RESEND_API_KEY`, `DEFAULT_FROM_EMAIL`, `SUPPORT_EMAIL`, `ORDER_EMAIL`, and `WAGTAILADMIN_BASE_URL`. Do not paste live secrets into `.env.example` or build arguments. Make sure the deployed branch includes these Dockerfile changes before redeploying.
 
-Create the first dashboard user with `python manage.py createsuperuser` (or run `createsuperuser` in the Coolify shell). Admin users can then add additional users and edit the single Site Settings record from the Django admin.
+Create the first dashboard user with `python manage.py createsuperuser` in the Coolify container terminal after the first successful deployment. Sign in at `/dashboard/login/`. The container startup applies migrations automatically; deploy one web replica when using startup migrations.
 
 ## Site endpoints
 

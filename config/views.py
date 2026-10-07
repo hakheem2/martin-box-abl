@@ -12,6 +12,7 @@ Disallow: /checkout/
 Disallow: /accounts/
 Disallow: /cms/
 Disallow: /documents/
+Disallow: /health/
 
 # Internal search pages
 Disallow: /search/
@@ -22,5 +23,9 @@ Sitemap: {sitemap_url}
 
    return HttpResponse(
       content,
-   content_type="text/plain; charset=utf-8"
+      content_type="text/plain; charset=utf-8"
    )
+
+
+def health_check(request):
+   return HttpResponse("ok", content_type="text/plain; charset=utf-8")

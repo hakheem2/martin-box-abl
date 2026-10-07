@@ -25,7 +25,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 # SITEMAPS CONFIG
-from .views import robots_txt
+from .views import health_check, robots_txt
 from django.contrib.sitemaps.views import sitemap
 from shop.sitemaps import StaticViewSitemap, CategorySitemap, HomeSitemap, BlogSitemap
 
@@ -47,6 +47,7 @@ urlpatterns = [
 
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
     path("robots.txt", robots_txt, name="robots_txt"),
+    path("health/", health_check, name="health_check"),
 
     # Wagtail
     path("cms/", include(wagtailadmin_urls)),

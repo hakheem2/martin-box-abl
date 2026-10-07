@@ -1,6 +1,7 @@
 """Django settings for MartinBoxes."""
 
 from pathlib import Path
+from urllib.parse import urlsplit
 
 from decouple import Csv, config
 
@@ -10,10 +11,14 @@ SECRET_KEY = config("SECRET_KEY", default="")
 DEBUG = config("DEBUG", default=False, cast=bool)
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
-    default="localhost,127.0.0.1",
+    default="martinboxabl.com,www.martinboxabl.com,localhost,127.0.0.1",
     cast=Csv(),
 )
-CSRF_TRUSTED_ORIGINS = config("CSRF_TRUSTED_ORIGINS", default="", cast=Csv())
+CSRF_TRUSTED_ORIGINS = config(
+    "CSRF_TRUSTED_ORIGINS",
+    default="https://martinboxabl.com,https://www.martinboxabl.com",
+    cast=Csv(),
+)
 
 INSTALLED_APPS = [
     "home",
@@ -75,10 +80,11 @@ TEMPLATES = [{
 WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASE_URL = config("DATABASE_URL", default="")
+DATABASE_SSL_REQUIRE = config("DATABASE_SSL_REQUIRE", default=False, cast=bool)
 if DATABASE_URL:
     import dj_database_url
 
-    DATABASES = {"default": dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=not DEBUG)}
+    DATABASES = {"default": dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=DATABASE_SSL_REQUIRE)}
 else:
     DATABASES = {"default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -106,9 +112,16 @@ STORAGES = {
 }
 
 CLOUDINARY_URL = config("CLOUDINARY_URL", default="")
-CLOUDINARY_CLOUD_NAME = config("CLOUDINARY_CLOUD_NAME", default="")
-CLOUDINARY_API_KEY = config("CLOUDINARY_API_KEY", default="")
-CLOUDINARY_API_SECRET = config("CLOUDINARY_API_SECRET", default="")
+_cloudinary_url = urlsplit(CLOUDINARY_URL) if CLOUDINARY_URL else None
+CLOUDINARY_CLOUD_NAME = config(
+    "CLOUDINARY_CLOUD_NAME", default=_cloudinary_url.hostname if _cloudinary_url else ""
+)
+CLOUDINARY_API_KEY = config(
+    "CLOUDINARY_API_KEY", default=_cloudinary_url.username if _cloudinary_url else ""
+)
+CLOUDINARY_API_SECRET = config(
+    "CLOUDINARY_API_SECRET", default=_cloudinary_url.password if _cloudinary_url else ""
+)
 USE_CLOUDINARY = bool(CLOUDINARY_URL or (CLOUDINARY_CLOUD_NAME and CLOUDINARY_API_KEY and CLOUDINARY_API_SECRET))
 if USE_CLOUDINARY:
     try:
@@ -152,6 +165,10 @@ PRODUCTION = config("PRODUCTION", default=not DEBUG, cast=bool)
 if PRODUCTION:
     if not SECRET_KEY:
         raise RuntimeError("SECRET_KEY must be set when PRODUCTION is enabled.")
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL must point to the Coolify PostgreSQL service in production.")
+    if not USE_CLOUDINARY:
+        raise RuntimeError("Configure Cloudinary credentials before running the production site.")
     SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=True, cast=bool)
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
