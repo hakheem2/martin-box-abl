@@ -23,6 +23,7 @@
          {% if request.user.is_superuser or perms.auth.view_user %}<a class="{% if active_section == 'users' %}active{% endif %}" href="{% url 'dashboard:users' %}"><span>♙</span> Users</a>{% endif %}
       </nav>
       <div class="sidebar-bottom">
+         <a href="{% url 'blog_index' %}" target="_blank" rel="noopener">↗ View public blog</a>
          <a href="/" target="_blank" rel="noopener">↗ View website</a>
          <form method="post" action="{% url 'dashboard:logout' %}">{% csrf_token %}<button type="submit">⇥ Sign out</button></form>
       </div>

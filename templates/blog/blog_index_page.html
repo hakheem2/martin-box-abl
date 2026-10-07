@@ -110,7 +110,7 @@ BLOG POSTS GRID
             <article class="blog-card">
                <div class="blog-image">
                   {% if post.featured_image %}
-                  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                  {% image post.featured_image fill-600x400 alt=post.title loading="lazy" decoding="async" %}
                   {% else %}
                   <img src="{% static 'images/blog/success-1.jpg' %}" alt="{{ post.title }}">
                   {% endif %}
@@ -120,7 +120,7 @@ BLOG POSTS GRID
                   <span class="blog-category">{{ post.category.name }}</span>
                   {% endif %}
                   <h3>
-                     <a href="{{ post.url }}">{{ post.title }}</a>
+                     <a href="{% url 'blog_post' slug=post.slug %}">{{ post.title }}</a>
                   </h3>
                   <p>
                      {{ post.excerpt|default:"Discover expert insights, guides, and information about modern housing solutions from Martin Boxabl."|truncatewords:25 }}
@@ -129,7 +129,7 @@ BLOG POSTS GRID
                      <span>By {{ post.author }}</span>
                      <span>{{ post.first_published_at|date:"M d, Y" }}</span>
                   </div>
-                  <a href="{{ post.url }}" class="btn btn-primary btn-full mt-2">
+                  <a href="{% url 'blog_post' slug=post.slug %}" class="btn btn-primary btn-full mt-2">
                      Read Article
                      <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

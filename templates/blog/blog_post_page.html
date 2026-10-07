@@ -87,7 +87,7 @@ BLOG POST HERO
                Home
             </a>
             <span>/</span>
-            <a href="{{ page.get_parent.url }}">
+            <a href="{% url 'blog_index' %}">
                Blog
             </a>
             <span>/</span>
@@ -170,7 +170,7 @@ RELATED ARTICLES
                   {% endif %}
 
                   <h3>
-                     <a href="{{ article.url }}">
+                     <a href="{% url 'blog_post' slug=article.slug %}">
                         {{ article.title }}
                      </a>
                   </h3>
@@ -179,7 +179,7 @@ RELATED ARTICLES
                      {{ article.excerpt|truncatewords:20 }}
                   </p>
 
-                  <a href="{{ article.url }}" class="blog-link">
+                  <a href="{% url 'blog_post' slug=article.slug %}" class="blog-link">
                      Read Article
                      <i class="bi bi-arrow-right"></i>
                   </a>

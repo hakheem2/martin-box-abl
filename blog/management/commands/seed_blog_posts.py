@@ -20,8 +20,8 @@ POSTS = [
         "excerpt": "Modular and site-built homes can both deliver lasting, comfortable living. Compare how they are built, what happens on your land, and which costs and questions matter before you commit.",
         "category": "Home Buying Guides",
         "tags": ["modular homes", "prefab homes", "home buying", "construction"],
-        "image": "static/images/gallery/gallery-2.jpg",
-        "image_title": "Contemporary home exterior for modular home buyer guide",
+        "image": "static/images/homes/home-2.jpg",
+        "image_title": "Modern modular home exterior for construction comparison",
         "body": """
 <p>Choosing a home is about more than comparing photographs or a headline price. The construction method affects how a project is planned, what work happens at the home site, which professionals need to be involved, and how the final budget comes together. Modular construction and traditional site-built construction can both be good choices; the right fit depends on the home, the land, local requirements, and the buyer’s priorities.</p>
 <p>Use this guide to compare the process carefully. Martin Boxabl showcases modern housing options and helps buyers explore the next questions; it does not replace advice from your local building department, lender, surveyor, or licensed contractor.</p>
@@ -51,7 +51,7 @@ POSTS = [
         "category": "Planning & Site Preparation",
         "tags": ["site preparation", "land planning", "modular home foundation", "permits"],
         "image": "static/images/pages/about-home.jpg",
-        "image_title": "Home module being lifted during site installation",
+        "image_title": "Modular home site preparation and crane placement",
         "body": """
 <p>The parcel can determine whether a home can be placed, how it must be engineered, and what work is needed before delivery. Site preparation is not one task: it is a sequence of local reviews, measurements, design decisions, construction, and inspections. Starting these conversations early can help prevent a finished home from arriving before the site is ready.</p>
 <p>Requirements differ by address and by product. Treat this as an organizing checklist, not a substitute for written guidance from your planning office, building department, engineer, utility providers, and the home supplier.</p>
@@ -84,7 +84,7 @@ POSTS = [
         "excerpt": "Delivery day is one milestone in a larger project. Understand the usual handoffs between site preparation, transport, setting, utility work, finishing, and local inspections.",
         "category": "Planning & Site Preparation",
         "tags": ["modular home delivery", "installation", "site work", "home buying"],
-        "image": "static/images/gallery/featured-7.jpg",
+        "image": "static/images/gallery/gallery-7.jpg",
         "image_title": "Modular home lifted into place during installation",
         "body": """
 <p>Seeing a home arrive at its site is an exciting milestone, but delivery is not the same as move-in. A successful project depends on the home, land, transport plan, foundation, utilities, local inspections, and completion work coming together in the right order.</p>
@@ -117,8 +117,8 @@ POSTS = [
         "excerpt": "The best floor plan is the one that supports your routines and fits your site. Use this practical framework to compare rooms, circulation, storage, privacy, accessibility, and future flexibility.",
         "category": "Design & Floor Plans",
         "tags": ["modular home floor plans", "home design", "small home layouts", "housing options"],
-        "image": "static/images/gallery/featured-5.jpg",
-        "image_title": "Modular home floor plan and interior layout",
+        "image": "static/images/homes/home-1.jpg",
+        "image_title": "Modern modular home interior and open living layout",
         "body": """
 <p>A floor plan is a daily-use tool, not just a drawing. It determines how people move through the home, where belongings fit, how private rooms feel, and whether shared spaces work for ordinary routines. A thoughtful comparison starts with the way you plan to live, then checks that the design can be approved and placed on your site.</p>
 <h2>Start with a typical day</h2>

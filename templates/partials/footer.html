@@ -33,7 +33,7 @@
                <h3>Quick Links</h3>
                <ul>
                   <li><a href="{% url 'about' %}">About Martin</a></li>
-                  {% if blog_page %}<li><a href="{{ blog_page.url }}">Articles</a></li>{% endif %}
+                  <li><a href="{% url 'blog_index' %}">Blog</a></li>
                   <li><a href="{% url 'shop' %}">Boxabl Homes</a></li>
                   <li><a href="{% url 'category_list' %}">Boxabl Homes Categories</a></li>
                   <li><a href="{% url 'home_types_listing' %}">Boxabl Homes Types</a></li>
