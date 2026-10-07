@@ -97,6 +97,10 @@ def custom_403(request, exception):
     return _render_error("errors/403.html", 403)
 
 
+def csrf_failure(request, reason=""):
+    return _render_error("errors/403.html", 403)
+
+
 def custom_401(request):
     return _render_error("errors/401.html", 401)
 
