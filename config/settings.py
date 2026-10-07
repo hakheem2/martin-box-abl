@@ -82,10 +82,27 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 DATABASE_URL = config("DATABASE_URL", default="")
 DATABASE_SSL_REQUIRE = config("DATABASE_SSL_REQUIRE", default=False, cast=bool)
+DATABASE_NAME = config("DB_NAME", default="")
+DATABASE_USER = config("DB_USER", default="")
+DATABASE_PASSWORD = config("DB_PASSWORD", default="")
+DATABASE_HOST = config("DB_HOST", default="")
+DATABASE_PORT = config("DB_PORT", default="5432")
+DATABASE_CONFIGURED = bool(DATABASE_URL or all((DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, DATABASE_HOST)))
 if DATABASE_URL:
     import dj_database_url
 
     DATABASES = {"default": dj_database_url.parse(DATABASE_URL, conn_max_age=600, ssl_require=DATABASE_SSL_REQUIRE)}
+elif all((DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD, DATABASE_HOST)):
+    DATABASES = {"default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": DATABASE_NAME,
+        "USER": DATABASE_USER,
+        "PASSWORD": DATABASE_PASSWORD,
+        "HOST": DATABASE_HOST,
+        "PORT": DATABASE_PORT,
+        "CONN_MAX_AGE": 600,
+        **({"OPTIONS": {"sslmode": "require"}} if DATABASE_SSL_REQUIRE else {}),
+    }}
 else:
     DATABASES = {"default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -166,8 +183,8 @@ PRODUCTION = config("PRODUCTION", default=not DEBUG, cast=bool)
 if PRODUCTION:
     if not SECRET_KEY:
         raise RuntimeError("SECRET_KEY must be set when PRODUCTION is enabled.")
-    if not DATABASE_URL:
-        raise RuntimeError("DATABASE_URL must point to the Coolify PostgreSQL service in production.")
+    if not DATABASE_CONFIGURED:
+        raise RuntimeError("Configure DATABASE_URL or all of DB_NAME, DB_USER, DB_PASSWORD, and DB_HOST for PostgreSQL.")
     if not USE_CLOUDINARY:
         raise RuntimeError("Configure Cloudinary credentials before running the production site.")
     SECURE_SSL_REDIRECT = config("SECURE_SSL_REDIRECT", default=True, cast=bool)

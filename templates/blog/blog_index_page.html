@@ -22,7 +22,7 @@ modular homes blog, prefab homes guide, tiny homes guide, portable homes, modula
 {% endblock %}
 
 {% block og_image %}
-{% static 'images/og/blog.jpg' %}
+{% static 'images/hero/blog-hero.jpg' %}
 {% endblock %}
 
 {% block og_url %}
@@ -38,7 +38,7 @@ modular homes blog, prefab homes guide, tiny homes guide, portable homes, modula
 {% endblock %}
 
 {% block twitter_image %}
-{% static 'images/og/blog.jpg' %}
+{% static 'images/hero/blog-hero.jpg' %}
 {% endblock %}
 
 {% block canonical_url %}
@@ -112,7 +112,7 @@ BLOG POSTS GRID
                   {% if post.featured_image %}
                   <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
                   {% else %}
-                  <img src="{% static 'images/blog/default-blog.jpg' %}" alt="{{ post.title }}">
+                  <img src="{% static 'images/blog/success-1.jpg' %}" alt="{{ post.title }}">
                   {% endif %}
                </div>
                <div class="blog-content">
@@ -379,8 +379,4 @@ BLOG SEO CONTENT
    </div>
 </div>
 </section>
-{% endblock %}
-
-{% block extra_js %}
-<script src="{% static 'js/blog.js' %}"></script>
 {% endblock %}

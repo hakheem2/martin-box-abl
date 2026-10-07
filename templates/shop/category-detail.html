@@ -14,7 +14,7 @@ Browse {{ category.name|lower }} for sale at Martin Boxabl. Explore affordable {
 {% block og_description %}Browse {{ category.name }} available through Martin Boxabl and discover modern modular housing solutions.{% endblock %}
 
 {% block og_image %}
-{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/og/shop.jpg' %}{% endif %}
+{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/hero/shop-hero.jpg' %}{% endif %}
 {% endblock %}
 
 {% block og_url %}https://martinboxabl.com{{ request.path }}{% endblock %}
@@ -24,7 +24,7 @@ Browse {{ category.name|lower }} for sale at Martin Boxabl. Explore affordable {
 {% block twitter_description %}Discover {{ category.name }} modular homes available through Martin Boxabl.{% endblock %}
 
 {% block twitter_image %}
-{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/og/shop.jpg' %}{% endif %}
+{% if category.image %}{{ category.image.url }}{% else %}{% static 'images/hero/shop-hero.jpg' %}{% endif %}
 {% endblock %}
 
 {% block canonical_url %}https://martinboxabl.com{{ request.path }}{% endblock %}
