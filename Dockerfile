@@ -23,7 +23,7 @@ RUN SECRET_KEY=build-only-not-a-production-secret DEBUG=False PRODUCTION=False \
 
 EXPOSE 8000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=90s --retries=3 \
-    CMD curl --fail --silent --show-error --header 'X-Forwarded-Proto: https' http://127.0.0.1:8000/health/ || exit 1
+    CMD curl --fail --silent --show-error --header 'Host: 127.0.0.1' --header 'X-Forwarded-Proto: https' http://127.0.0.1:8000/health/ || exit 1
 
 # This project is deployed as one web container. Migrations run before Gunicorn.
 CMD ["sh", "-c", "python manage.py migrate --noinput && exec gunicorn config.wsgi:application --bind 0.0.0.0:${PORT:-8000} --workers 3 --access-logfile - --error-logfile -"]

@@ -2,7 +2,7 @@ import logging
 
 from django.shortcuts import render
 from shop.models import HomeType, Category, Home
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
@@ -12,6 +12,12 @@ import resend
 from blog.models import BlogPostPage
 
 logger = logging.getLogger(__name__)
+
+
+def _render_error(template_name, status):
+    # Error pages must still render when a database-backed context processor
+    # caused the original failure.
+    return HttpResponse(render_to_string(template_name), status=status)
 
 
 # Create your views here.
@@ -80,20 +86,20 @@ def gallery(request):
 
 
 def custom_404(request, exception):
-    return render(request, "404.html", status=404)
+    return _render_error("404.html", 404)
 
 
 def custom_400(request, exception):
-    return render(request, "errors/400.html", status=400)
+    return _render_error("errors/400.html", 400)
 
 
 def custom_403(request, exception):
-    return render(request, "errors/403.html", status=403)
+    return _render_error("errors/403.html", 403)
 
 
 def custom_401(request):
-    return render(request, "errors/401.html", status=401)
+    return _render_error("errors/401.html", 401)
 
 
 def custom_500(request):
-    return render(request, "errors/500.html", status=500)
+    return _render_error("errors/500.html", 500)

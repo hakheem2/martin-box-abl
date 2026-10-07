@@ -1,3 +1,3 @@
-{% extends "base.html" %}
-{% block title %}Something Went Wrong | {{ site.name|default:"MartinBoxes" }}{% endblock %}
-{% block content %}<section class="container py-5 text-center"><h1>Something went wrong</h1><p>We could not complete your request. Please try again shortly.</p><a class="btn btn-primary" href="{% url 'home' %}">Return Home</a></section>{% endblock %}
+{% extends "errors/base_error.html" %}
+{% block title %}Something Went Wrong | Martin Boxabl{% endblock %}
+{% block content %}<h1>Something went wrong</h1><p>We could not complete your request. Please try again shortly.</p><a class="btn" href="/">Return Home</a>{% endblock %}

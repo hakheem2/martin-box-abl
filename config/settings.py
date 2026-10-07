@@ -14,6 +14,11 @@ ALLOWED_HOSTS = config(
     default="martinboxabl.com,www.martinboxabl.com,localhost,127.0.0.1",
     cast=Csv(),
 )
+# The container health check uses loopback regardless of the public host name.
+ALLOWED_HOSTS = list(ALLOWED_HOSTS)
+for internal_host in ("localhost", "127.0.0.1"):
+    if internal_host not in ALLOWED_HOSTS:
+        ALLOWED_HOSTS.append(internal_host)
 CSRF_TRUSTED_ORIGINS = config(
     "CSRF_TRUSTED_ORIGINS",
     default="https://martinboxabl.com,https://www.martinboxabl.com",
@@ -63,6 +68,7 @@ MIDDLEWARE = [
     "wagtail.contrib.redirects.middleware.RedirectMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+CSRF_FAILURE_VIEW = "core.views.custom_403"
 
 ROOT_URLCONF = "config.urls"
 TEMPLATES = [{
