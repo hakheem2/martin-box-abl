@@ -43,6 +43,78 @@
    box-shadow: var(--shadow-card);
 }
 
+.checkout-steps {
+   display: flex;
+   align-items: flex-start;
+   justify-content: space-between;
+   gap: .75rem;
+   list-style: none;
+   margin: 0 0 2rem;
+   padding: 0 0 1.25rem;
+   border-bottom: 1px solid var(--border);
+}
+
+.checkout-steps li {
+   display: flex;
+   align-items: center;
+   gap: .55rem;
+   color: #69736f;
+   font-size: .9rem;
+}
+
+.checkout-steps li span {
+   display: inline-grid;
+   width: 2rem;
+   height: 2rem;
+   place-items: center;
+   border: 1px solid var(--border);
+   border-radius: 50%;
+   font-weight: 700;
+}
+
+.checkout-steps li.is-active,
+.checkout-steps li.is-complete { color: var(--primary); }
+
+.checkout-steps li.is-active span,
+.checkout-steps li.is-complete span {
+   border-color: var(--primary);
+   background: var(--primary);
+   color: #fff;
+}
+
+.checkout-step[hidden],
+.checkout-navigation [hidden] { display: none !important; }
+
+.checkout-step > label { display: block; margin-top: 1rem; }
+.checkout-form label { font-weight: 600; }
+.checkout-form input,
+.checkout-form textarea { display: block; margin-top: .45rem; }
+.checkout-form label span { font-weight: 400; }
+
+.review-order {
+   margin-top: 1.5rem;
+   padding: 1.25rem;
+   border: 1px solid var(--border);
+   border-radius: var(--radius-sm);
+   background: var(--bg-light);
+}
+
+.review-order h3 { margin: 1rem 0 .5rem; font-size: 1rem; }
+.review-order h3:first-child { margin-top: 0; }
+.review-order dl { margin: 0; }
+.review-order dl div { display: grid; grid-template-columns: minmax(110px, .4fr) 1fr; gap: 1rem; padding: .4rem 0; }
+.review-order dt { font-weight: 600; }
+.review-order dd { margin: 0; overflow-wrap: anywhere; }
+
+.checkout-navigation {
+   display: flex;
+   justify-content: space-between;
+   gap: 1rem;
+   margin-top: 2rem;
+}
+
+.checkout-navigation button { min-width: 130px; }
+
 .form-section {
    margin-bottom: 2rem;
 }
@@ -79,4 +151,12 @@
       grid-template-columns: 1fr;
    }
 
+}
+
+@media(max-width:520px) {
+   .checkout-form { padding: 1.25rem; }
+   .checkout-steps { gap: .3rem; }
+   .checkout-steps li { flex-direction: column; text-align: center; font-size: .75rem; }
+   .checkout-navigation button { min-width: 0; }
+   .review-order dl div { grid-template-columns: 1fr; gap: .15rem; }
 }

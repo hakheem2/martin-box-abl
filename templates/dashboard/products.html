@@ -1,0 +1,9 @@
+{% extends "dashboard/base.html" %}
+{% block title %}Products{% endblock %}{% block page_heading %}Products{% endblock %}
+{% block content %}
+<div class="welcome-row"><div><p class="eyebrow">HOME CATALOG</p><h1>Products</h1><p class="muted">Add and manage the homes displayed on your website.</p></div><a class="button button-primary" href="{% url 'dashboard:product_create' %}">＋ Add product</a></div>
+<section class="panel"><div class="panel-heading"><div><h2>Your products</h2><p>{{ products|length }} home{{ products|length|pluralize }} in the catalog</p></div></div><div class="table-wrap"><table><thead><tr><th>Product</th><th>SKU</th><th>Category</th><th>Price</th><th>Visibility</th><th></th></tr></thead><tbody>
+{% for product in products %}<tr><td><div class="post-cell"><span class="product-thumb">{% if product.main_image %}<img src="{{ product.main_image.url }}" alt="">{% else %}⌂{% endif %}</span><span><strong>{{ product.name }}</strong><small>{{ product.square_feet }} sq ft · {{ product.bedrooms }} bed · {{ product.bathrooms }} bath</small></span></div></td><td>{{ product.sku }}</td><td>{{ product.category.name|default:"Uncategorized" }}</td><td>${{ product.price|floatformat:2 }}</td><td><span class="status-pill {% if product.active %}published{% else %}draft{% endif %}">{% if product.active %}Active{% else %}Hidden{% endif %}</span></td><td><div class="row-actions"><a class="row-action" href="{% url 'dashboard:product_edit' product.id %}">Edit</a><a class="row-action delete-link" href="{% url 'dashboard:product_delete' product.id %}">Delete</a></div></td></tr>
+{% empty %}<tr><td colspan="6" class="empty-state">No products yet. Add the first home to your catalog.</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}

@@ -14,7 +14,7 @@
       <!-- DESKTOP NAVIGATION -->
       <ul class="navbar-nav">
          <li><a href="{% url 'about' %}" class="nav-link">About Martin</a></li>
-         <li><a href="{{ blog_page.url }}" class="nav-link">Articles</a></li>
+         {% if blog_page %}<li><a href="{{ blog_page.url }}" class="nav-link">Articles</a></li>{% endif %}
          <li class="nav-item custom-dropdown">
             <a class="nav-link">Boxabl Homes <i class="bi bi-chevron-down fs-6"></i></a>
             <ul class="custom-dropdown-menu">
@@ -30,7 +30,7 @@
       <!-- RIGHT ACTIONS -->
       <div class="navbar-actions">
          <a href="{% url "shop" %}" class="btn btn-primary">View Homes</a>
-         <a href="tel:{{ site.phone }}" class="btn btn-primary"><i class="bi bi-telephone"></i></a>
+         {% if site.number %}<a href="tel:{{ site.number }}" class="btn btn-primary"><i class="bi bi-telephone"></i></a>{% endif %}
          <button class="mobile-toggle" id="mobileToggle" type="button" aria-expanded="false" aria-controls="mobileMenu" aria-label="Toggle Navigation">
             <span></span>
             <span></span>
@@ -46,7 +46,7 @@
          <ul>
             <li><a href="{% url 'home' %}">Home</a></li>
             <li><a href="{% url 'about' %}">About</a></li>
-            <li><a href="{{ blog_page.url }}">Articles</a></li>
+            {% if blog_page %}<li><a href="{{ blog_page.url }}">Articles</a></li>{% endif %}
             <li><a href="{% url 'shop' %}">Boxabl Homes</a></li>
             <li><a href="{% url 'category_list' %}">Boxabl Homes Categories</a></li>
             <li><a href="{% url 'home_types_listing' %}">Boxabl Homes Types</a></li>
@@ -59,7 +59,7 @@
       
       <div class="footer-contact">
          <ul>
-            <li><a href="tel:{{site.phone}}">{{site.phone}}</a></li>
+            {% if site.number %}<li><a href="tel:{{site.number}}">{{site.number}}</a></li>{% endif %}
             <li><a href="mailto:{{site.email}}">{{site.email}}</a></li>
             <li>{{ site.address }}</li>
          </ul>
@@ -67,9 +67,9 @@
 
       <div class="footer-social">
          <div class="social-links">
-            <a href="{{ site.facebook_link }}" aria-label="Facebook">Facebook</a>
-            <a href="{{ site.instagram_link }}" aria-label="Instagram">Instagram</a>
-            <a href="{{ site.tiktok_link }}" aria-label="TikTok">TikTok</a>
+            {% if site.facebook_link %}<a href="{{ site.facebook_link }}" aria-label="Facebook" target="_blank" rel="noopener noreferrer">Facebook</a>{% endif %}
+            {% if site.instagram_link %}<a href="{{ site.instagram_link }}" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Instagram</a>{% endif %}
+            {% if site.tiktok_link %}<a href="{{ site.tiktok_link }}" aria-label="TikTok" target="_blank" rel="noopener noreferrer">TikTok</a>{% endif %}
          </div>
       </div>
    </div>

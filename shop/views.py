@@ -3,6 +3,11 @@ from .models import HomeType, Category, Home, Order
 
 from django.template.loader import render_to_string
 from django.http import JsonResponse
+import logging
+import resend
+from django.conf import settings
+
+logger = logging.getLogger(__name__)
 
 
 def get_filtered_homes(request, base_queryset=None):
@@ -46,8 +51,8 @@ def get_filtered_homes(request, base_queryset=None):
 def home_list(request):
     homes = get_filtered_homes(request)
     categories = Category.objects.filter(active=True)
-    featured_categories = Category.objects.filter(active=True).order_by("?")[:3]
-    home_types = HomeType.objects.filter(active=True).order_by("?")[:3]
+    featured_categories = Category.objects.filter(active=True).order_by("name")[:3]
+    home_types = HomeType.objects.filter(active=True).order_by("name")[:3]
     context = {
         "homes": homes, 
         "categories": categories,
@@ -127,40 +132,37 @@ def home_detail(request, category_slug, slug):
     return render(request, "shop/deailts-page.html", context)
 
 
-from django.conf import settings
-import resend
-resend.api_key = settings.RESEND_API_KEY
-
 def checkout(request, slug):
     home = get_object_or_404(Home, slug=slug, active=True)
 
     if request.method == "POST":
-        order = Order.objects.create(
-            home=home,
-            first_name=request.POST.get("first_name"),
-            last_name=request.POST.get("last_name"),
-            email=request.POST.get("email"),
-            phone=request.POST.get("phone"),
-            country=request.POST.get("country"),
-            city=request.POST.get("city"),
-            address=request.POST.get("address"),
-            notes=request.POST.get("notes"),
-        )
+        required_fields = ("first_name", "last_name", "email", "phone", "country", "city", "address")
+        values = {field: request.POST.get(field, "").strip() for field in required_fields}
+        if not all(values.values()):
+            return render(request, "shop/checkout.html", {"home": home, "error": "Please complete all required fields."}, status=400)
+        try:
+            order = Order.objects.create(home=home, **values, notes=request.POST.get("notes", "").strip())
+        except Exception:
+            logger.exception("Failed to save order for home %s", home.pk)
+            return render(request, "shop/checkout.html", {"home": home, "error": "We could not save your request. Please try again."}, status=503)
 
         home_link = request.build_absolute_uri(home.get_absolute_url())
         html = render_to_string("emails/order_notification.html", {"order": order, "home": home, "home_link": home_link})
         
-        print(settings.RESEND_API_KEY)
         try:
-            response = resend.Emails.send({
+            if not settings.RESEND_API_KEY or not settings.DEFAULT_FROM_EMAIL or not settings.ORDER_EMAIL:
+                raise RuntimeError("Resend email settings are not configured")
+            resend.api_key = settings.RESEND_API_KEY
+            resend.Emails.send({
                 "from": settings.DEFAULT_FROM_EMAIL,
-                "to": [settings.CONTACT_EMAIL],
+                "to": [settings.ORDER_EMAIL],
+                "reply_to": [order.email],
                 "subject": f"New Home Order Request - {home.name}",
                 "html": html,
+                "text": f"New order request from {order.first_name} {order.last_name} for {home.name}.",
             })
-            print(response)
-        except Exception as e:
-            print("RESEND ERROR:", e)
+        except Exception:
+            logger.exception("Order %s saved, but notification email failed", order.pk)
 
         return redirect("order_success")
 

@@ -1,0 +1,41 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="robots" content="noindex,nofollow">
+   <title>{% block title %}Dashboard{% endblock %} · {{ site.name|default:"Martin Boxabl" }}</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+   {% block extra_head %}{% endblock %}
+</head>
+<body class="dashboard-body">
+   <aside class="sidebar" id="dashboardSidebar">
+      <a class="brand" href="{% url 'dashboard:home' %}"><span class="brand-mark">M</span><span><strong>Martin Boxabl</strong><small>Site dashboard</small></span></a>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Dashboard navigation">
+         <a class="{% if active_section == 'overview' %}active{% endif %}" href="{% url 'dashboard:home' %}"><span>▦</span> Overview</a>
+         <a class="{% if active_section == 'posts' %}active{% endif %}" href="{% url 'dashboard:posts' %}"><span>▤</span> Blog posts</a>
+         <a class="{% if active_section == 'products' %}active{% endif %}" href="{% url 'dashboard:products' %}"><span>⌂</span> Products</a>
+         <a class="{% if active_section == 'settings' %}active{% endif %}" href="{% url 'dashboard:settings' %}"><span>⚙</span> Site settings</a>
+         {% if request.user.is_superuser or perms.auth.view_user %}<a class="{% if active_section == 'users' %}active{% endif %}" href="{% url 'dashboard:users' %}"><span>♙</span> Users</a>{% endif %}
+      </nav>
+      <div class="sidebar-bottom">
+         <a href="/" target="_blank" rel="noopener">↗ View website</a>
+         <form method="post" action="{% url 'dashboard:logout' %}">{% csrf_token %}<button type="submit">⇥ Sign out</button></form>
+      </div>
+   </aside>
+   <div class="dashboard-main">
+      <header class="topbar"><button class="menu-toggle" type="button" aria-label="Open navigation" id="menuToggle">☰</button><div class="topbar-title">{% block page_heading %}Overview{% endblock %}</div><div class="user-chip"><span class="avatar">{{ request.user.first_name|default:request.user.username|first|upper }}</span><span>{{ request.user.get_full_name|default:request.user.username }}<small>Administrator</small></span></div></header>
+      <main class="dashboard-content">
+         {% if messages %}<div class="messages">{% for message in messages %}<div class="message {{ message.tags }}">{{ message }}</div>{% endfor %}</div>{% endif %}
+         {% block content %}{% endblock %}
+      </main>
+   </div>
+   <script>
+      document.getElementById("menuToggle")?.addEventListener("click", () => document.getElementById("dashboardSidebar").classList.toggle("is-open"));
+   </script>
+</body>
+</html>

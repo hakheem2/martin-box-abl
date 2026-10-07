@@ -4,6 +4,9 @@ Disallow: /admin/
 Disallow: /checkout/
 Disallow: /cart/
 Disallow: /accounts/
-Disallow: /order-success/
+Disallow: /homes-for-sale/order-success/
+Disallow: /homes-for-sale/checkout/
+Disallow: /cms/
+Disallow: /documents/
 
 Sitemap: https://martinboxabl.com/sitemap.xml

@@ -11,6 +11,14 @@ class SiteSettings(models.Model):
    wa_number = models.CharField(max_length=50, blank=True, null=True)
 
    email = models.EmailField(blank=True, null=True)
+   description = models.TextField(blank=True)
+   meta_title = models.CharField(max_length=200, blank=True)
+   meta_description = models.CharField(max_length=320, blank=True)
+   logo = models.ImageField(upload_to="site/", blank=True, null=True)
+   og_image = models.ImageField(upload_to="site/", blank=True, null=True)
+   canonical_domain = models.URLField(blank=True, default="https://martinboxabl.com")
+   google_analytics_id = models.CharField(max_length=80, blank=True)
+   google_tag_manager_id = models.CharField(max_length=80, blank=True)
 
    address = models.TextField(blank=True, null=True)
 

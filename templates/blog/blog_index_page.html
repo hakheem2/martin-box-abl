@@ -55,7 +55,7 @@ modular homes blog, prefab homes guide, tiny homes guide, portable homes, modula
    "url":"{{ request.build_absolute_uri }}",
    "publisher":{
       "@type":"Organization",
-      "name":"{{ SITE.name }}",
+      "name":"{{ site.name|default:'MartinBoxes'|escapejs }}",
       "url":"https://martinboxabl.com"
    }
 }

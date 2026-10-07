@@ -46,7 +46,7 @@
    <meta property="og:site_name" content="{{ site.name }}">
 
    <meta name="description"
-   content="{% block meta_description %}Martin Boxabl showcases modern modular homes, prefab houses, and innovative housing solutions designed for efficient, flexible, and comfortable living.{% endblock %}">
+   content="{% block meta_description %}{{ site.meta_description|default:'Martin Boxes showcases modern modular homes, prefab houses, and innovative housing solutions designed for efficient, flexible, and comfortable living.' }}{% endblock %}">
 
    <meta name="keywords"
    content="{% block meta_keywords %}Martin Boxabl, modular homes, modular homes for sale, prefab homes, prefab houses, tiny homes, portable homes, affordable modular homes, modern housing solutions{% endblock %}">
@@ -124,11 +124,11 @@
    {
       "@context":"https://schema.org",
       "@type":"Organization",
-      "name":"Martin Boxabl",
+      "name":"{{ site.name|default:'Martin Boxes'|escapejs }}",
       "url":"https://martinboxabl.com",
       "logo":"https://martinboxabl.com{% static 'images/logo/logo.png' %}",
-      "email":"martin@martinboxabl.com",
-      "description":"Martin Boxabl showcases modern modular homes, prefab housing solutions, and innovative living spaces.",
+      "email":"{{ site.email|default:''|escapejs }}",
+      "description":"{{ site.description|default:'Modern modular homes and prefab housing solutions.'|escapejs }}",
       "sameAs":[
          "{{site.facebook_link}}",
          "{{site.instagram_link}}",
@@ -141,7 +141,7 @@
    {
       "@context":"https://schema.org",
       "@type":"WebSite",
-      "name":"Martin Boxabl",
+      "name":"{{ site.name|default:'Martin Boxes'|escapejs }}",
       "url":"https://martinboxabl.com",
       "potentialAction":{
          "@type":"SearchAction",

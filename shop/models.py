@@ -13,6 +13,7 @@ class Category(models.Model):
    image = models.ImageField(upload_to="categories/", blank=True, null=True)
    active = models.BooleanField(default=True)
    created_at = models.DateTimeField(auto_now_add=True)
+   updated_at = models.DateTimeField(auto_now=True)
 
    class Meta:
       ordering = ["name"]
@@ -114,7 +115,7 @@ class Home(models.Model):
       return reverse(
          "home_detail",
          kwargs={
-               "category_slug": self.category.slug,
+               "category_slug": self.category.slug if self.category else "homes",
                "slug": self.slug,
          }
       )

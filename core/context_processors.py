@@ -8,12 +8,9 @@ def site_settings(request):
 
 
 from shop.models import Category
-import random
 def global_categories(request):
 
-   categories = list(Category.objects.filter(active=True))
-   random.shuffle(categories)
-
+   categories = Category.objects.filter(active=True).order_by("name")
    return {
       "footer_categories": categories[:4]
    }
@@ -21,6 +18,8 @@ def global_categories(request):
 
 from blog.models import BlogIndexPage
 def global_pages(request):
+   blog_page = BlogIndexPage.objects.live().public().first()
    return {
-      "blog_page": BlogIndexPage.objects.live().public().first()
+      "blog_page": blog_page,
+      "blog_url": blog_page.url if blog_page else "/blog/",
    }

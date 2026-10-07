@@ -47,7 +47,7 @@
    },
    "publisher": {
       "@type": "Organization",
-      "name": "{{ SITE.name }}",
+      "name": "{{ site.name|default:'MartinBoxes'|escapejs }}",
       "url": "https://martinboxabl.com"
    }
 }

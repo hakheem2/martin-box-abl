@@ -1,0 +1,8 @@
+{% load static %}
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Sign in · Martin Boxabl</title><link rel="stylesheet" href="{% static 'css/dashboard.css' %}"></head>
+<body class="login-page"><main class="login-card"><a class="brand login-brand" href="/"><span class="brand-mark">M</span><span><strong>Martin Boxabl</strong><small>Site dashboard</small></span></a><h1>Welcome back</h1><p>Sign in to manage your website.</p>
+   <form method="post">{% csrf_token %}{% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+      {% for field in form %}<label>{{ field.label }}{{ field }}{% if field.errors %}<span class="field-error">{{ field.errors|join:", " }}</span>{% endif %}</label>{% endfor %}
+      <input type="hidden" name="next" value="{{ request.GET.next }}"><button class="button button-primary button-full" type="submit">Sign in</button>
+   </form><a class="login-home" href="/">← Back to website</a>
+</main></body></html>

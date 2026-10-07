@@ -7,8 +7,9 @@
             e.preventDefault();
 
             const button = form.querySelector(".contact-btn");
-            const text = button.querySelector(".btn-text");
-            const check = button.querySelector(".btn-check");
+            const text = button && button.querySelector(".btn-text");
+            const check = button && button.querySelector(".btn-check");
+            if (!button || !text) return;
 
             button.disabled = true;
             text.textContent = "Sending...";
@@ -22,15 +23,15 @@
                   "X-Requested-With": "XMLHttpRequest"
                }
             })
-            .then(response => response.json())
-            .then(data => {
+            .then(async response => ({response, data: await response.json()}))
+            .then(({response, data}) => {
                if (data.success) {
                   text.textContent = "Contact Sent ✓";
-                  check.style.display = "inline";
+                  if (check) check.style.display = "inline";
                   button.disabled = true;
                   form.reset();
                } else {
-                  text.textContent = "Try Again";
+                  text.textContent = data.error || "Try Again";
                   button.disabled = false;
                }
             })

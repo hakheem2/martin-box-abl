@@ -1,0 +1,3 @@
+{% extends "base.html" %}
+{% block title %}Sign In Required | {{ site.name|default:"MartinBoxes" }}{% endblock %}
+{% block content %}<section class="container py-5 text-center"><h1>401 · Sign In Required</h1><p>Please sign in to continue.</p><a class="btn btn-primary" href="{% url 'admin:login' %}">Sign In</a></section>{% endblock %}

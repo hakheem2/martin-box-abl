@@ -2,6 +2,7 @@ from django.contrib.sitemaps import Sitemap
 from django.urls import reverse
 
 from .models import Home, Category
+from blog.models import BlogIndexPage, BlogPostPage
 
 class StaticViewSitemap(Sitemap):
    priority = 1.0
@@ -13,6 +14,8 @@ class StaticViewSitemap(Sitemap):
          "about",
          "contact",
          "shop",
+         "category_list",
+         "home_types_listing",
       ]
 
    def location(self, item):
@@ -39,3 +42,17 @@ class HomeSitemap(Sitemap):
 
     def lastmod(self, obj):
         return obj.updated_at if hasattr(obj, "updated_at") else None
+
+
+class BlogSitemap(Sitemap):
+    changefreq = "weekly"
+    priority = 0.7
+
+    def items(self):
+        return BlogPostPage.objects.live().public().order_by("-first_published_at")
+
+    def location(self, obj):
+        return obj.url
+
+    def lastmod(self, obj):
+        return obj.last_published_at

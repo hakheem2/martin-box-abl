@@ -1,0 +1,11 @@
+{% extends "dashboard/base.html" %}
+{% block title %}{{ heading }}{% endblock %}{% block page_heading %}Blog posts{% endblock %}
+{% block content %}<div class="form-page-heading"><a class="back-link" href="{% url 'dashboard:posts' %}">← All posts</a><p class="eyebrow">CONTENT EDITOR</p><h1>{{ heading }}</h1><p class="muted">Add your article details, then save it as a draft or publish it.</p></div>
+<form method="post" enctype="multipart/form-data" class="editor-layout">{% csrf_token %}
+   <div class="editor-main panel">
+      {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+      {% for field in form %}{% if field.name != "publish" %}<div class="field-group {% if field.name == 'body' %}body-field{% endif %}"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}</label>{{ field }}{% if field.help_text %}<small class="help-text">{{ field.help_text }}</small>{% endif %}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endif %}{% endfor %}
+      {% if post and post.featured_image %}<div class="current-image"><span>Current cover</span><img src="{{ post.featured_image.file.url }}" alt="{{ post.title }}"></div>{% endif %}
+   </div>
+   <aside class="editor-side"><div class="panel publish-panel"><h2>Publish</h2><p class="muted">Save your changes or publish them to the live blog.</p><label class="publish-toggle">{{ form.publish }} <span>Publish this post now</span></label>{% if form.publish.errors %}<div class="field-error">{{ form.publish.errors|join:", " }}</div>{% endif %}<button class="button button-primary button-full" type="submit">Save post</button><a class="button button-light button-full" href="{% url 'dashboard:posts' %}">Cancel</a></div><div class="panel editor-tip"><span class="tip-icon">✦</span><h3>Writing tip</h3><p>Keep the title clear and the excerpt concise. Separate body paragraphs with a blank line.</p></div></aside>
+</form>{% endblock %}

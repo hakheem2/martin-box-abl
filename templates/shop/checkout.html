@@ -1,82 +1,156 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-{{ home.name }} Checkout | Martin Boxabl
-{% endblock %}
+{% block title %}{{ home.name }} Checkout | {{ site.name|default:"MartinBoxes" }}{% endblock %}
 
-{% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
-{% endblock  %}
-
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/checkout.css' %}">{% endblock %}
 
 {% block content %}
 <section class="section checkout">
    <div class="container">
-
       <div class="section-header">
          <h1 class="heading-lg">Complete Your Order Request</h1>
-         <p class="text-muted">Submit your details and we will contact you to finalize your home purchase.</p>
+         <p class="text-muted">Review your details before sending your request. We will contact you to finalize your home purchase.</p>
       </div>
+      {% if error %}<div class="alert alert-danger" role="alert">{{ error }}</div>{% endif %}
 
       <div class="checkout-wrapper">
-         <!-- HOME SUMMARY -->
-         <div class="checkout-home">
-            <img src="{{ home.main_image.url }}" alt="{{ home.name }}">
-
+         <aside class="checkout-home" aria-label="Selected home">
+            {% if home.main_image %}<img src="{{ home.main_image.url }}" alt="{{ home.name }}">{% endif %}
             <div class="checkout-home-info">
                <h2 class="heading-md">{{ home.name }}</h2>
-
-               {% if home.series %}
-                  <p class="text-muted">{{ home.series }}</p>
-               {% endif %}
-
+               {% if home.series %}<p class="text-muted">{{ home.series }}</p>{% endif %}
                <h3>${{ home.price }}</h3>
-
                <div class="home-specs">
-                  <span>{{ home.square_feet }} sqft</span>
-                  <span>{{ home.bedrooms }} Bedrooms</span>
-                  <span>{{ home.bathrooms }} Bathrooms</span>
-                  <span>{{ home.stories }} Stories</span>
+                  <span>{{ home.square_feet }} sqft</span><span>{{ home.bedrooms }} Bedrooms</span>
+                  <span>{{ home.bathrooms }} Bathrooms</span><span>{{ home.stories }} Stories</span>
                </div>
             </div>
-         </div>
+         </aside>
 
-         <!-- ORDER FORM -->
-         <form method="POST" class="checkout-form">
+         <form method="POST" class="checkout-form" id="checkoutForm">
             {% csrf_token %}
+            <ol class="checkout-steps" aria-label="Checkout progress">
+               <li class="is-active" data-step-indicator="0"><span>1</span><b>Your details</b></li>
+               <li data-step-indicator="1"><span>2</span><b>Delivery details</b></li>
+               <li data-step-indicator="2"><span>3</span><b>Review request</b></li>
+            </ol>
 
-            <!-- USER INFORMATION -->
-            <div class="form-section">
-               <h3 class="heading-md">User Information</h3>
+            <section class="checkout-step" data-step="0" aria-labelledby="step-personal-title">
+               <h2 class="heading-md" id="step-personal-title">Your contact details</h2>
+               <p class="text-muted">We will use these details to follow up about your request.</p>
                <div class="form-grid">
-                  <input type="text" name="first_name" placeholder="First Name" required>
-                  <input type="text" name="last_name" placeholder="Last Name" required>
-                  <input type="email" name="email" placeholder="Email Address" required>
-                  <input type="text" name="phone" placeholder="Phone Number" required>
+                  <label>First name<input type="text" name="first_name" autocomplete="given-name" value="{{ request.POST.first_name|default:'' }}" required></label>
+                  <label>Last name<input type="text" name="last_name" autocomplete="family-name" value="{{ request.POST.last_name|default:'' }}" required></label>
+                  <label>Email address<input type="email" name="email" autocomplete="email" value="{{ request.POST.email|default:'' }}" required></label>
+                  <label>Phone number<input type="tel" name="phone" autocomplete="tel" value="{{ request.POST.phone|default:'' }}" required></label>
                </div>
-            </div>
+            </section>
 
-            <!-- SHIPPING INFORMATION -->
-            <div class="form-section">
-               <h3 class="heading-md">Shipping Information</h3>
+            <section class="checkout-step" data-step="1" aria-labelledby="step-delivery-title" hidden>
+               <h2 class="heading-md" id="step-delivery-title">Location and notes</h2>
+               <p class="text-muted">Tell us where you plan to receive the home.</p>
                <div class="form-grid">
-                  <input type="text" name="country" placeholder="Country" required>
-                  <input type="text" name="city" placeholder="City" required>
+                  <label>Country<input type="text" name="country" autocomplete="country-name" value="{{ request.POST.country|default:'' }}" required></label>
+                  <label>City<input type="text" name="city" autocomplete="address-level2" value="{{ request.POST.city|default:'' }}" required></label>
                </div>
-               <textarea name="address" placeholder="Full Shipping Address" required></textarea>
-            </div>
+               <label>Full address<textarea name="address" autocomplete="street-address" required>{{ request.POST.address|default:'' }}</textarea></label>
+               <label>Additional notes <span class="text-muted">(optional)</span><textarea name="notes">{{ request.POST.notes|default:'' }}</textarea></label>
+            </section>
 
-            <!-- NOTES -->
-            <div class="form-section">
-               <h3 class="heading-md">Additional Notes</h3>
-               <textarea name="notes" placeholder="Any questions or special requirements?"></textarea>
-            </div>
+            <section class="checkout-step" data-step="2" aria-labelledby="step-review-title" hidden>
+               <h2 class="heading-md" id="step-review-title">Review your request</h2>
+               <p class="text-muted">Check the information below. You can go back and edit any details before submitting.</p>
+               <div class="review-order">
+                  <h3>Selected home</h3>
+                  <p><strong>{{ home.name }}</strong> · ${{ home.price }}</p>
+                  <h3>Contact details</h3>
+                  <dl>
+                     <div><dt>Name</dt><dd data-review="name"></dd></div>
+                     <div><dt>Email</dt><dd data-review="email"></dd></div>
+                     <div><dt>Phone</dt><dd data-review="phone"></dd></div>
+                  </dl>
+                  <h3>Delivery details</h3>
+                  <dl>
+                     <div><dt>Country</dt><dd data-review="country"></dd></div>
+                     <div><dt>City</dt><dd data-review="city"></dd></div>
+                     <div><dt>Address</dt><dd data-review="address"></dd></div>
+                     <div><dt>Additional notes</dt><dd data-review="notes"></dd></div>
+                  </dl>
+               </div>
+            </section>
 
-            <button class="btn btn-primary btn-full">Submit Order Request</button>
+            <div class="checkout-navigation">
+               <button type="button" class="btn btn-outline" id="previousStep" hidden>Previous</button>
+               <button type="button" class="btn btn-primary" id="nextStep">Next</button>
+               <button type="submit" class="btn btn-primary" id="submitOrder" hidden>Confirm and Submit Request</button>
+            </div>
          </form>
       </div>
-
    </div>
 </section>
+<script>
+(() => {
+   const form = document.getElementById("checkoutForm");
+   if (!form) return;
+   const panels = [...form.querySelectorAll("[data-step]")];
+   const indicators = [...form.querySelectorAll("[data-step-indicator]")];
+   const previous = document.getElementById("previousStep");
+   const next = document.getElementById("nextStep");
+   const submit = document.getElementById("submitOrder");
+   let current = 0;
+
+   const showStep = (index) => {
+      current = index;
+      panels.forEach((panel, i) => { panel.hidden = i !== current; });
+      indicators.forEach((item, i) => {
+         item.classList.toggle("is-active", i === current);
+         item.classList.toggle("is-complete", i < current);
+         if (i === current) item.setAttribute("aria-current", "step");
+         else item.removeAttribute("aria-current");
+      });
+      previous.hidden = current === 0;
+      next.hidden = current === panels.length - 1;
+      submit.hidden = current !== panels.length - 1;
+      panels[current].querySelector("input, textarea")?.focus({preventScroll: true});
+   };
+
+   const validCurrentStep = () => {
+      const fields = [...panels[current].querySelectorAll("input, textarea")];
+      const invalid = fields.find(field => !field.checkValidity());
+      if (invalid) { invalid.reportValidity(); invalid.focus(); return false; }
+      return true;
+   };
+
+   const updateReview = () => {
+      const value = (name) => form.elements.namedItem(name).value.trim();
+      const entries = {
+         name: `${value("first_name")} ${value("last_name")}`.trim(),
+         email: value("email"), phone: value("phone"), country: value("country"),
+         city: value("city"), address: value("address"), notes: value("notes") || "None provided",
+      };
+      Object.entries(entries).forEach(([key, text]) => {
+         const target = form.querySelector(`[data-review="${key}"]`);
+         if (target) target.textContent = text;
+      });
+   };
+
+   next.addEventListener("click", () => {
+      if (!validCurrentStep()) return;
+      if (current === panels.length - 2) updateReview();
+      showStep(Math.min(current + 1, panels.length - 1));
+   });
+   previous.addEventListener("click", () => showStep(Math.max(current - 1, 0)));
+   form.addEventListener("submit", (event) => {
+      if (current !== panels.length - 1) { event.preventDefault(); return; }
+      if (![...form.querySelectorAll("input[required], textarea[required]")].every(field => field.checkValidity())) {
+         event.preventDefault();
+         const index = panels.findIndex(panel => [...panel.querySelectorAll("input[required], textarea[required]")].some(field => !field.checkValidity()));
+         showStep(Math.max(index, 0));
+         validCurrentStep();
+      }
+   });
+   showStep(0);
+})();
+</script>
 {% endblock %}

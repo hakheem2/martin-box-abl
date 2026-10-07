@@ -1,0 +1,30 @@
+{% extends "dashboard/base.html" %}
+{% block title %}{{ heading }}{% endblock %}{% block page_heading %}Products{% endblock %}
+{% block content %}
+<div class="form-page-heading"><a class="back-link" href="{% url 'dashboard:products' %}">← All products</a><p class="eyebrow">HOME CATALOG</p><h1>{{ heading }}</h1><p class="muted">Enter the home details, pricing, images, and specifications.</p></div>
+<form method="post" enctype="multipart/form-data" class="product-editor">{% csrf_token %}
+   <div class="product-editor-main">
+      <section class="panel product-fields"><h2>Product details</h2><p class="section-help">Basic information shown in the home catalog.</p>
+         {% if form.non_field_errors %}<div class="form-errors">{{ form.non_field_errors }}</div>{% endif %}
+         <div class="settings-grid">
+            {% for field in form %}{% if field.name in 'name slug sku category home_type badge series' %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}</label>{{ field }}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endif %}{% endfor %}
+         </div>
+      </section>
+      <section class="panel product-fields"><h2>Pricing and dimensions</h2><p class="section-help">Set the price and the home's main specifications.</p><div class="settings-grid">
+         {% for field in form %}{% if field.name in 'price price_per_sqft square_feet bedrooms bathrooms stories' %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}</label>{{ field }}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endif %}{% endfor %}
+      </div></section>
+      <section class="panel product-fields"><h2>Descriptions</h2><p class="section-help">Give shoppers a quick summary and a full product description.</p>
+         {% for field in form %}{% if field.name in 'short_description description' %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}</label>{{ field }}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endif %}{% endfor %}
+      </section>
+      <section class="panel product-fields"><h2>Product media</h2><p class="section-help">Upload the main photo and an optional spec sheet. Images are stored with your configured media storage.</p>
+         {% for field in form %}{% if field.name in 'main_image spec_sheet' %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required-star">*</span>{% endif %}</label>{{ field }}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endif %}{% endfor %}
+         {% if product and product.main_image %}<div class="current-image"><span>Current main image</span><img src="{{ product.main_image.url }}" alt="{{ product.name }}"></div>{% endif %}
+      </section>
+      <section class="panel product-fields"><h2>Gallery photos</h2><p class="section-help">Add more views of this home. Existing photos can be removed with the delete box.</p>{{ gallery_formset.management_form }}{% if gallery_formset.non_form_errors %}<div class="form-errors">{{ gallery_formset.non_form_errors }}</div>{% endif %}<div class="related-form-grid">{% for gallery_form in gallery_formset %}<div class="related-form">{% for hidden in gallery_form.hidden_fields %}{{ hidden }}{% endfor %}{% for field in gallery_form.visible_fields %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endfor %}</div>{% endfor %}</div></section>
+      <section class="panel product-fields"><h2>Specifications</h2><p class="section-help">Add label and value pairs such as roof type, material, or delivery time.</p>{{ specification_formset.management_form }}{% if specification_formset.non_form_errors %}<div class="form-errors">{{ specification_formset.non_form_errors }}</div>{% endif %}<div class="related-form-grid">{% for spec_form in specification_formset %}<div class="related-form">{% for hidden in spec_form.hidden_fields %}{{ hidden }}{% endfor %}{% for field in spec_form.visible_fields %}<div class="field-group"><label for="{{ field.id_for_label }}">{{ field.label }}</label>{{ field }}{% if field.errors %}<div class="field-error">{{ field.errors|join:", " }}</div>{% endif %}</div>{% endfor %}</div>{% endfor %}</div></section>
+   </div>
+   <aside class="product-editor-side"><section class="panel publish-panel"><h2>Visibility</h2><p class="muted">Choose whether this home is visible to shoppers.</p>{% for field in form %}{% if field.name == 'featured' or field.name == 'active' %}<label class="publish-toggle">{{ field }}<span>{{ field.label }}</span></label>{% endif %}{% endfor %}<button class="button button-primary button-full" type="submit">Save product</button><a class="button button-light button-full" href="{% url 'dashboard:products' %}">Cancel</a></section>
+      {% if product %}<section class="panel editor-tip"><h3>Product URL</h3><p><a href="{{ product.get_absolute_url }}" target="_blank" rel="noopener">View this product ↗</a></p><a class="button button-danger button-full" href="{% url 'dashboard:product_delete' product.id %}">Delete product</a></section>{% endif %}
+   </aside>
+</form>
+{% endblock %}
