@@ -41,8 +41,10 @@
    "headline": "{{ page.title }}",
    "description": "{{ page.search_description|default:page.excerpt }}",
    "url": "{{ page.full_url }}",
+   "datePublished": "{{ page.first_published_at|date:'c' }}",
+   "dateModified": "{{ page.last_published_at|date:'c' }}",
    "author": {
-      "@type": "Person",
+      "@type": "Organization",
       "name": "{{ page.author }}"
    },
    "publisher": {
@@ -97,17 +99,18 @@ BLOG POST HERO
    </div>
 </section>
 
+{% if page.featured_image %}
+<figure class="blog-featured-image container">
+   {% image page.featured_image width-1200 alt=page.featured_image.description loading="lazy" %}
+</figure>
+{% endif %}
+
 <!-- =========================================
 ARTICLE CONTENT
 ========================================= -->
 <section class="section blog-article-section">
    <div class="container">
       <article class="blog-body">
-
-         <h1 class="heading-lg">
-            {{ page.title }}
-         </h1>
-
          {{ page.body|richtext }}
 
          {% if page.tags.all %}

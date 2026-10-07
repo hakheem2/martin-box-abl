@@ -25,7 +25,7 @@ def home(request):
     homes = Home.objects.filter(active=True, featured=True).select_related("category").order_by("-updated_at", "name")[:6]
     categories = Category.objects.filter(active=True)
     home_types = HomeType.objects.filter(active=True).order_by("name")[:3]
-    blog_posts = BlogPostPage.objects.live().public().order_by("-first_published_at")[:3]
+    blog_posts = BlogPostPage.objects.live().public().order_by("-first_published_at")[:4]
     context = {
         "homes": homes,
         "categories": categories,

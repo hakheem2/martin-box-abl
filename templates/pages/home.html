@@ -348,9 +348,9 @@ BLOG POSTS GRID
             <article class="blog-card">
                <div class="blog-image">
                   {% if post.featured_image %}
-                  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}">
+                  <img src="{{ post.featured_image.url }}" alt="{{ post.title }}" loading="lazy" decoding="async">
                   {% else %}
-                  <img src="{% static 'images/blog/success-1.jpg' %}" alt="{{ post.title }}">
+                  <img src="{% static 'images/blog/success-1.jpg' %}" alt="{{ post.title }}" loading="lazy" decoding="async">
                   {% endif %}
                </div>
                <div class="blog-content">
